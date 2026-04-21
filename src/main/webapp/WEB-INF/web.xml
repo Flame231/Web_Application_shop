@@ -1,0 +1,75 @@
+<!DOCTYPE web-app PUBLIC
+        "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+        "http://java.sun.com/dtd/web-app_2_3.dtd" >
+
+
+<web-app>
+
+    <display-name>Archetype Created Web Application</display-name>
+    <servlet>
+        <servlet-name>registerUser</servlet-name>
+        <servlet-class>org.example.controller.RegisterUser</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>ShowAllProducts</servlet-name>
+        <servlet-class>org.example.controller.ShowAllProducts</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>AuthorizeUser</servlet-name>
+        <servlet-class>org.example.controller.AuthorizeUser</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>LogoutUser</servlet-name>
+        <servlet-class>org.example.controller.LogoutUser</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>ShowUserProfile</servlet-name>
+        <servlet-class>org.example.controller.ShowUserProfile</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>AddToBag</servlet-name>
+        <servlet-class>org.example.controller.AddToBag</servlet-class>
+    </servlet>
+
+
+    <servlet-mapping>
+        <servlet-name>registerUser</servlet-name>
+        <url-pattern>/registerUser</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>ShowAllProducts</servlet-name>
+        <url-pattern>/showAllProducts</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>AuthorizeUser</servlet-name>
+        <url-pattern>/authorizeUser</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>LogoutUser</servlet-name>
+        <url-pattern>/logoutUser</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>ShowUserProfile</servlet-name>
+        <url-pattern>/showUserProfile</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>AddToBag</servlet-name>
+        <url-pattern>/addToBag</url-pattern>
+    </servlet-mapping>
+
+
+    <welcome-file-list>
+        <welcome-file>index.jsp</welcome-file>
+    </welcome-file-list>
+
+</web-app>

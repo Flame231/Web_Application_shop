@@ -55,6 +55,5 @@ public class DAOImpl<T> implements DAO<T> {
     @Override
     public void commit() {
         getEm().getTransaction().commit();
-        getEm().clear();
     }
 }

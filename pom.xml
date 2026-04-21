@@ -7,10 +7,42 @@
     <groupId>org.example</groupId>
     <artifactId>Web_Application_shop</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <packaging>war</packaging>
 
+    <build>
+        <finalName>Web_Application_shop</finalName>
+    <plugins>
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <version>3.13.0</version>
+            <configuration>
+                <annotationProcessorPaths>
+                    <!-- ОБЯЗАТЕЛЬНО: указываем путь к Lombok для компилятора -->
+                    <path>
+                        <groupId>org.projectlombok</groupId>
+                        <artifactId>lombok</artifactId>
+                        <version>1.18.30</version> <!-- Укажите вашу версию -->
+                    </path>
+                </annotationProcessorPaths>
+            </configuration>
+        </plugin>
+        <plugin>
+            <groupId>org.liquibase</groupId>
+            <artifactId>liquibase-maven-plugin</artifactId>
+            <version>4.27.0</version> <!-- или твоя версия -->
+
+            <configuration>
+                <url>jdbc:mysql://localhost:3306/shop?createDatabaseIfNotExist=true</url>
+                <propertyFile>liquibase.properties</propertyFile>
+                <searchPath>src/main/resources/</searchPath>
+            </configuration>
+        </plugin>
+    </plugins>
+</build>
     <properties>
-        <maven.compiler.source>24</maven.compiler.source>
-        <maven.compiler.target>24</maven.compiler.target>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
@@ -33,7 +65,21 @@
             <version>1.18.44</version> <!-- или актуальную версию -->
             <scope>provided</scope>
         </dependency>
+
+        <dependency>
+            <groupId>org.liquibase</groupId>
+            <artifactId>liquibase-core</artifactId>
+            <version>4.27.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>4.0.1</version>
+            <scope>provided</scope>
+        </dependency>
     </dependencies>
+
 
 
 </project>
