@@ -1,6 +1,7 @@
 package org.example.dao.bag;
 
 import org.example.dao.DAO;
+import org.example.dto.ProductBagDTO;
 import org.example.model.Bag;
 import org.example.model.Product;
 import org.example.model.User;
@@ -13,5 +14,5 @@ public interface BagDAO extends DAO<Bag> {
 
     void addProduct(Bag bag, Product product, Integer count);
 
-    List<Product> getBagList(Integer userId);
+    List<ProductBagDTO> getBagList(Integer userId);
 }

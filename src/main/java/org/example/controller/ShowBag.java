@@ -1,14 +1,7 @@
 package org.example.controller;
 
-import org.example.connector.HibernateUtil;
-import org.example.dao.bag.BagDAO;
-import org.example.dao.bag.BagDAOImpl;
-import org.example.dto.ProductBagDTO;
-import org.example.dto.ProductDTO;
 import org.example.service.bag.BagService;
 import org.example.service.bag.BagServiceImpl;
-import org.example.service.product.ProductService;
-import org.example.service.product.ProductServiceImpl;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -16,20 +9,18 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.List;
 
-public class ShowAllProducts extends HttpServlet {
-    ProductService productService = new ProductServiceImpl();
+public class ShowBag extends HttpServlet {
+    BagService bagService = new BagServiceImpl();
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-       List<ProductDTO> list = productService.getAllProducts();
-        request.setAttribute("productList", list);
-        for(ProductDTO productDTO:list){
-            System.out.println(productDTO);
-        }
+
+        request.setAttribute("BagList",
+                bagService.showAllBags((Integer) request.getSession().getAttribute("userId")));
         RequestDispatcher dispatcher = getServletContext()
-                .getRequestDispatcher("/catalog.jsp");
+                .getRequestDispatcher("/bag.jsp");
         dispatcher.forward(request, response);
+
     }
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

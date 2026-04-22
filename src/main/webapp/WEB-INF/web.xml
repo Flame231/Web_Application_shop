@@ -36,6 +36,13 @@
         <servlet-class>org.example.controller.AddToBag</servlet-class>
     </servlet>
 
+    <servlet>
+        <servlet-name>ShowBag</servlet-name>
+        <servlet-class>org.example.controller.ShowBag</servlet-class>
+    </servlet>
+
+
+
 
     <servlet-mapping>
         <servlet-name>registerUser</servlet-name>
@@ -65,6 +72,11 @@
     <servlet-mapping>
         <servlet-name>AddToBag</servlet-name>
         <url-pattern>/addToBag</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>ShowBag</servlet-name>
+        <url-pattern>/showBag</url-pattern>
     </servlet-mapping>
 
 

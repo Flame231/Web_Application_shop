@@ -1,5 +1,7 @@
 <%@ page import="java.util.List" %>
 <%@ page import="org.example.dto.ProductDTO" %>
+<%@ page import="org.example.dto.ProductBagDTO" %>
+<%@ page import="java.math.BigDecimal" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <style>
 
@@ -29,13 +31,13 @@
 </style>
 <html>
 <head>
-    <form action="showBag" method="post">
-        <input type="submit" value="Корзина">
-        <input name="page" type="hidden" value="bag">
+    <form action="showAllProducts" method="post">
+        <input type="submit" value="Вернуться назад">
     </form>
+    <div><a href="shop.jsp">Вернуться в личный кабинет</a></div>
     <title>Каталог товаров</title>
     <h1>Каталог товаров</h1>
-    <a href="shop.jsp">Вернуться в личный кабинет</a>
+
     <br>
     <br>
 </head>
@@ -44,58 +46,63 @@
 <table>
     <thead>
     <tr>
-        <th>Номер товара</th>
-        <th>Название</th>
+        <th>Название товара</th>
         <th>Категория</th>
         <th>Цена</th>
         <th>Продавец</th>
-        <th>Добавление в корзину</th>
+        <th>Количество</th>
+        <th>Редактировать</th>
     </tr>
     </thead>
     <tbody>
     <%
         // Получаем список из request, который положил туда Сервлет
-        List<ProductDTO> products = (List<ProductDTO>) request.getAttribute("productList");
-
+        List<ProductBagDTO> products = (List<ProductBagDTO>) request.getAttribute("BagList");
+        int totalCount = 0;
+        BigDecimal sum = new BigDecimal(0);
         // Проверяем, что список не null, чтобы не было ошибки
         if (products != null && !products.isEmpty()) {
-            for (ProductDTO productDTO : products) {
+            for (ProductBagDTO productbagDTO : products) {
     %>
     <tr>
-        <td><%= productDTO.getId() %>
+        <td><%= productbagDTO.getProductName() %>
         </td>
-        <td><%= productDTO.getProductName() %>
+        <td><%= productbagDTO.getCategory() %>
         </td>
-        <td><%= productDTO.getProductCategory().getCategory() %>
+        <td><%= productbagDTO.getPrice() %>
         </td>
-        <td><%= productDTO.getPrice() %>
+        <td><%= productbagDTO.getSellerName() %>
         </td>
-        <td><%= productDTO.getSeller().getSellerName() %>
+        <td><%= productbagDTO.getCount() %>
         </td>
         <td>
+            <input type="hidden" name="func" value="bag">
             <form action="addToBag" method="post">
-                <input type="hidden" name="func" value="catalog">
-                <input type="submit" value="Добавить в корзину"/>
-                <input type="hidden" name="product_id" value="<%= productDTO.getId() %>"/>
+                <input type="submit" value="Подтвердить"/>
+                <input type="hidden" name="product_id" value="<%=productbagDTO.getProductId() %>"/>
                 Количество: <input type="number" name="count"
-                                   value="0" min="0" max="99" step="1">
+                                   value="<%=productbagDTO.getCount()%>" min="0" max="99" step="1">
             </form>
-            <%
-                }%>
         </td>
-
     </tr>
     <%
+            totalCount = +productbagDTO.getCount();
+            sum = sum.add(productbagDTO.getPrice());
+        }
     } else {
     %>
     <tr>
-        <td colspan="2" style="text-align: center;">База товаров пуста".</td>
+        <td colspan="2" style="text-align: center;">Корзина пуста".</td>
     </tr>
     <%
         }
     %>
     </tbody>
 </table>
+<div>Количество: <%= totalCount%>
+</div>
+<div>Цена: <%= sum%>
+</div>
 
 </body>
 </html>

@@ -1,6 +1,7 @@
 package org.example.controller.postConverters;
 
 import org.example.dto.BagDTO;
+import org.example.dto.ProductBagDTO;
 
 import javax.servlet.http.HttpServletRequest;
 

@@ -1,23 +1,19 @@
 package org.example.service.bag;
 
 import org.example.converterDTO.ProductConverter;
-import org.example.converterDTO.UserConverter;
 import org.example.dao.bag.BagDAO;
 import org.example.dao.bag.BagDAOImpl;
 import org.example.dao.product.ProductDAO;
 import org.example.dao.product.ProductDAOImpl;
 import org.example.dao.user.UserDAO;
 import org.example.dao.user.UserDAOImpl;
-import org.example.dto.BagDTO;
-import org.example.dto.LoginDTO;
+import org.example.dto.ProductBagDTO;
 import org.example.dto.ProductDTO;
-import org.example.dto.UserDTO;
 import org.example.model.Bag;
 import org.example.model.Product;
 import org.example.model.User;
 import org.example.model.additional.PrimaryKeyBag;
 
-import java.io.Serializable;
 import java.util.List;
 
 public class BagServiceImpl implements BagService {
@@ -34,21 +30,27 @@ public class BagServiceImpl implements BagService {
         primaryKeyBag.setProduct(product.getId());
         primaryKeyBag.setUser(user.getId());
         Bag bag1 = bagDAO.get(primaryKeyBag);
-        if (bag1 == null) {
-            bagDAO.addUser(bag, user);
-            bagDAO.addProduct(bag, product, bag.getCount());
-            bagDAO.save(bag);
-        } else {
-            bagDAO.begin();
-            bag1.setCount(bag.getCount() + bag1.getCount());
-            bagDAO.commit();
+        if (bag.getCount() != 0) {
+            if (bag1 == null) {
+                bagDAO.addUser(bag, user);
+                bagDAO.addProduct(bag, product, bag.getCount());
+                bagDAO.save(bag);
+            } else {
+                bagDAO.begin();
+                bag1.setCount(bag.getCount());
+                bagDAO.commit();
+            }
         }
+        else{
+            if(bag1!=null){
+                bagDAO.delete(primaryKeyBag);
+            }
+        }
+
     }
 
-    public List<ProductDTO> showAllBags(Integer userId){
-        return bagDAO.getBagList(userId).stream()
-            .map(ProductConverter::toProductDTO)
-            .toList();
+    public List<ProductBagDTO> showAllBags(Integer userId) {
+        return bagDAO.getBagList(userId);
     }
 
 }

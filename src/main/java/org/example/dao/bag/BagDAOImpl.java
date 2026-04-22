@@ -5,6 +5,7 @@ import org.example.dao.product.ProductDAO;
 import org.example.dao.product.ProductDAOImpl;
 import org.example.dao.user.UserDAO;
 import org.example.dao.user.UserDAOImpl;
+import org.example.dto.ProductBagDTO;
 import org.example.model.Bag;
 import org.example.model.Product;
 import org.example.model.User;
@@ -39,11 +40,12 @@ public class BagDAOImpl extends DAOImpl<Bag> implements BagDAO {
 
 
     @Override
-    public List<Product> getBagList(Integer userId) {
+    public List<ProductBagDTO> getBagList(Integer userId) {
         getEm().clear();
         return getEm()
-                .createQuery("select bag.product product from Bag bag where bag.user.id =:user", Product.class)
-                .setParameter("user",userId)
+                .createQuery("select new  org.example.dto.ProductBagDTO(p.id, p.productName, c.category, p.price, s.sellerName, b.count) " +
+                        "from Product p JOIN p.productCategory c join p.seller s join Bag b on b.product = p and b.user.id=:user", ProductBagDTO.class)
+                .setParameter("user", userId)
                 .getResultList();
     }
 }

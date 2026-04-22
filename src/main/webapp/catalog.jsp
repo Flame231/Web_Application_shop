@@ -29,7 +29,7 @@
 </style>
 <html>
 <head>
-    <form action="showAllProducts" method="post">
+    <form action="showBag" method="post">
         <input type="submit" value="Корзина">
         <input name="page" type="hidden" value="bag">
     </form>
@@ -73,12 +73,12 @@
         <td><%= productDTO.getSeller().getSellerName() %>
         </td>
         <td>
-            <%if ("catalog".equals(request.getAttribute("function"))) {%>
             <form action="addToBag" method="post">
+                <input type="hidden" name="func" value="catalog">
                 <input type="submit" value="Добавить в корзину"/>
                 <input type="hidden" name="product_id" value="<%= productDTO.getId() %>"/>
                 Количество: <input type="number" name="count"
-                                   value="0" min="1" max="99" step="1">
+                                   value="0" min="0" max="99" step="1">
             </form>
             <%
                 }%>
@@ -86,11 +86,10 @@
 
     </tr>
     <%
-        }
     } else {
     %>
     <tr>
-        <td colspan="2" style="text-align: center;">Данных нет. Нажмите "Посмотреть базу".</td>
+        <td colspan="2" style="text-align: center;">База товаров пуста".</td>
     </tr>
     <%
         }
