@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+import static org.example.util.NamesUtil.BAG_JSP_ROOT_PATH;
+
 public class ShowBag extends HttpServlet {
     BagService bagService = new BagServiceImpl();
 
@@ -18,7 +20,7 @@ public class ShowBag extends HttpServlet {
         request.setAttribute("BagList",
                 bagService.showAllBags((Integer) request.getSession().getAttribute("userId")));
         RequestDispatcher dispatcher = getServletContext()
-                .getRequestDispatcher("/bag.jsp");
+                .getRequestDispatcher(BAG_JSP_ROOT_PATH);
         dispatcher.forward(request, response);
 
     }

@@ -3,7 +3,7 @@ package org.example.dao;
 
 import jakarta.persistence.EntityManager;
 import lombok.Getter;
-import org.example.connector.HibernateUtil;
+import org.example.util.HibernateUtil;
 
 import java.io.Serializable;
 

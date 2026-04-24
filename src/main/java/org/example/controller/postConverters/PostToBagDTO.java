@@ -7,7 +7,14 @@ import javax.servlet.http.HttpServletRequest;
 
 public class PostToBagDTO {
     public static BagDTO toBagDTO(HttpServletRequest request) {
-        Integer user_id = (Integer) (request.getSession().getAttribute("userId"));
+
+
+
+
+
+
+
+        Integer user_id =(Integer)(request.getSession().getAttribute("userId"));
         Integer product_id = Integer.parseInt(request.getParameter("product_id"));
         Integer count = Integer.parseInt(request.getParameter("count"));
 

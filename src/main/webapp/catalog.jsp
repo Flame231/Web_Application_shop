@@ -1,5 +1,16 @@
 <%@ page import="java.util.List" %>
 <%@ page import="org.example.dto.ProductDTO" %>
+<%@ page import="static org.example.util.NamesUtil.SHOW_BAG" %>
+<%@ page import="static org.example.util.NamesUtil.ACCOUNT_JSP_RELATIVE_PATH" %>
+<%@ page import="static org.example.util.NamesUtil.*" %>
+<%@ page import="org.example.dao.bag.BagDAO" %>
+<%@ page import="org.example.dao.bag.BagDAOImpl" %>
+<%@ page import="org.example.model.User" %>
+<%@ page import="org.example.dao.user.UserDAO" %>
+<%@ page import="org.example.dao.user.UserDAOImpl" %>
+<%@ page import="org.example.model.Bag" %>
+<%@ page import="java.util.Set" %>
+<%@ page import="java.util.Iterator" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <style>
 
@@ -29,15 +40,14 @@
 </style>
 <html>
 <head>
-    <form action="showBag" method="post">
+    <br><a href="<%=ACCOUNT_JSP_RELATIVE_PATH%>">Вернуться в личный кабинет</a></br>
+    <title>Каталог товаров</title>
+    <h1>Каталог товаров</h1>
+    <form action="<%=SHOW_BAG%>" method="post">
         <input type="submit" value="Корзина">
         <input name="page" type="hidden" value="bag">
     </form>
-    <title>Каталог товаров</title>
-    <h1>Каталог товаров</h1>
-    <a href="shop.jsp">Вернуться в личный кабинет</a>
-    <br>
-    <br>
+
 </head>
 <body>
 
@@ -73,11 +83,13 @@
         <td><%= productDTO.getSeller().getSellerName() %>
         </td>
         <td>
-            <form action="addToBag" method="post">
+            <form action="<%=ADD_TO_BAG%>" method="post">
                 <input type="hidden" name="func" value="catalog">
                 <input type="submit" value="Добавить в корзину"/>
                 <input type="hidden" name="product_id" value="<%= productDTO.getId() %>"/>
                 Количество: <input type="number" name="count"
+
+
                                    value="0" min="0" max="99" step="1">
             </form>
             <%

@@ -1,16 +1,11 @@
 package org.example.converterDTO;
 
-import org.example.dao.bag.BagDAO;
-import org.example.dao.bag.BagDAOImpl;
 import org.example.dao.product.ProductDAO;
 import org.example.dao.product.ProductDAOImpl;
 import org.example.dao.user.UserDAO;
 import org.example.dao.user.UserDAOImpl;
 import org.example.dto.BagDTO;
 import org.example.model.Bag;
-import org.example.model.additional.PrimaryKeyBag;
-
-import java.io.Serializable;
 
 public class BagConverter {
     public static Bag toBagEntity(BagDTO bagDTO) {

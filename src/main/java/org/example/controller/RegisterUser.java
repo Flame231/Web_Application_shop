@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+import static org.example.util.NamesUtil.ACCOUNT_JSP_RELATIVE_PATH;
+
 public class RegisterUser extends HttpServlet {
     UserService userService = new UserServiceImpl();
 
@@ -20,6 +22,6 @@ public class RegisterUser extends HttpServlet {
         } else {
             userService.updateUseProfile(userDTO);
         }
-        response.sendRedirect("shop.jsp");
+        response.sendRedirect(ACCOUNT_JSP_RELATIVE_PATH);
     }
 }

@@ -5,7 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
-import org.example.model.additional.PrimaryKeyOrderProduct;
+import org.example.model.additional.primaryKeys.PrimaryKeyOrderProduct;
 
 @Entity
 @Table(name = "userOrder_product")

@@ -1,5 +1,7 @@
 package org.example.connector;
 
+import org.example.util.HibernateUtil;
+
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
@@ -20,7 +22,7 @@ public class JpaFilter implements Filter {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
         try {
-            if (path.equals("/index.jsp") || (path.equals("/registerPage.jsp") ||
+            if (path.equals("/login.jsp") || (path.equals("/registration.jsp") ||
                     (path.equals("/authorizeUser")) || path.equals("/registerUser") ||
                             (session != null && session.getAttribute("userId") != null)))
             {
@@ -28,7 +30,7 @@ public class JpaFilter implements Filter {
             }
             else{
                 HttpServletResponse response1 = (HttpServletResponse) response;
-                response1.sendRedirect("index.jsp");
+                response1.sendRedirect("login.jsp");
             }
         } finally {
             HibernateUtil.closeEntityManager();

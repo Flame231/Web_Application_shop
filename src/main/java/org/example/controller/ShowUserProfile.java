@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
+import static org.example.util.NamesUtil.USER_PROFILE_JSP_ROOT_PATH;
+
 public class ShowUserProfile extends HttpServlet {
     UserService userService = new UserServiceImpl();
 
@@ -20,7 +22,7 @@ public class ShowUserProfile extends HttpServlet {
         Integer id = (Integer) session.getAttribute("userId");
         UserDTO userDTO = userService.getUserData(id);
         request.setAttribute("userDTO", userDTO);
-        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/userProfile.jsp");
+        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(USER_PROFILE_JSP_ROOT_PATH);
         dispatcher.forward(request, response);
     }
 

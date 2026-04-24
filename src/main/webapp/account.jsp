@@ -1,3 +1,6 @@
+<%@ page import="static org.example.util.NamesUtil.LOGOUT_USER" %>
+<%@ page import="static org.example.util.NamesUtil.SHOW_ALL_PRODUCTS" %>
+<%@ page import="static org.example.util.NamesUtil.*" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -38,9 +41,9 @@
 
 <h1>Интернет-магазин</h1>
 <form method="post">
-    <input type="submit" value="выйти из кабинета" formaction="logoutUser">
-    <input type="submit" value="Просмотреть каталог товаров" formaction="showAllProducts">
-    <input type="submit" value="Посмотреть профиль" formaction="showUserProfile">
+    <input type="submit" value="выйти из кабинета" formaction="<%=LOGOUT_USER%>">
+    <input type="submit" value="Просмотреть каталог товаров" formaction="<%=SHOW_ALL_PRODUCTS%>">
+    <input type="submit" value="Посмотреть профиль" formaction="<%=SHOW_USER_PROFILE%>">
 </form>
 
 </body>

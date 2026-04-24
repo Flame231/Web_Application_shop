@@ -14,6 +14,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
+import static org.example.util.NamesUtil.ACCOUNT_JSP_ROOT_PATH;
+import static org.example.util.NamesUtil.LOGIN_JSP_RELATIVE_PATH;
+
 public class AuthorizeUser extends HttpServlet {
     UserService userService = new UserServiceImpl();
 
@@ -28,11 +31,11 @@ public class AuthorizeUser extends HttpServlet {
             session.setAttribute("userId", userDTO.getId());
             if (session.getAttribute("userId") != null) {
                 RequestDispatcher dispatcher = getServletContext()
-                        .getRequestDispatcher("/shop.jsp");
+                        .getRequestDispatcher(ACCOUNT_JSP_ROOT_PATH);
                 dispatcher.forward(request, response);
             }
         } else {
-            response.sendRedirect("index.jsp");
+            response.sendRedirect(LOGIN_JSP_RELATIVE_PATH);
         }
     }
 

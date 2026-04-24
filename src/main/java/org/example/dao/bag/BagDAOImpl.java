@@ -9,7 +9,6 @@ import org.example.dto.ProductBagDTO;
 import org.example.model.Bag;
 import org.example.model.Product;
 import org.example.model.User;
-import org.example.model.additional.PrimaryKeyBag;
 
 import java.util.List;
 

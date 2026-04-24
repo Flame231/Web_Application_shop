@@ -1,7 +1,9 @@
 package org.example.converterDTO;
 
 import org.example.dto.ProductDTO;
+import org.example.model.Bag;
 import org.example.model.Product;
+import org.example.model.User;
 
 public class ProductConverter {
 

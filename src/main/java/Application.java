@@ -1,5 +1,5 @@
 import jakarta.persistence.EntityManager;
-import org.example.connector.HibernateUtil;
+import org.example.util.HibernateUtil;
 import org.example.model.*;
 
 import java.math.BigDecimal;

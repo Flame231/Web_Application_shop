@@ -20,6 +20,8 @@ public class ProductDTO{
 
     private Seller seller;
 
+    private Integer count;
+
     @Override
     public String toString() {
         return "ProductDTO{" +
@@ -28,6 +30,7 @@ public class ProductDTO{
                 ", productCategory=" + productCategory +
                 ", price=" + price +
                 ", seller=" + seller +
+                ", count=" + count +
                 '}';
     }
 }

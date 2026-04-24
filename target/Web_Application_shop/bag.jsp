@@ -2,6 +2,9 @@
 <%@ page import="org.example.dto.ProductDTO" %>
 <%@ page import="org.example.dto.ProductBagDTO" %>
 <%@ page import="java.math.BigDecimal" %>
+<%@ page import="static org.example.util.NamesUtil.SHOW_ALL_PRODUCTS" %>
+<%@ page import="static org.example.util.NamesUtil.ACCOUNT_JSP_RELATIVE_PATH" %>
+<%@ page import="static org.example.util.NamesUtil.*" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <style>
 
@@ -31,12 +34,13 @@
 </style>
 <html>
 <head>
-    <form action="showAllProducts" method="post">
+    <form action="<%=SHOW_ALL_PRODUCTS%>" method="post">
         <input type="submit" value="Вернуться назад">
     </form>
-    <div><a href="shop.jsp">Вернуться в личный кабинет</a></div>
-    <title>Каталог товаров</title>
     <h1>Каталог товаров</h1>
+    <div><a href="<%=ACCOUNT_JSP_RELATIVE_PATH%>">Вернуться в личный кабинет</a></div>
+    <title>Каталог товаров</title>
+
 
     <br>
     <br>
@@ -58,7 +62,7 @@
     <%
         // Получаем список из request, который положил туда Сервлет
         List<ProductBagDTO> products = (List<ProductBagDTO>) request.getAttribute("BagList");
-        int totalCount = 0;
+        Integer totalCount = 0;
         BigDecimal sum = new BigDecimal(0);
         // Проверяем, что список не null, чтобы не было ошибки
         if (products != null && !products.isEmpty()) {
@@ -77,7 +81,7 @@
         </td>
         <td>
             <input type="hidden" name="func" value="bag">
-            <form action="addToBag" method="post">
+            <form action="<%=ADD_TO_BAG%>" method="post">
                 <input type="submit" value="Подтвердить"/>
                 <input type="hidden" name="product_id" value="<%=productbagDTO.getProductId() %>"/>
                 Количество: <input type="number" name="count"
@@ -86,8 +90,9 @@
         </td>
     </tr>
     <%
-            totalCount = +productbagDTO.getCount();
-            sum = sum.add(productbagDTO.getPrice());
+        totalCount += productbagDTO.getCount();
+        sum = sum.add((new BigDecimal(productbagDTO.getCount()).multiply(productbagDTO.getPrice())));%>
+    <%
         }
     } else {
     %>

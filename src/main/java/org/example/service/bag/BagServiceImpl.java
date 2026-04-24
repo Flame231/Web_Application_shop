@@ -1,6 +1,5 @@
 package org.example.service.bag;
 
-import org.example.converterDTO.ProductConverter;
 import org.example.dao.bag.BagDAO;
 import org.example.dao.bag.BagDAOImpl;
 import org.example.dao.product.ProductDAO;
@@ -8,11 +7,11 @@ import org.example.dao.product.ProductDAOImpl;
 import org.example.dao.user.UserDAO;
 import org.example.dao.user.UserDAOImpl;
 import org.example.dto.ProductBagDTO;
-import org.example.dto.ProductDTO;
 import org.example.model.Bag;
 import org.example.model.Product;
 import org.example.model.User;
-import org.example.model.additional.PrimaryKeyBag;
+import org.example.model.additional.primaryKeys.PRUtil;
+import org.example.model.additional.primaryKeys.PrimaryKeyBag;
 
 import java.util.List;
 
@@ -24,16 +23,14 @@ public class BagServiceImpl implements BagService {
     public void addProductToBag(Bag bag) {
         UserDAO userDAO = new UserDAOImpl();
         ProductDAO productDAO = new ProductDAOImpl();
-        Product product = productDAO.get(bag.getProduct().getId());
-        User user = userDAO.get(bag.getUser().getId());
-        PrimaryKeyBag primaryKeyBag = new PrimaryKeyBag();
-        primaryKeyBag.setProduct(product.getId());
-        primaryKeyBag.setUser(user.getId());
+        Product managedProduct = productDAO.get(bag.getProduct().getId());
+        User managedUser = userDAO.get(bag.getUser().getId());
+        PrimaryKeyBag primaryKeyBag = PRUtil.getPrimaryKeyBag(managedUser,managedProduct);
         Bag bag1 = bagDAO.get(primaryKeyBag);
         if (bag.getCount() != 0) {
             if (bag1 == null) {
-                bagDAO.addUser(bag, user);
-                bagDAO.addProduct(bag, product, bag.getCount());
+                bagDAO.addUser(bag, managedUser);
+                bagDAO.addProduct(bag, managedProduct, bag.getCount());
                 bagDAO.save(bag);
             } else {
                 bagDAO.begin();

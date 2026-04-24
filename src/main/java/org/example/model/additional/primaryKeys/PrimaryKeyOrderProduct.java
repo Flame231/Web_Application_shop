@@ -1,4 +1,4 @@
-package org.example.model.additional;
+package org.example.model.additional.primaryKeys;
 
 import lombok.Data;
 

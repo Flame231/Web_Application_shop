@@ -7,11 +7,13 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
+import static org.example.util.NamesUtil.LOGIN_JSP_RELATIVE_PATH;
+
 public class LogoutUser extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
         session.invalidate();
-        resp.sendRedirect("index.jsp");
+        resp.sendRedirect(LOGIN_JSP_RELATIVE_PATH);
     }
 }
