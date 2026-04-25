@@ -1,4 +1,4 @@
-package org.example.controller;
+package org.example.controller.user;
 
 import org.example.controller.postConverters.PostToUserDTO;
 import org.example.dto.UserDTO;
@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-import static org.example.util.NamesUtil.ACCOUNT_JSP_RELATIVE_PATH;
+import static org.example.util.NamesUtil.ACCOUNT_JSP;
 
 public class RegisterUser extends HttpServlet {
     UserService userService = new UserServiceImpl();
@@ -22,6 +22,6 @@ public class RegisterUser extends HttpServlet {
         } else {
             userService.updateUseProfile(userDTO);
         }
-        response.sendRedirect(ACCOUNT_JSP_RELATIVE_PATH);
+        response.sendRedirect(ACCOUNT_JSP);
     }
 }

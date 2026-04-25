@@ -1,4 +1,4 @@
-<%@ page import="static org.example.util.NamesUtil.LOGIN_JSP_RELATIVE_PATH" %>
+<%@ page import="static org.example.util.NamesUtil.LOGIN_JSP" %>
 <%@ page import="static org.example.util.NamesUtil.REGISTER_USER" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
@@ -39,7 +39,7 @@
 <body>
 
 <h1>Регистрация нового пользователя</h1>
-<a href="<%=LOGIN_JSP_RELATIVE_PATH%>"> На главную</a>
+<a href="<%=LOGIN_JSP%>"> На главную</a>
 <form action="<%=REGISTER_USER%>" method="post">
     <div class="form-container"> <!-- Тот самый класс из стилей -->
 
@@ -55,7 +55,11 @@
 
         <div class="form-row">
             <label>Пароль:</label>
-            <input name="password" type="password"/> <!-- Сменил тип на password -->
+            <input name="newPassword" type="password"/>
+        </div>
+        <div>
+            <label>Подтвердите пароль:</label>
+            <input name="newPasswordRepeat" type="password"/>
         </div>
 
         <div class="form-row">
@@ -68,7 +72,7 @@
             <input name="paymentMethods" type="text"/>
         </div>
 
-        <input type="submit" value="Сохранить" formaction ="<%=REGISTER_USER%>"/>
+        <input type="submit" value="Сохранить" formaction="<%=REGISTER_USER%>"/>
     </div>
 </form>
 

@@ -44,13 +44,8 @@
 <html>
 <head>
     <br><a href="<%=ACCOUNT_JSP%>">Вернуться в личный кабинет</a></br>
-    <title>Каталог товаров</title>
+    <title>Редактировать каталог</title>
     <h1>Каталог товаров</h1>
-    <form action="<%=SHOW_BAG%>" method="post">
-        <input type="submit" value="Корзина">
-        <input name="page" type="hidden" value="bag">
-    </form>
-
 </head>
 <body>
 
@@ -69,24 +64,9 @@
     <%
         // Получаем список из request, который положил туда Сервлет
         List<ProductDTO> products = (List<ProductDTO>) request.getAttribute("productList");
-        UserDAO userDAO = new UserDAOImpl();
-        Integer userId = (Integer)(session.getAttribute("userId"));
-        User user = userDAO.get(userId);
-        Set<Bag> bags = user.getBags();
-        int value = 0;
-        ProductDAO productDAO = new ProductDAOImpl();
-
         // Проверяем, что список не null, чтобы не было ошибки
-
         if (products != null && !products.isEmpty()) {
             for (ProductDTO productDTO : products) {
-                for (Bag b1 : bags) {
-                    for (Bag b2 : productDAO.get(productDTO.getId()).getBags()) {
-                        if (b1 == b2) {
-                            value = b1.getCount();
-                        }
-                    }
-                }
     %>
     <tr>
         <td><%= productDTO.getId() %>
@@ -100,20 +80,15 @@
         <td><%= productDTO.getSeller().getSellerName() %>
         </td>
         <td>
-            <form action="<%=ADD_TO_BAG%>" method="post">
+            <form action="<%=EDIT_PRODUCT%>" method="post">
+                <input type="hidden" name="productId" value="<%=productDTO.getId()%>">
                 <input type="hidden" name="func" value="catalog">
                 <input type="submit" value="Редактировать"/>
-                <input type="hidden" name="product_id" value="<%= productDTO.getId()%>"/>
-                Количество: <input type="number" name="count"
-                                   value="<%=value%>" min="0" max="99" step="1">
             </form>
-            <%
-                    value = 0;
-                }%>
         </td>
-
     </tr>
     <%
+        }
     } else {
     %>
     <tr>

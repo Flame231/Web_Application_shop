@@ -1,29 +1,27 @@
-package org.example.controller;
+package org.example.controller.product;
 
-import org.example.dto.UserDTO;
 import org.example.service.user.UserService;
 import org.example.service.user.UserServiceImpl;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-import static org.example.util.NamesUtil.USER_PROFILE_JSP_ROOT_PATH;
+import static org.example.util.NamesUtil.*;
 
-public class ShowUserProfile extends HttpServlet {
+@WebServlet(EDIT_CATALOG_ROOT)
+public class EditCatalog extends HttpServlet {
     UserService userService = new UserServiceImpl();
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        HttpSession session = request.getSession();
-        Integer id = (Integer) session.getAttribute("userId");
-        UserDTO userDTO = userService.getUserData(id);
-        request.setAttribute("userDTO", userDTO);
-        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(USER_PROFILE_JSP_ROOT_PATH);
-        dispatcher.forward(request, response);
+        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(GET_ALL_PRODUCTS_ROOT);
+        dispatcher.include(request,response);
+        RequestDispatcher dispatcher1 = getServletContext().getRequestDispatcher(EDIT_CATALOG_JSP_ROOT);
+        dispatcher1.forward(request,response);
     }
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

@@ -15,7 +15,6 @@ public class UserConverter {
             return UserDTO.builder().id(user.getId())
                     .name(user.getName())
                     .login(user.getLogin())
-                    .password(user.getPassword())
                     .birthday(user.getBirthday())
                     .paymentMethods(user.getPaymentMethods())
                     .sumOfPurchases(user.getSumOfPurchases())
@@ -29,7 +28,7 @@ public class UserConverter {
     public static User toUserEntity(UserDTO userDTO) {
         return User.builder().name(userDTO.getName())
                 .login((userDTO.getLogin()))
-                .password((userDTO.getPassword()))
+                .password((userDTO.getNewPassword()))
                 .birthday((userDTO.getBirthday()))
                 .paymentMethods((userDTO.getPaymentMethods()))
                 .sumOfPurchases((userDTO.getSumOfPurchases()))
@@ -42,7 +41,7 @@ public class UserConverter {
         User user = userDAO.get(userDTO.getId());
         user.setName(userDTO.getName());
         user.setLogin(userDTO.getLogin());
-        user.setPassword(userDTO.getPassword());
+        user.setPassword(userDTO.getNewPassword());
         user.setBirthday(LocalDate.parse(userDTO.getBirthday().toString()));
         user.setPaymentMethods(userDTO.getPaymentMethods());
         return user;

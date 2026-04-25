@@ -1,7 +1,7 @@
 <%@ page import="java.util.List" %>
 <%@ page import="org.example.dto.ProductDTO" %>
 <%@ page import="static org.example.util.NamesUtil.SHOW_BAG" %>
-<%@ page import="static org.example.util.NamesUtil.ACCOUNT_JSP_RELATIVE_PATH" %>
+<%@ page import="static org.example.util.NamesUtil.ACCOUNT_JSP" %>
 <%@ page import="static org.example.util.NamesUtil.*" %>
 <%@ page import="org.example.dao.bag.BagDAO" %>
 <%@ page import="org.example.dao.bag.BagDAOImpl" %>
@@ -11,6 +11,9 @@
 <%@ page import="org.example.model.Bag" %>
 <%@ page import="java.util.Set" %>
 <%@ page import="java.util.Iterator" %>
+<%@ page import="org.example.model.Product" %>
+<%@ page import="org.example.dao.product.ProductDAO" %>
+<%@ page import="org.example.dao.product.ProductDAOImpl" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <style>
 
@@ -40,7 +43,7 @@
 </style>
 <html>
 <head>
-    <br><a href="<%=ACCOUNT_JSP_RELATIVE_PATH%>">Вернуться в личный кабинет</a></br>
+    <br><a href="<%=ACCOUNT_JSP%>">Вернуться в личный кабинет</a></br>
     <title>Каталог товаров</title>
     <h1>Каталог товаров</h1>
     <form action="<%=SHOW_BAG%>" method="post">
@@ -59,17 +62,31 @@
         <th>Категория</th>
         <th>Цена</th>
         <th>Продавец</th>
-        <th>Добавление в корзину</th>
+        <th>Редактировать</th>
     </tr>
     </thead>
     <tbody>
     <%
         // Получаем список из request, который положил туда Сервлет
         List<ProductDTO> products = (List<ProductDTO>) request.getAttribute("productList");
+        UserDAO userDAO = new UserDAOImpl();
+        Integer userId = (Integer)(session.getAttribute("userId"));
+        User user = userDAO.get(userId);
+        Set<Bag> bags = user.getBags();
+        int value = 0;
+        ProductDAO productDAO = new ProductDAOImpl();
 
         // Проверяем, что список не null, чтобы не было ошибки
+
         if (products != null && !products.isEmpty()) {
             for (ProductDTO productDTO : products) {
+                for (Bag b1 : bags) {
+                    for (Bag b2 : productDAO.get(productDTO.getId()).getBags()) {
+                        if (b1 == b2) {
+                            value = b1.getCount();
+                        }
+                    }
+                }
     %>
     <tr>
         <td><%= productDTO.getId() %>
@@ -85,14 +102,13 @@
         <td>
             <form action="<%=ADD_TO_BAG%>" method="post">
                 <input type="hidden" name="func" value="catalog">
-                <input type="submit" value="Добавить в корзину"/>
-                <input type="hidden" name="product_id" value="<%= productDTO.getId() %>"/>
+                <input type="submit" value="Редактировать"/>
+                <input type="hidden" name="product_id" value="<%= productDTO.getId()%>"/>
                 Количество: <input type="number" name="count"
-
-
-                                   value="0" min="0" max="99" step="1">
+                                   value="<%=value%>" min="0" max="99" step="1">
             </form>
             <%
+                    value = 0;
                 }%>
         </td>
 

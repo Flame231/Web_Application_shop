@@ -1,5 +1,5 @@
 <%@ page import="static org.example.util.NamesUtil.LOGOUT_USER" %>
-<%@ page import="static org.example.util.NamesUtil.SHOW_ALL_PRODUCTS" %>
+<%@ page import="static org.example.util.NamesUtil.GET_ALL_PRODUCTS" %>
 <%@ page import="static org.example.util.NamesUtil.*" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
@@ -42,8 +42,10 @@
 <h1>Интернет-магазин</h1>
 <form method="post">
     <input type="submit" value="выйти из кабинета" formaction="<%=LOGOUT_USER%>">
-    <input type="submit" value="Просмотреть каталог товаров" formaction="<%=SHOW_ALL_PRODUCTS%>">
+    <input type="submit" value="Просмотреть каталог товаров" formaction="<%=SHOW_CATALOG%>">
     <input type="submit" value="Посмотреть профиль" formaction="<%=SHOW_USER_PROFILE%>">
+    <input type="submit" value="Редактировать каталог" formaction="<%=EDIT_CATALOG%>">
+    <input type="submit" value="Редактировать Категории товаров" formaction="<%=EDIT_ALL_CATEGORIES%>">
 </form>
 
 </body>

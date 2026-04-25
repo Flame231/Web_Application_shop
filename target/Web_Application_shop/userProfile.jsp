@@ -1,5 +1,5 @@
 <%@ page import="org.example.dto.UserDTO" %>
-<%@ page import="static org.example.util.NamesUtil.ACCOUNT_JSP_RELATIVE_PATH" %>
+<%@ page import="static org.example.util.NamesUtil.ACCOUNT_JSP" %>
 <%@ page import="static org.example.util.NamesUtil.REGISTER_USER" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
@@ -8,7 +8,7 @@
 <% UserDTO userDTO = (UserDTO) request.getAttribute("userDTO"); %>
 
 <h1>Профиль пользователя</h1>
-<a href="<%=ACCOUNT_JSP_RELATIVE_PATH%>">Вернуться в личный кабинет</a>
+<a href="<%=ACCOUNT_JSP%>">Вернуться в личный кабинет</a>
 <form action="<%=REGISTER_USER%>" method="post">
     <p>
         Имя:
@@ -20,9 +20,18 @@
         Логин:
         <input type="text" name="login" value="<%= userDTO.getLogin()%>" required/>
     </p>
-
-    Новый пароль:
-    <input type="password" name="password" value="<%= userDTO.getPassword()%>" required/>
+    <p>
+        Старый пароль:
+        <input type="password" name="oldPassword" required/>
+    </p>
+    <p>
+        Новый пароль:
+        <input type="password" name="newPassword" required/>
+    </p>
+    <p>
+        Повторите новый пароль:
+        <input type="password" name="newPasswordRepeat" required/>
+    </p>
     <p>
         День Рождения:
         <input type="date" name="birthday" value="<%= userDTO.getBirthday()%>" required/>

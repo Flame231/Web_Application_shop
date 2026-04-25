@@ -1,4 +1,4 @@
-package org.example.controller;
+package org.example.controller.user;
 
 import org.example.controller.postConverters.PostToLoginDTO;
 import org.example.dto.LoginDTO;
@@ -14,8 +14,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-import static org.example.util.NamesUtil.ACCOUNT_JSP_ROOT_PATH;
-import static org.example.util.NamesUtil.LOGIN_JSP_RELATIVE_PATH;
+import static org.example.util.NamesUtil.ACCOUNT_JSP_ROOT;
+import static org.example.util.NamesUtil.LOGIN_JSP;
 
 public class AuthorizeUser extends HttpServlet {
     UserService userService = new UserServiceImpl();
@@ -31,11 +31,11 @@ public class AuthorizeUser extends HttpServlet {
             session.setAttribute("userId", userDTO.getId());
             if (session.getAttribute("userId") != null) {
                 RequestDispatcher dispatcher = getServletContext()
-                        .getRequestDispatcher(ACCOUNT_JSP_ROOT_PATH);
+                        .getRequestDispatcher(ACCOUNT_JSP_ROOT);
                 dispatcher.forward(request, response);
             }
         } else {
-            response.sendRedirect(LOGIN_JSP_RELATIVE_PATH);
+            response.sendRedirect(LOGIN_JSP);
         }
     }
 

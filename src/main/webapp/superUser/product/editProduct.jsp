@@ -1,0 +1,26 @@
+<%@ page import="org.example.dto.ProductDTO" %>
+<%@ page import="org.example.dao.product.ProductDAO" %>
+<%@ page import="org.example.dao.product.ProductDAOImpl" %>
+<%@ page import="org.example.model.Product" %><%--
+  Created by IntelliJ IDEA.
+  User: System Administrator
+  Date: 25.04.2026
+  Time: 13:17:03
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<html>
+  <head>
+      <%ProductDAO productDAO = new ProductDAOImpl();
+          Product product = productDAO.get(request.getParameter("productId"));
+      %>
+              <title>Редактировать продукт</title>
+      <h1>Редактировать продукт</h1>
+      Номер продукта:
+      <%=product.getId()%>
+      Название продукта:
+      <input type="text" name="productName" value="<%=product.getProductName()%>">
+  </head>
+  <body>
+  </body>
+</html>

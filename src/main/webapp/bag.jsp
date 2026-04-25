@@ -2,8 +2,8 @@
 <%@ page import="org.example.dto.ProductDTO" %>
 <%@ page import="org.example.dto.ProductBagDTO" %>
 <%@ page import="java.math.BigDecimal" %>
-<%@ page import="static org.example.util.NamesUtil.SHOW_ALL_PRODUCTS" %>
-<%@ page import="static org.example.util.NamesUtil.ACCOUNT_JSP_RELATIVE_PATH" %>
+<%@ page import="static org.example.util.NamesUtil.GET_ALL_PRODUCTS" %>
+<%@ page import="static org.example.util.NamesUtil.ACCOUNT_JSP" %>
 <%@ page import="static org.example.util.NamesUtil.*" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <style>
@@ -34,11 +34,11 @@
 </style>
 <html>
 <head>
-    <form action="<%=SHOW_ALL_PRODUCTS%>" method="post">
+    <form action="<%=SHOW_CATALOG%>" method="post">
         <input type="submit" value="Вернуться назад">
     </form>
     <h1>Каталог товаров</h1>
-    <div><a href="<%=ACCOUNT_JSP_RELATIVE_PATH%>">Вернуться в личный кабинет</a></div>
+    <div><a href="<%=ACCOUNT_JSP%>">Вернуться в личный кабинет</a></div>
     <title>Каталог товаров</title>
 
 

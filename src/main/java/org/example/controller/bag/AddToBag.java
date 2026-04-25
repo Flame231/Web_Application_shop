@@ -1,4 +1,4 @@
-package org.example.controller;
+package org.example.controller.bag;
 
 import org.example.controller.postConverters.PostToBagDTO;
 import org.example.converterDTO.BagConverter;
@@ -24,7 +24,7 @@ public class AddToBag extends HttpServlet {
 
         bagService.addProductToBag(BagConverter.toBagEntity(bagDTO));
         if(CATALOG_NAME.equals(request.getParameter("func"))){
-            response.sendRedirect(SHOW_ALL_PRODUCTS);
+            response.sendRedirect(SHOW_CATALOG);
         }
         else{
             response.sendRedirect(SHOW_BAG);

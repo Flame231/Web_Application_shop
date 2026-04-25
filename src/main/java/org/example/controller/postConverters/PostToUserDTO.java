@@ -13,14 +13,19 @@ public class PostToUserDTO {
         }
         String name = request.getParameter("name");
         String login = request.getParameter("login");
-        String password = request.getParameter("password");
+        String oldPassword = request.getParameter("oldPassword");
+        String newPassword = request.getParameter("newPassword");
+        String newPasswordRepeat = request.getParameter("newPasswordRepeat");
         String birthday = request.getParameter("birthday");
         String paymentMethods = request.getParameter("paymentMethods");
-        return UserDTO.builder().id(id).name(name).
-                login(login).password(password).
-                birthday(LocalDate.parse(birthday))
-                .paymentMethods(paymentMethods)
-                .sumOfPurchases(null)
-                .userOrders(null).discount(null).build();
+        return UserDTO.builder().id(id)
+                .name(name).login(login)
+                .oldPassword(oldPassword)
+                .newPassword(newPassword)
+                .newPasswordRepeat(newPasswordRepeat)
+                .birthday(LocalDate.parse(birthday))
+                .paymentMethods(paymentMethods).sumOfPurchases(null)
+                .userOrders(null)
+                .discount(null).build();
     }
 }

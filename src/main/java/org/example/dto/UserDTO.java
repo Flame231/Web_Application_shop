@@ -10,6 +10,7 @@ import org.example.model.UserOrder;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.Set;
+
 @Builder
 @Getter
 @Setter
@@ -21,7 +22,11 @@ public class UserDTO {
 
     private String login;
 
-    private String password;
+    private String oldPassword;
+
+    private String newPassword;
+
+    private String newPasswordRepeat;
 
     private LocalDate birthday;
 
@@ -33,17 +38,4 @@ public class UserDTO {
 
     private Discount discount;
 
-    @Override
-    public String toString() {
-        return "UserDTO{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", login='" + login + '\'' +
-                ", password='" + password + '\'' +
-                ", paymentMethods='" + paymentMethods + '\'' +
-                ", discount=" + discount +
-                ", sumOfPurchases=" + sumOfPurchases +
-                ", birthday=" + birthday +
-                '}';
-    }
 }
