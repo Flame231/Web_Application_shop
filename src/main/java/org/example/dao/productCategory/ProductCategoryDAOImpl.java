@@ -14,7 +14,8 @@ public class ProductCategoryDAOImpl extends DAOImpl<ProductCategory> implements 
     public List<ProductCategory> getProductCategoryList(){
         getEm().clear();
         List<ProductCategory> list = getEm().createQuery("from ProductCategory p", ProductCategory.class).getResultList();
-
         return  list;
     }
+
+
 }
