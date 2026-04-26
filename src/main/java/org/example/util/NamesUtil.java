@@ -43,7 +43,7 @@ public class NamesUtil {
     public static final String REGISTRATION_JSP = "registration.jsp";
     public static final String EDIT_CATALOG_JSP_ROOT = "/superUser/product/editCatalog.jsp";
     public static final String EDIT_CATALOG_JSP = "editCatalog.jsp";
-    public static final String EDIT_PRODUCT_CATEGORIES_JSP = "/editProductCategories.jsp";
+    public static final String EDIT_PRODUCT_CATEGORIES_JSP = "/superUser/productCategory/editProductCategories.jsp";
     public static final String EDIT_PRODUCT_JSP_ROOT = "/superUser/product/editProduct.jsp";
 
 

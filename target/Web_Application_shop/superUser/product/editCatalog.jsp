@@ -45,10 +45,12 @@
 <head>
     <br><a href="<%=ACCOUNT_JSP%>">Вернуться в личный кабинет</a></br>
     <title>Редактировать каталог</title>
-    <h1>Каталог товаров</h1>
+    <h1>Редактировать каталог товаров</h1>
 </head>
 <body>
-
+<form action="addProductPage" method="post">
+    <input type="submit" value="Добавить товар в каталог">
+</form>
 <table>
     <thead>
     <tr>
@@ -80,10 +82,11 @@
         <td><%= productDTO.getSeller().getSellerName() %>
         </td>
         <td>
-            <form action="<%=EDIT_PRODUCT%>" method="post">
+            <form method="post">
                 <input type="hidden" name="productId" value="<%=productDTO.getId()%>">
                 <input type="hidden" name="func" value="catalog">
-                <input type="submit" value="Редактировать"/>
+                <input type="submit" value="Редактировать" formaction="<%=EDIT_PRODUCT%>"/>
+                <input type="submit" value="Удалить" formaction="removeProduct"/>
             </form>
         </td>
     </tr>

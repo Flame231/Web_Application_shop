@@ -8,4 +8,9 @@ public class PrimaryKeyUtil {
         new PrimaryKeyBag();
         return PrimaryKeyBag.builder().user(user.getId()).product(product.getId()).build();
     }
+
+    public static PrimaryKeyBag getPrimaryKeyBag(Integer userId, Integer productId) {
+        new PrimaryKeyBag();
+        return PrimaryKeyBag.builder().user(userId).product(productId).build();
+    }
 }

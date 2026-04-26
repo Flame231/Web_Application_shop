@@ -1,4 +1,4 @@
-package org.example.controller;
+package org.example.controller.productCategory;
 
 import org.example.dto.ProductCategoryDTO;
 import org.example.service.productCategory.ProductCategoryService;
@@ -21,8 +21,9 @@ public class GetAllProductCategories extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List<ProductCategoryDTO> list = productCategoryService.getProductCategoryDTOList();
         request.setAttribute("productCategoriesList", list);
-        for(ProductCategoryDTO p: (List<ProductCategoryDTO>)(request.getAttribute("productCategoriesList"))){
-            System.out.println(p);
-        }
+    }
+
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        doPost(request, response);
     }
 }

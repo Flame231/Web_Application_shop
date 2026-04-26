@@ -32,9 +32,21 @@ public class Product extends DataEntity {
     @JoinColumn(name = "seller_id")
     private Seller seller;
 
-    @OneToMany(mappedBy = "product")
+    @OneToMany(mappedBy = "product", cascade = CascadeType.REMOVE)
     private Set<Bag> bags = new HashSet<>();
 
     @OneToMany(mappedBy = "product")
     private Set<UserOrderProduct> userOrderProducts = new HashSet<>();
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "productName='" + productName + '\'' +
+                ", productCategory=" + productCategory +
+                ", price=" + price +
+                ", seller=" + seller +
+                ", bags=" + bags +
+                ", userOrderProducts=" + userOrderProducts +
+                '}';
+    }
 }

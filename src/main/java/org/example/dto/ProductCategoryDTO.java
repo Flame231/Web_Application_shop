@@ -19,7 +19,5 @@ public class ProductCategoryDTO {
 
     private Integer id;
 
-    private Set<Product> products = new HashSet<>();
-
     private String category;
 }

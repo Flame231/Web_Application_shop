@@ -48,14 +48,11 @@
     <br><a href="<%=ACCOUNT_JSP%>">Вернуться в личный кабинет</a></br>
     <title>Редактировать категории товаров</title>
     <h1>Категории</h1>
-    <form action="<%=SHOW_BAG%>" method="post">
-        <input type="submit" value="Корзина">
-        <input name="page" type="hidden" value="bag">
-    </form>
-
 </head>
 <body>
-
+<form action="superUser/productCategory/addProductCategory.jsp" method="post">
+    <input type="submit" value="Добавить категорию">
+</form>
 <table>
     <thead>
     <tr>
@@ -81,25 +78,20 @@
         <td><%= productCategoryDTO.getCategory() %>
         </td>
 
-        <td>Редактировать
+        <td>
+            <form  method="post">
+                <input type="submit" value="Редактировать" formaction="editProductCategory">
+                <input type="submit" value="Удалить" formaction="removeProductCategory">
+                <input type="hidden" name="productCategoryId" value="<%=productCategoryDTO.getId()%>">
+            </form>
         </td>
-<%--        <td>
-                        <form action="<%=ADD_TO_BAG%>" method="post">
-                            <input type="hidden" name="func" value="catalog">
-                            <input type="submit" value="Редактировать"/>
-                            <input type="hidden" name="product_id" value="<%= productDTO.getId()%>"/>
-                            Количество: <input type="number" name="count"
-                                               value="<%=value%>" min="0" max="99" step="1">
-                        </form>
-        </td>--%>
-
     </tr>
     <%
         }
     } else {
     %>
     <tr>
-        <td colspan="2" style="text-align: center;">База товаров пуста".</td>
+        <td colspan="2" style="text-align: center;">База категорий пуста".</td>
     </tr>
     <%
         }

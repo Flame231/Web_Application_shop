@@ -16,7 +16,7 @@ public class ProductConverter {
     }
 
     public static Product toProduct(ProductDTO productDTO){
-        return Product.builder()
+        return Product.builder().id(productDTO.getId())
                 .productName(productDTO.getProductName())
                 .productCategory(productDTO.getProductCategory())
                 .price(productDTO.getPrice())

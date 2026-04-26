@@ -12,7 +12,7 @@
             </column>
             <column name="productName" type="varchar(255)"/>
             <column name="productCategory_id" type="INT"/>
-            <column name="price" type="decimal"/>
+            <column name="price" type="decimal(10,2)"/>
             <column name="seller_id" type="INT"/>
             <column name="createDateTime" type="TIMESTAMP"/>
             <column name="updateDateTime" type="TIMESTAMP"/>

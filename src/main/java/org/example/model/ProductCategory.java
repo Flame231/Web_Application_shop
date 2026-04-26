@@ -19,9 +19,16 @@ import java.util.Set;
 @Getter
 public class ProductCategory extends DataEntity {
 
-    @OneToMany(mappedBy = "productCategory")
+    @OneToMany(mappedBy = "productCategory", cascade = CascadeType.REMOVE)
     private Set<Product> products = new HashSet<>();
 
     @Column
     private String category;
+
+    @Override
+    public String toString() {
+        return "ProductCategory{" +
+                ", category='" + category + '\'' +
+                '}';
+    }
 }

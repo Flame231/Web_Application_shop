@@ -102,7 +102,7 @@
         <td>
             <form action="<%=ADD_TO_BAG%>" method="post">
                 <input type="hidden" name="func" value="catalog">
-                <input type="submit" value="Редактировать"/>
+                <input type="submit" value="Редактировать количество"/>
                 <input type="hidden" name="product_id" value="<%= productDTO.getId()%>"/>
                 Количество: <input type="number" name="count"
                                    value="<%=value%>" min="0" max="99" step="1">
