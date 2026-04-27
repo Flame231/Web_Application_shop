@@ -1,9 +1,6 @@
 package org.example.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -12,6 +9,8 @@ import lombok.experimental.SuperBuilder;
 import org.example.model.additional.DataEntity;
 
 import java.sql.Time;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table
@@ -31,6 +30,6 @@ public class OrderPoint extends DataEntity {
     @Column
     private Time closeTime;
 
-    @OneToOne(mappedBy = "orderPoint")
-    private UserOrder userOrder;
+    @OneToMany(mappedBy = "orderPoint")
+    private Set<UserOrder> userOrder = new HashSet<>();
 }

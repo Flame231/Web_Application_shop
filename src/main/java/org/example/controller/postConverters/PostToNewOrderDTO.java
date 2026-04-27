@@ -3,18 +3,37 @@ package org.example.controller.postConverters;
 import org.example.dto.NewOrderDTO;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class PostToNewOrderDTO {
 
-    public static NewOrderDTO toNewOrderDTO(HttpServletRequest request) {
+    public static List<NewOrderDTO> toNewOrderDTO(HttpServletRequest request) {
         Integer userId = (Integer) (request.getSession().getAttribute("userId"));
-       /* Integer userOrderId = Integer.parseInt(request.getParameter("userOrderId"));*/
-        Integer orderPointId = Integer.parseInt(request.getParameter("orderPointId"));
-        Integer productId = Integer.parseInt(request.getParameter("productId"));
-        Integer count = Integer.parseInt(request.getParameter("count"));
-        String orderStatus = request.getParameter("orderStatus");
+        String[] orderPointId = request.getParameterValues("orderPointId");
+        String[] productId = request.getParameterValues("productId");
+        String[] count = request.getParameterValues("count");
+        System.out.println(orderPointId.length + "длина массива");
+        System.out.println(productId.length + "длина массива");
+        System.out.println(count.length + "длина массива");
 
-        return NewOrderDTO.builder().userId(userId).orderPointId(orderPointId)
-                .productId(productId).Count(count).build();
+        List<Integer> orderPointIdList = Arrays.stream(orderPointId)
+                .map(Integer::parseInt).toList();
+        List<Integer> productIdList = Arrays.stream(productId)
+                .map(Integer::parseInt).toList();
+        List<Integer> countList = Arrays.stream(count)
+                .map(Integer::parseInt).toList();
+
+        List<NewOrderDTO> list = new ArrayList<>();
+
+        for (int i = 0; i < orderPointIdList.size(); i++) {
+            NewOrderDTO newOrderDTO = NewOrderDTO.builder()
+                    .userId(userId).orderPointId(orderPointIdList.get(i))
+                    .productId(productIdList.get(i)).Count(countList.get(i))
+                    .build();
+            list.add(newOrderDTO);
+        }
+        return list;
     }
 }

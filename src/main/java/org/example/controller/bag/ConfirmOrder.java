@@ -10,14 +10,16 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.List;
 
 @WebServlet("/confirmOrder")
 public class ConfirmOrder extends HttpServlet {
     UserOrderService userOrderService = new UserOrderServiceImpl();
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) {
-        NewOrderDTO newOrderDTO = PostToNewOrderDTO.toNewOrderDTO(request);
-        userOrderService.confirmOrder(newOrderDTO);
+        List<NewOrderDTO> list = PostToNewOrderDTO.toNewOrderDTO(request);
+        System.out.println(list.size() + "size!!!");
+        userOrderService.confirmOrder(list);
     }
 
     public void goGet(HttpServletRequest request, HttpServletResponse response) {

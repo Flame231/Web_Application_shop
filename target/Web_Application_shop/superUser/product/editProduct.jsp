@@ -56,7 +56,6 @@
                 %>
             </select>
         </div>
-
         <div>
             Цена:
             <input name="price" value="<%=product.getPrice()%>">

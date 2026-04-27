@@ -45,23 +45,22 @@
 
     <%List<OrderPointDTO> orderPointList = (List<OrderPointDTO>) request.getAttribute("orderPointList");%>
 
-    <form action="confirmOrder" method="post">
-        <input type="submit" value="Оформить заказ">
-        Выбрать пункт выдачи:
-        <select name="orderPointId">
-            <%for (OrderPointDTO orderPointDTO : orderPointList) {%>
-            <option value="<%=orderPointDTO.getId()%>">
-                <%=orderPointDTO.getOrderPointAddress()%>
-            </option>
-            <%}%>
-        </select>
-    </form>
 
     <br>
     <br>
 </head>
 <body>
-
+<form action="confirmOrder" method="post">
+    <input type="submit" value="Оформить заказ">
+    Выбрать пункт выдачи:
+    <select name="orderPointId">
+        <%for (OrderPointDTO orderPointDTO : orderPointList) {%>
+        <option value="<%=orderPointDTO.getId()%>">
+            <%=orderPointDTO.getOrderPointAddress()%>
+        </option>
+        <%}%>
+    </select>
+</form>
 <table>
     <thead>
     <tr>
@@ -95,15 +94,19 @@
         <td><%= productbagDTO.getCount() %>
         </td>
         <td>
+
+
             <input type="hidden" name="func" value="bag">
             <form action="<%=ADD_TO_BAG%>" method="post">
                 <input type="submit" value="Подтвердить"/>
-                <input type="hidden" name="product_id" value="<%=productbagDTO.getProductId() %>"/>
-                Количество: <input type="number" name="count"
-                                   value="<%=productbagDTO.getCount()%>" min="0" max="99" step="1">
+                <input type="hidden" name="productId" value="<%=productbagDTO.getProductId()%>"/>
+                Количество:
+                <input type="number" name="count"
+                       value="<%=productbagDTO.getCount()%>" min="0" max="99" step="1">
             </form>
         </td>
     </tr>
+
     <%
         totalCount += productbagDTO.getCount();
         sum = sum.add((new BigDecimal(productbagDTO.getCount()).multiply(productbagDTO.getPrice())));%>

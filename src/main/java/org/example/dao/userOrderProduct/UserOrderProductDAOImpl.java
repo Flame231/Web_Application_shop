@@ -5,8 +5,8 @@ import org.example.model.Product;
 import org.example.model.UserOrder;
 import org.example.model.UserOrderProduct;
 
-public class userOrderProductDAOImpl extends DAOImpl<UserOrderProduct> implements UserOrderProductDAO {
-    public userOrderProductDAOImpl() {
+public class UserOrderProductDAOImpl extends DAOImpl<UserOrderProduct> implements UserOrderProductDAO {
+    public UserOrderProductDAOImpl() {
         super(UserOrderProduct.class);
     }
 

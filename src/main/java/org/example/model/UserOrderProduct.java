@@ -25,7 +25,7 @@ public class UserOrderProduct {
     private UserOrder userOrder;
 
     @Id
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "product_id")
     private Product product;
 

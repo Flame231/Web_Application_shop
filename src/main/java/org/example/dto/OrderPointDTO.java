@@ -10,6 +10,7 @@ import org.example.model.UserOrder;
 import org.example.model.additional.DataEntity;
 
 import java.sql.Time;
+import java.util.Set;
 
 @Builder
 @NoArgsConstructor
@@ -25,5 +26,5 @@ public class OrderPointDTO {
 
     private Time closeTime;
 
-    private UserOrder userOrder;
+    private Set<UserOrder> userOrder;
 }

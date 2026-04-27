@@ -10,12 +10,6 @@ public class UserOrderDAOImpl extends DAOImpl<UserOrder> implements UserOrderDAO
         super(UserOrder.class);
     }
 
-    public void addOrderPoint(UserOrder userOrder, OrderPoint orderPoint) {
-        begin();
-        userOrder.setOrderPoint(orderPoint);
-        orderPoint.setUserOrder(userOrder);
-        commit();
-    }
 
 
 }
