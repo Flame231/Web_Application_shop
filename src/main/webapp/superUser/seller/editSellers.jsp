@@ -46,9 +46,12 @@
     <br><a href="<%=ACCOUNT_JSP%>">Вернуться в личный кабинет</a></br>
     <title>Редактировать продавцов</title>
     <h1>Редактировать продавцов</h1>
+
 </head>
 <body>
-
+<form action="addSellerPage" method="post">
+    <input type="submit" value="Добавить продавца">
+</form>
 <table>
     <thead>
     <tr>
@@ -78,7 +81,7 @@
         <td>
             <form  method="post">
                 <input type="submit" value="Редактировать" formaction="editSeller">
-                <input type="submit" value="Удалить" formaction="">
+                <input type="submit" value="Удалить" formaction="removeSeller">
                 <input type="hidden" name="sellerId" value="<%=seller.getId()%>">
             </form>
         </td>

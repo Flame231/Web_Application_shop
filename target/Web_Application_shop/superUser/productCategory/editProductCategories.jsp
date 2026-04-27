@@ -50,7 +50,7 @@
     <h1>Категории</h1>
 </head>
 <body>
-<form action="superUser/productCategory/addProductCategory.jsp" method="post">
+<form action="addProductCategoryPage" method="post">
     <input type="submit" value="Добавить категорию">
 </form>
 <table>

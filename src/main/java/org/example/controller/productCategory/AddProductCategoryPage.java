@@ -22,7 +22,7 @@ public class AddProductCategoryPage extends HttpServlet {
     ProductCategoryService productCategoryService = new ProductCategoryServiceImpl();
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        response.sendRedirect("superUser/productCategory/addProductCategory.jsp");
     }
 
 

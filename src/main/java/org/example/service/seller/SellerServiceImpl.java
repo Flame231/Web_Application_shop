@@ -23,4 +23,19 @@ public class SellerServiceImpl implements SellerService {
     public Seller findSeller(Serializable id) {
         return sellerDAO.get(id);
     }
+
+    @Override
+    public void updateSeller(Seller seller) {
+        sellerDAO.update(seller);
+    }
+
+    @Override
+    public void addSeller(Seller seller) {
+        sellerDAO.save(seller);
+    }
+
+    @Override
+    public void removeSeller(Serializable id) {
+        sellerDAO.delete(id);
+    }
 }

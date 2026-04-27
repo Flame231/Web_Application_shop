@@ -31,6 +31,7 @@ public class ProductCategoryServiceImpl implements ProductCategoryService {
     }
 
     public void updateProductCategory(ProductCategory productCategory){
+
         productCategoryDAO.update(productCategory);
     }
 

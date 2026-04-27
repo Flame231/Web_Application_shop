@@ -19,8 +19,10 @@
             <column name="paymentMethods" type="varchar(255)"/>
             <column name="sumOfPurchases" type="decimal"/>
             <column name="discount_id" type="INT"/>
-            <column name="createDateTime" type="TIMESTAMP"/>
-            <column name="updateDateTime" type="TIMESTAMP"/>
+            <column name="createDateTime" type="TIMESTAMP" defaultValueComputed="CURRENT_TIMESTAMP"/>
+            <column name="updateDateTime" type="TIMESTAMP"
+                    defaultValueComputed="CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP"/>
         </createTable>
     </changeSet>
+
 </databaseChangeLog>

@@ -22,7 +22,7 @@
     Seller seller = sellerDAO.get(sellerId);
 
 %>
-<form action="updateProductCategory" method="post">
+<form action="updateSeller" method="post">
     Номер продавца:
     <%=seller.getId()%>
     Название продавца:
@@ -30,7 +30,7 @@
     Адрес продавца:
     <input type="text" name="sellerAddress" value="<%=seller.getSellerAddress()%>">
     <input type="submit" value="Подтвердить">
-    <input type="hidden" name="productCategoryId" value="<%=seller.getId()%>">
+    <input type="hidden" name="sellerId" value="<%=seller.getId()%>">
 </form>
 </body>
 </html>

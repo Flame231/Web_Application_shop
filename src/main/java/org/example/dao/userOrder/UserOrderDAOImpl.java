@@ -16,4 +16,6 @@ public class UserOrderDAOImpl extends DAOImpl<UserOrder> implements UserOrderDAO
         orderPoint.setUserOrder(userOrder);
         commit();
     }
+
+
 }

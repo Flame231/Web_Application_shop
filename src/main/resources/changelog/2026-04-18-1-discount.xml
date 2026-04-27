@@ -12,8 +12,9 @@
             </column>
             <column name="discount" type="INT"/>
             <column name="totalSum" type="decimal"/>
-            <column name="createDateTime" type="TIMESTAMP"/>
-            <column name="updateDateTime" type="TIMESTAMP"/>
+            <column name="createDateTime" type="TIMESTAMP" defaultValueComputed="CURRENT_TIMESTAMP"/>
+            <column name="updateDateTime" type="TIMESTAMP"
+                    defaultValueComputed="CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP"/>
         </createTable>
     </changeSet>
 </databaseChangeLog>

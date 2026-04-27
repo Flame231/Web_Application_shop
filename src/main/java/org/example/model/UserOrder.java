@@ -22,7 +22,7 @@ import java.util.Set;
 public class UserOrder extends DataEntity {
 
     @Column
-    private String orderStatus;
+    private String orderStatus = "Оформлен";
 
     @ManyToOne
     @JoinColumn(name = "user_id")

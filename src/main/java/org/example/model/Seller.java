@@ -1,9 +1,6 @@
 package org.example.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
 import org.example.model.additional.DataEntity;
@@ -26,6 +23,6 @@ public class Seller extends DataEntity {
     @Column
     private String sellerAddress;
 
-    @OneToMany(mappedBy = "seller")
+    @OneToMany(mappedBy = "seller", cascade = CascadeType.REMOVE)
     private Set<Product> product = new HashSet<>();
 }

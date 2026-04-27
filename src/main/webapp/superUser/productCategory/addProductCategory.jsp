@@ -14,7 +14,7 @@
 </head>
 <body>
 
-<form action="${pageContext.request.contextPath}/addProductCategory" method="post">
+<form action="/Web_Application_shop_war/addProductCategory" method="post">
     Название категории:
     <input type="text" name="productCategoryName">
     <input type="submit" value="Подтвердить">

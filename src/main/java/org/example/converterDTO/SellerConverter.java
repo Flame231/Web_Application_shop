@@ -10,4 +10,10 @@ public class SellerConverter {
                 .sellerAddress(seller.getSellerAddress())
                 .product(seller.getProduct()).build();
     }
+
+    public static Seller toSeller(SellerDTO sellerDTO) {
+        return Seller.builder().sellerName(sellerDTO.getSellerName())
+                .sellerAddress(sellerDTO.getSellerAddress())
+                .id(sellerDTO.getId()).build();
+    }
 }

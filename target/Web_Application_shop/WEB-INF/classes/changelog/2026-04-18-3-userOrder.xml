@@ -13,8 +13,9 @@
             <column name="orderStatus" type="varchar(255)"/>
             <column name="user_id" type="INT"/>
             <column name="orderPoint_id" type="INT"/>
-            <column name="createDateTime" type="TIMESTAMP"/>
-            <column name="updateDateTime" type="TIMESTAMP"/>
+            <column name="createDateTime" type="TIMESTAMP" defaultValueComputed="CURRENT_TIMESTAMP"/>
+            <column name="updateDateTime" type="TIMESTAMP"
+                    defaultValueComputed="CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP"/>
         </createTable>
     </changeSet>
 </databaseChangeLog>

@@ -5,7 +5,11 @@ import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
-import org.example.model.additional.primaryKeys.PrimaryKeyOrderProduct;
+import org.example.model.additional.primaryKeys.PrimaryKeyUserOrderProduct;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
+import java.sql.Timestamp;
 
 @Entity
 @Table(name = "userOrder_product")
@@ -13,7 +17,7 @@ import org.example.model.additional.primaryKeys.PrimaryKeyOrderProduct;
 @NoArgsConstructor
 @AllArgsConstructor
 @Setter
-@IdClass(PrimaryKeyOrderProduct.class)
+@IdClass(PrimaryKeyUserOrderProduct.class)
 public class UserOrderProduct {
     @Id
     @ManyToOne
@@ -27,4 +31,12 @@ public class UserOrderProduct {
 
     @Column
     private Integer productCount;
+
+    @Column
+    @CreationTimestamp
+    private Timestamp createDateTime;
+
+    @Column
+    @UpdateTimestamp
+    private Timestamp updateDateTime;
 }

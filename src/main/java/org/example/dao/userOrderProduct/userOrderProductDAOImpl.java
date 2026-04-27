@@ -1,4 +1,4 @@
-package org.example.dao.orderProduct;
+package org.example.dao.userOrderProduct;
 
 import org.example.dao.DAOImpl;
 import org.example.model.Product;

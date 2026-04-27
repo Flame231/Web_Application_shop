@@ -14,8 +14,8 @@
             <column name="productCategory_id" type="INT"/>
             <column name="price" type="decimal(10,2)"/>
             <column name="seller_id" type="INT"/>
-            <column name="createDateTime" type="TIMESTAMP"/>
-            <column name="updateDateTime" type="TIMESTAMP"/>
+            <column name="createDateTime" type="TIMESTAMP" defaultValueComputed="CURRENT_TIMESTAMP"/>
+            <column name="updateDateTime" type="TIMESTAMP"  defaultValueComputed="CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP"/>
         </createTable>
     </changeSet>
 </databaseChangeLog>

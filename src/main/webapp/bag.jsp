@@ -5,6 +5,8 @@
 <%@ page import="static org.example.util.NamesUtil.GET_ALL_PRODUCTS" %>
 <%@ page import="static org.example.util.NamesUtil.ACCOUNT_JSP" %>
 <%@ page import="static org.example.util.NamesUtil.*" %>
+<%@ page import="org.example.dto.OrderPointDTO" %>
+<%@ page import="javax.swing.*" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <style>
 
@@ -41,6 +43,19 @@
     <div><a href="<%=ACCOUNT_JSP%>">Вернуться в личный кабинет</a></div>
     <title>Каталог товаров</title>
 
+    <%List<OrderPointDTO> orderPointList = (List<OrderPointDTO>) request.getAttribute("orderPointList");%>
+
+    <form action="confirmOrder" method="post">
+        <input type="submit" value="Оформить заказ">
+        Выбрать пункт выдачи:
+        <select name="orderPointId">
+            <%for (OrderPointDTO orderPointDTO : orderPointList) {%>
+            <option value="<%=orderPointDTO.getId()%>">
+                <%=orderPointDTO.getOrderPointAddress()%>
+            </option>
+            <%}%>
+        </select>
+    </form>
 
     <br>
     <br>
@@ -108,6 +123,5 @@
 </div>
 <div>Цена: <%= sum%>
 </div>
-
 </body>
 </html>
