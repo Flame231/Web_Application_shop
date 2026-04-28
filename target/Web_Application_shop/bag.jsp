@@ -93,17 +93,24 @@
             <td><%= productbagDTO.getCount() %>
             </td>
             <td>
+
+
+                <input type="hidden" name="func" value="bag"/>
                 <input type="hidden" name="productId" value="<%=productbagDTO.getProductId()%>"/>
                 Количество:
-                <input type="hidden" name="count"
-                       value="<%=productbagDTO.getCount()%>" min="0" max="99" step="1">
+                <input type="number" name="count"
+                       value="<%=productbagDTO.getCount()%>" min="0" max="99" step="1"/>
             </td>
         </tr>
 
         <%
-            totalCount += productbagDTO.getCount();
-            sum = sum.add((new BigDecimal(productbagDTO.getCount()).multiply(productbagDTO.getPrice())));%>
+                totalCount += productbagDTO.getCount();
+                sum = sum.add((new BigDecimal(productbagDTO.getCount()).multiply(productbagDTO.getPrice())));
+
+                %>
+        <input type="hidden" name="productPrice" value="<%=new BigDecimal(productbagDTO.getCount()).multiply(productbagDTO.getPrice())%>">
         <%
+
             }
         } else {
         %>
@@ -115,10 +122,10 @@
         %>
         </tbody>
     </table>
+    <div>Количество: <%= totalCount%>
+    </div>
+    <div>Цена: <%= sum%>
+    </div>
 </form>
-<div>Количество: <%= totalCount%>
-</div>
-<div>Цена: <%= sum%>
-</div>
 </body>
 </html>

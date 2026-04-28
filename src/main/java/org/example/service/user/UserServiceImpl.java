@@ -48,9 +48,7 @@ public class UserServiceImpl implements UserService {
                 }
             }
         }
-        else if(userDTO.getNewPassword().equals(userDTO.getNewPasswordRepeat())) {
-            return true;
-        }
+        else return userDTO.getNewPassword().equals(userDTO.getNewPasswordRepeat());
         return false;
     }
 }

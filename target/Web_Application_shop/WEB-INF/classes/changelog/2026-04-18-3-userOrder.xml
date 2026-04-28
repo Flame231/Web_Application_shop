@@ -13,6 +13,7 @@
             <column name="orderStatus" type="varchar(255)"/>
             <column name="user_id" type="INT"/>
             <column name="orderPoint_id" type="INT"/>
+            <column name="orderSum" type="decimal(10,2)"/>
             <column name="createDateTime" type="TIMESTAMP" defaultValueComputed="CURRENT_TIMESTAMP"/>
             <column name="updateDateTime" type="TIMESTAMP"
                     defaultValueComputed="CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP"/>

@@ -43,6 +43,7 @@
 <form method="post">
     <input type="submit" value="выйти из кабинета" formaction="<%=LOGOUT_USER%>">
     <input type="submit" value="Просмотреть каталог товаров" formaction="<%=SHOW_CATALOG%>">
+    <input type="submit" value="Мои заказы" formaction="showUserOrders">
     <input type="submit" value="Посмотреть профиль" formaction="<%=SHOW_USER_PROFILE%>">
     <input type="submit" value="Редактировать каталог" formaction="<%=EDIT_CATALOG%>">
     <input type="submit" value="Редактировать Категории товаров" formaction="editProductCategories">

@@ -3,6 +3,8 @@ package org.example.dto;
 import lombok.Builder;
 import lombok.Getter;
 
+import java.math.BigDecimal;
+
 @Builder
 @Getter
 public class NewOrderDTO {
@@ -16,5 +18,7 @@ public class NewOrderDTO {
     private Integer productId;
 
     private Integer Count;
+
+    private BigDecimal productPrice;
 
 }

@@ -46,6 +46,8 @@ public class BagServiceImpl implements BagService {
 
     }
 
+    public  void closeBag(){}
+
     public List<ProductBagDTO> showAllBags(Integer userId) {
         return bagDAO.getBagList(userId);
     }

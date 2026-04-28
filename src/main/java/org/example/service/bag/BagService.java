@@ -12,4 +12,6 @@ public interface BagService {
     void addProductToBag(Bag bag);
 
     List<ProductBagDTO> showAllBags(Integer userId);
+
+    public  void closeBag();
 }

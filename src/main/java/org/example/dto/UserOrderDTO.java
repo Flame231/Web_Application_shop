@@ -1,40 +1,36 @@
-package org.example.model;
+package org.example.dto;
 
-import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.experimental.SuperBuilder;
-import org.example.model.additional.DataEntity;
+import org.example.model.OrderPoint;
+import org.example.model.User;
+import org.example.model.UserOrderProduct;
 
 import java.math.BigDecimal;
+import java.sql.Timestamp;
 import java.util.HashSet;
 import java.util.Set;
 
 
-@Entity
-@Table
-@SuperBuilder
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Setter
 @Getter
-public class UserOrder extends DataEntity {
+public class UserOrderDTO{
 
-    @Column
+    private Integer id;
+
     private String orderStatus;
 
-    @ManyToOne
-    @JoinColumn(name = "user_id")
     private User user;
 
-    @ManyToOne
-    @JoinColumn(name = "orderPoint_id")
     private OrderPoint orderPoint;
 
-    @OneToMany(mappedBy = "userOrder")
     private Set<UserOrderProduct> userOrderProduct = new HashSet<>();
 
     private BigDecimal orderSum;
+
+    private Timestamp createDateTime;
 }

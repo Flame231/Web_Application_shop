@@ -4,12 +4,17 @@ import org.example.dao.DAOImpl;
 import org.example.model.OrderPoint;
 import org.example.model.UserOrder;
 
+import java.util.List;
+
 public class UserOrderDAOImpl extends DAOImpl<UserOrder> implements UserOrderDAO {
 
     public UserOrderDAOImpl() {
         super(UserOrder.class);
     }
 
+    public List<UserOrder> getUserOrderList() {
+        return getEm().createQuery("from UserOrder userOrder", UserOrder.class).getResultList();
+    }
 
 
 }

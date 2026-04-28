@@ -2,6 +2,7 @@ package org.example.model;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
@@ -9,6 +10,7 @@ import org.example.model.additional.primaryKeys.PrimaryKeyUserOrderProduct;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import java.math.BigDecimal;
 import java.sql.Timestamp;
 
 @Entity
@@ -17,6 +19,7 @@ import java.sql.Timestamp;
 @NoArgsConstructor
 @AllArgsConstructor
 @Setter
+@Getter
 @IdClass(PrimaryKeyUserOrderProduct.class)
 public class UserOrderProduct {
     @Id
@@ -25,12 +28,15 @@ public class UserOrderProduct {
     private UserOrder userOrder;
 
     @Id
-    @ManyToOne(cascade = CascadeType.PERSIST)
+    @ManyToOne
     @JoinColumn(name = "product_id")
     private Product product;
 
     @Column
     private Integer productCount;
+
+    @Column
+    private BigDecimal productPrice;
 
     @Column
     @CreationTimestamp
