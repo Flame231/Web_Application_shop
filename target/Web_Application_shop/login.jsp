@@ -1,22 +1,20 @@
-<%@ page import="org.w3c.dom.stylesheets.LinkStyle" %>
-<%@ page import="java.util.List" %>
 <%@ page import="static org.example.util.NamesUtil.AUTHORIZE_USER" %>
 <%@ page import="static org.example.util.NamesUtil.REGISTRATION_JSP" %>
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <style>
     fieldset {
-        width: fit-content; /* Рамка подстроится под ширину формы */
+        width: fit-content;
     }
 
     form button,
     form input[type="submit"] {
-        width: 300px; /* Укажите нужную вам ширину в пикселях */
-        height: 40px; /* Одинаковая высота для всех */
+        width: 300px;
+        height: 40px;
         padding: 5px;
         margin-top: 10px;
         cursor: pointer;
-        box-sizing: border-box; /* Чтобы padding не раздувал кнопку */
+        box-sizing: border-box;
     }
 
     table {
@@ -35,21 +33,24 @@
         background-color: #f2f2f2;
     }
 
-    /* Стилизуем форму как сетку */
-    .my-form {
-        display: grid;
-        grid-template-columns: 120px 300px; /* 1-я колонка для текста, 2-я для полей */
-        gap: 15px; /* Расстояние между строками и столбцами */
-        align-items: center; /* Центрируем текст по вертикали относительно инпута */
+    {
+        display: grid
+    ;
+        grid-template-columns: 120px 300px
+    ;
+        gap: 15px
+    ;
+        align-items: center
+    ;
     }
 
     .my-form input {
         padding: 5px;
-        width: 100%; /* Заполнит свои 300px из сетки */
+        width: 100%;
     }
 
     .my-form button {
-        grid-column: 1 / span 2; /* Кнопка растянется на обе колонки */
+        grid-column: 1 / span 2;
         width: fit-content;
     }
 </style>

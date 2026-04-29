@@ -9,12 +9,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet("/removeProduct")
+@WebServlet("/RemoveProduct")
 public class RemoveProduct extends HttpServlet {
     ProductService productService = new ProductServiceImpl();
+
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         Integer productId = Integer.parseInt(request.getParameter("productId"));
         productService.removeProduct(productService.findProduct(productId));
-        response.sendRedirect("editCatalog");
+        response.sendRedirect("EditCatalog");
     }
 }

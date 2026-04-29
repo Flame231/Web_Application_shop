@@ -12,12 +12,12 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet("/getAllProducts")
+@WebServlet("/GetAllProducts")
 public class GetAllProducts extends HttpServlet {
     ProductService productService = new ProductServiceImpl();
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-       List<ProductDTO> list = productService.getAllProducts();
+        List<ProductDTO> list = productService.getAllProducts();
         request.setAttribute("productList", list);
     }
 

@@ -10,12 +10,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet("/getAllSellers")
+@WebServlet("/GetAllSellers")
 public class GetAllSellers extends HttpServlet {
     SellerService sellerService = new SellerServiceImpl();
+
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.setAttribute("sellerList",sellerService.getSellerDTOList());
+        request.setAttribute("sellerList", sellerService.getSellerDTOList());
     }
+
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doPost(request, response);
     }

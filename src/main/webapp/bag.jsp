@@ -1,8 +1,6 @@
 <%@ page import="java.util.List" %>
-<%@ page import="org.example.dto.ProductDTO" %>
 <%@ page import="org.example.dto.ProductBagDTO" %>
 <%@ page import="java.math.BigDecimal" %>
-<%@ page import="static org.example.util.NamesUtil.GET_ALL_PRODUCTS" %>
 <%@ page import="static org.example.util.NamesUtil.ACCOUNT_JSP" %>
 <%@ page import="static org.example.util.NamesUtil.*" %>
 <%@ page import="org.example.dto.OrderPointDTO" %>
@@ -26,12 +24,15 @@
         background-color: #f2f2f2;
     }
 
-    /* Стилизуем форму как сетку */
-    .my-form {
-        display: grid;
-        grid-template-columns: 120px 300px; /* 1-я колонка для текста, 2-я для полей */
-        gap: 15px; /* Расстояние между строками и столбцами */
-        align-items: center; /* Центрируем текст по вертикали относительно инпута */
+    {
+        display: grid
+    ;
+        grid-template-columns: 120px 300px
+    ;
+        gap: 15px
+    ;
+        align-items: center
+    ;
     }
 </style>
 <html>
@@ -73,11 +74,9 @@
         </thead>
         <tbody>
         <%
-            // Получаем список из request, который положил туда Сервлет
             List<ProductBagDTO> products = (List<ProductBagDTO>) request.getAttribute("BagList");
             Integer totalCount = 0;
             BigDecimal sum = new BigDecimal(0);
-            // Проверяем, что список не null, чтобы не было ошибки
             if (products != null && !products.isEmpty()) {
                 for (ProductBagDTO productbagDTO : products) {
         %>
@@ -104,11 +103,12 @@
         </tr>
 
         <%
-                totalCount += productbagDTO.getCount();
-                sum = sum.add((new BigDecimal(productbagDTO.getCount()).multiply(productbagDTO.getPrice())));
+            totalCount += productbagDTO.getCount();
+            sum = sum.add((new BigDecimal(productbagDTO.getCount()).multiply(productbagDTO.getPrice())));
 
-                %>
-        <input type="hidden" name="productPrice" value="<%=new BigDecimal(productbagDTO.getCount()).multiply(productbagDTO.getPrice())%>">
+        %>
+        <input type="hidden" name="productPrice"
+               value="<%=new BigDecimal(productbagDTO.getCount()).multiply(productbagDTO.getPrice())%>">
         <%
 
             }

@@ -23,12 +23,10 @@ public class JpaFilter implements Filter {
         request.setCharacterEncoding("UTF-8");
         try {
             if (path.equals("/login.jsp") || (path.equals("/registration.jsp") ||
-                    (path.equals("/authorizeUser")) || path.equals("/registerUser") ||
-                            (session != null && session.getAttribute("userId") != null)))
-            {
+                    (path.equals("/AuthorizeUser")) || path.equals("/registerUser") ||
+                    (session != null && session.getAttribute("userId") != null))) {
                 chain.doFilter(request, response);
-            }
-            else{
+            } else {
                 HttpServletResponse response1 = (HttpServletResponse) response;
                 response1.sendRedirect("login.jsp");
             }

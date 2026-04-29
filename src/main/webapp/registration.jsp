@@ -5,29 +5,27 @@
 <head>
     <title>Регистрация нового пользователя</title>
     <style>
-        /* Контейнер, который выравнивает строки в колонку */
+
         .form-container {
             display: flex;
             flex-direction: column;
-            width: 400px; /* Немного увеличил, чтобы влез текст */
+            width: 400px;
             gap: 15px;
             margin-top: 20px;
         }
 
-        /* Каждая строка формы */
         .form-row {
             display: flex;
-            justify-content: space-between; /* Текст слева, инпут справа */
+            justify-content: space-between;
             align-items: center;
         }
 
         input {
-            width: 60%; /* Инпуты будут одинаковой ширины */
+            width: 60%;
             box-sizing: border-box;
             padding: 5px;
         }
 
-        /* Отдельный стиль для кнопки, чтобы она не растягивалась как остальные */
         input[type="submit"] {
             width: auto;
             align-self: flex-start;
@@ -41,7 +39,7 @@
 <h1>Регистрация нового пользователя</h1>
 <a href="<%=LOGIN_JSP%>"> На главную</a>
 <form action="<%=REGISTER_USER%>" method="post">
-    <div class="form-container"> <!-- Тот самый класс из стилей -->
+    <div class="form-container">
 
         <div class="form-row">
             <label>Имя:</label>

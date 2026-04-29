@@ -6,7 +6,6 @@ import org.example.dto.SellerDTO;
 import org.example.service.seller.SellerService;
 import org.example.service.seller.SellerServiceImpl;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -15,17 +14,18 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 
-@WebServlet("/updateSeller")
+@WebServlet("/UpdateSeller")
 public class UpdateSeller extends HttpServlet {
     SellerService sellerService = new SellerServiceImpl();
+
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         SellerDTO sellerDTO = PostToSellerDTO.toSellerDTO(request);
         sellerService.updateSeller(SellerConverter.toSeller(sellerDTO));
-        response.sendRedirect("editSellers");
-
+        response.sendRedirect("EditSellers");
 
 
     }
+
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doPost(request, response);
     }

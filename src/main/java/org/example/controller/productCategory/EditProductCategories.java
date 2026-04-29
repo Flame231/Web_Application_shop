@@ -11,7 +11,7 @@ import java.io.IOException;
 import static org.example.util.NamesUtil.*;
 
 
-@WebServlet("/editProductCategories")
+@WebServlet("/EditProductCategories")
 public class EditProductCategories extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         RequestDispatcher dispatcher1 = getServletContext().getRequestDispatcher(GET_PRODUCT_CATEGORIES_ROOT);
@@ -19,6 +19,7 @@ public class EditProductCategories extends HttpServlet {
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(EDIT_PRODUCT_CATEGORIES_JSP);
         dispatcher.forward(request, response);
     }
+
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doPost(request, response);
     }

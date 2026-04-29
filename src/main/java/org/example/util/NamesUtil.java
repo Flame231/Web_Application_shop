@@ -4,33 +4,31 @@ public class NamesUtil {
 
 
     //Servlets Names
-    public static final String GET_ALL_PRODUCTS = "getAllProducts";
-    public static final String SHOW_BAG = "showBag";
-    public static final String SHOW_USER_PROFILE = "showUserProfile";
-    public static final String LOGOUT_USER = "logoutUser";
-    public static final String ADD_TO_BAG = "addToBag";
-    public static final String AUTHORIZE_USER = "authorizeUser";
-    public static final String REGISTER_USER = "registerUser";
-    public static final String SHOW_CATALOG = "showCatalog";
-    public static final String EDIT_ALL_CATEGORIES = "editCategories";
-    public static final String EDIT_CATALOG = "editCatalog";
+    public static final String GET_ALL_PRODUCTS = "GetAllProducts";
+    public static final String SHOW_BAG = "ShowBag";
+    public static final String SHOW_USER_PROFILE = "ShowUserProfile";
+    public static final String LOGOUT_USER = "LogoutUser";
+    public static final String ADD_TO_BAG = "AddToBag";
+    public static final String AUTHORIZE_USER = "AuthorizeUser";
+    public static final String REGISTER_USER = "RegisterUser";
+    public static final String SHOW_CATALOG = "ShowCatalog";
+    public static final String EDIT_ALL_CATEGORIES = "EditCategories";
+    public static final String EDIT_CATALOG = "EditCatalog";
 
     //Servlet Root
-    public static final String SHOW_CATALOG_ROOT = "/showCatalog";
-    public static final String GET_ALL_PRODUCTS_ROOT = "/getAllProducts";
-    public static final String EDIT_CATALOG_ROOT = "/editCatalog";
-    public static final String GET_PRODUCT_CATEGORIES_ROOT = "/getProductCategories";
+    public static final String SHOW_CATALOG_ROOT = "/ShowCatalog";
+    public static final String GET_ALL_PRODUCTS_ROOT = "/GetAllProducts";
+    public static final String EDIT_CATALOG_ROOT = "/EditCatalog";
+    public static final String GET_PRODUCT_CATEGORIES_ROOT = "/GetProductCategories";
 
-    public static final String EDIT_PRODUCT_CATEGORIES_ROOT = "/editProductCategories";
-    public static final String EDIT_PRODUCT_ROOT = "/editProduct";
-    public static final String EDIT_PRODUCT = "editProduct";
-
-
+    public static final String EDIT_PRODUCT_CATEGORIES_ROOT = "/EditProductCategories";
+    public static final String EDIT_PRODUCT_ROOT = "/EditProduct";
+    public static final String EDIT_PRODUCT = "EditProduct";
 
 
     //JSP
-    public static final String GET_ALL_CATEGORIES = "getAllCategories";
-    public static final String EDIT_PRODUCT_JSP = "editProduct.jsp";
+    public static final String GET_ALL_CATEGORIES = "GetAllCategories";
+    public static final String EDIT_PRODUCT_JSP = "EditProduct.jsp";
 
 
     //JSP root
@@ -47,16 +45,12 @@ public class NamesUtil {
     public static final String EDIT_PRODUCT_JSP_ROOT = "/superUser/product/editProduct.jsp";
 
 
-
     //ParametersNames:
-
-
 
 
     public static final String COUNT_PARAMETER = "count";
     public static final String USER_ID_PARAMETER = "userId";
     public static final String PRODUCT_ID_PARAMETER = "productId";
-
 
 
     public static final String PRODUCT_NAME_PARAMETER = "productName";
@@ -80,16 +74,6 @@ public class NamesUtil {
     public static final String NEW_PASSWORD_REPEAT_PARAMETER = "newPasswordRepeat";
     public static final String BIRTHDAY_PARAMETER = "birthday";
     public static final String PAYMENT_METHODS_PARAMETER = "paymentMethods";
-
-
-
-
-
-
-
-
-
-
 
 
     public static final String CATALOG_PARAMETER = "catalog";

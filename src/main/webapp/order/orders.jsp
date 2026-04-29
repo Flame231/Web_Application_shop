@@ -1,11 +1,5 @@
 <%@ page import="java.util.List" %>
-<%@ page import="org.example.dto.ProductDTO" %>
-<%@ page import="org.example.dto.ProductBagDTO" %>
-<%@ page import="java.math.BigDecimal" %>
-<%@ page import="static org.example.util.NamesUtil.GET_ALL_PRODUCTS" %>
 <%@ page import="static org.example.util.NamesUtil.ACCOUNT_JSP" %>
-<%@ page import="static org.example.util.NamesUtil.*" %>
-<%@ page import="org.example.dto.OrderPointDTO" %>
 <%@ page import="javax.swing.*" %>
 <%@ page import="org.example.dto.UserOrderDTO" %>
 <%@ page import="org.example.model.UserOrderProduct" %>
@@ -28,12 +22,15 @@
         background-color: #f2f2f2;
     }
 
-    /* Стилизуем форму как сетку */
-    .my-form {
-        display: grid;
-        grid-template-columns: 120px 300px; /* 1-я колонка для текста, 2-я для полей */
-        gap: 15px; /* Расстояние между строками и столбцами */
-        align-items: center; /* Центрируем текст по вертикали относительно инпута */
+    {
+        display: grid
+    ;
+        grid-template-columns: 120px 300px
+    ;
+        gap: 15px
+    ;
+        align-items: center
+    ;
     }
 </style>
 <html>
@@ -112,6 +109,5 @@
     %>
     </tbody>
 </table>
-
 </body>
 </html>

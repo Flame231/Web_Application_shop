@@ -5,6 +5,7 @@ import org.example.dto.UserDTO;
 import org.example.service.user.UserService;
 import org.example.service.user.UserServiceImpl;
 
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -12,6 +13,7 @@ import java.io.IOException;
 
 import static org.example.util.NamesUtil.ACCOUNT_JSP;
 
+@WebServlet("/RegisterUser")
 public class RegisterUser extends HttpServlet {
     UserService userService = new UserServiceImpl();
 

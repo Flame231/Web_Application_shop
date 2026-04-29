@@ -9,12 +9,13 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 
-@WebServlet("/editSeller")
+@WebServlet("/EditSeller")
 public class EditSeller extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        RequestDispatcher dispatcher1 = request.getRequestDispatcher("/superUser/seller/editSeller.jsp");
-dispatcher1.forward(request,response);
+        RequestDispatcher dispatcher1 = request.getRequestDispatcher("/superUser/seller/EditSeller.jsp");
+        dispatcher1.forward(request, response);
     }
+
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doPost(request, response);
     }

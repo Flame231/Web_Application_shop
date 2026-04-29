@@ -2,9 +2,6 @@ package org.example.controller.bag;
 
 import org.example.controller.postConverters.PostToNewOrderDTO;
 import org.example.dto.NewOrderDTO;
-import org.example.model.UserOrder;
-import org.example.service.bag.BagService;
-import org.example.service.bag.BagServiceImpl;
 import org.example.service.userOrder.UserOrderService;
 import org.example.service.userOrder.UserOrderServiceImpl;
 
@@ -15,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet("/confirmOrder")
+@WebServlet("/ConfirmOrder")
 public class ConfirmOrder extends HttpServlet {
     UserOrderService userOrderService = new UserOrderServiceImpl();
 

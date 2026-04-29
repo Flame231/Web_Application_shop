@@ -8,6 +8,7 @@ import org.example.service.user.UserServiceImpl;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -17,6 +18,7 @@ import java.io.IOException;
 import static org.example.util.NamesUtil.ACCOUNT_JSP_ROOT;
 import static org.example.util.NamesUtil.LOGIN_JSP;
 
+@WebServlet("/AuthorizeUser")
 public class AuthorizeUser extends HttpServlet {
     UserService userService = new UserServiceImpl();
 

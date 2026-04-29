@@ -1,17 +1,5 @@
 <%@ page import="java.util.List" %>
-<%@ page import="org.example.dto.ProductDTO" %>
-<%@ page import="static org.example.util.NamesUtil.SHOW_BAG" %>
 <%@ page import="static org.example.util.NamesUtil.ACCOUNT_JSP" %>
-<%@ page import="static org.example.util.NamesUtil.*" %>
-<%@ page import="org.example.dao.bag.BagDAO" %>
-<%@ page import="org.example.dao.bag.BagDAOImpl" %>
-<%@ page import="org.example.dao.user.UserDAO" %>
-<%@ page import="org.example.dao.user.UserDAOImpl" %>
-<%@ page import="java.util.Set" %>
-<%@ page import="java.util.Iterator" %>
-<%@ page import="org.example.dao.product.ProductDAO" %>
-<%@ page import="org.example.dao.product.ProductDAOImpl" %>
-<%@ page import="org.example.dto.ProductCategoryDTO" %>
 <%@ page import="org.example.dto.SellerDTO" %>
 <%@ page import="org.example.model.*" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -33,12 +21,15 @@
         background-color: #f2f2f2;
     }
 
-    /* Стилизуем форму как сетку */
-    .my-form {
-        display: grid;
-        grid-template-columns: 120px 300px; /* 1-я колонка для текста, 2-я для полей */
-        gap: 15px; /* Расстояние между строками и столбцами */
-        align-items: center; /* Центрируем текст по вертикали относительно инпута */
+    {
+        display: grid
+    ;
+        grid-template-columns: 120px 300px
+    ;
+        gap: 15px
+    ;
+        align-items: center
+    ;
     }
 </style>
 <html>
@@ -63,10 +54,7 @@
     </thead>
     <tbody>
     <%
-        // Получаем список из request, который положил туда Сервлет
         List<SellerDTO> sellers = (List<SellerDTO>) request.getAttribute("sellerList");
-
-        // Проверяем, что список не null, чтобы не было ошибки
         if (sellers != null && !sellers.isEmpty()) {
             for (SellerDTO seller : sellers) {
 
@@ -77,9 +65,9 @@
         <td><%= seller.getSellerName() %>
         </td>
         <td>
-        <%= seller.getSellerAddress() %>
+                <%= seller.getSellerAddress() %>
         <td>
-            <form  method="post">
+            <form method="post">
                 <input type="submit" value="Редактировать" formaction="editSeller">
                 <input type="submit" value="Удалить" formaction="removeSeller">
                 <input type="hidden" name="sellerId" value="<%=seller.getId()%>">
