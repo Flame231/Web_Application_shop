@@ -14,6 +14,7 @@ public class UserDAOImpl extends DAOImpl<User> implements UserDAO {
         super(User.class);
     }
 
+    @Override
     public void addUserOrder(User user, UserOrder userOrder) {
         begin();
         user.getUserOrders().add(userOrder);
@@ -21,6 +22,7 @@ public class UserDAOImpl extends DAOImpl<User> implements UserDAO {
         commit();
     }
 
+    @Override
     public void addDiscount(User user, Discount discount) {
         begin();
         user.setDiscount(discount);

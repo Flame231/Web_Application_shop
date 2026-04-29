@@ -22,8 +22,7 @@ public class ConfirmOrder extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         List<NewOrderDTO> list = PostToNewOrderDTO.toNewOrderDTO(request);
         userOrderService.confirmOrder(list);
-
-        response.sendRedirect("showBag");
+        response.sendRedirect("showUserOrders");
     }
 
     public void goGet(HttpServletRequest request, HttpServletResponse response) throws IOException {

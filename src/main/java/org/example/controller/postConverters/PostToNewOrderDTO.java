@@ -17,7 +17,6 @@ public class PostToNewOrderDTO {
         String[] count = request.getParameterValues("count");
         String[] productPrice = request.getParameterValues("productPrice");
 
-
         List<Integer> productIdList = Arrays.stream(productId)
                 .map(Integer::parseInt).toList();
         List<Integer> countList = Arrays.stream(count)
@@ -33,7 +32,6 @@ public class PostToNewOrderDTO {
                     .productId(productIdList.get(i)).Count(countList.get(i))
                     .productPrice(productPriceList.get(i))
                     .build();
-            System.out.println(productPriceList.get(i) + " стоимость товара");
             list.add(newOrderDTO);
         }
         return list;

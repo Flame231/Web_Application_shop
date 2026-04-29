@@ -24,14 +24,4 @@ public class ProductBagDTO {
     private String sellerName;
     private Integer count;
 
-    @Override
-    public String toString() {
-        return "ProductBagDTO{" +
-                "productName='" + productName + '\'' +
-                ", category='" + category + '\'' +
-                ", price=" + price +
-                ", sellerName='" + sellerName + '\'' +
-                ", count=" + count +
-                '}';
-    }
 }

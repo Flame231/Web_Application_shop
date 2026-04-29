@@ -1,6 +1,5 @@
 package org.example.service.user;
 
-import org.example.controller.postConverters.PostToUserDTO;
 import org.example.converterDTO.UserConverter;
 import org.example.dao.user.UserDAO;
 import org.example.dao.user.UserDAOImpl;
@@ -38,8 +37,8 @@ public class UserServiceImpl implements UserService {
         }
     }
 
+    @Override
     public boolean passwordValidation(UserDTO userDTO) {
-
         if (userDTO.getId()!=null) {
             User user = userDAO.get(userDTO.getId());
             if (user.getPassword().equals(userDTO.getOldPassword())) {
@@ -50,5 +49,10 @@ public class UserServiceImpl implements UserService {
         }
         else return userDTO.getNewPassword().equals(userDTO.getNewPasswordRepeat());
         return false;
+    }
+
+    @Override
+    public User getUser(Serializable id){
+        return userDAO.get(id);
     }
 }

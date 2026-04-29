@@ -11,7 +11,8 @@
 <%@ page import="org.example.model.ProductCategory" %>
 <%@ page import="org.example.service.productCategory.ProductCategoryService" %>
 <%@ page import="org.example.service.productCategory.ProductCategoryServiceImpl" %>
-<%@ page import="org.example.service.seller.SellerServiceImpl" %><%--
+<%@ page import="org.example.service.seller.SellerServiceImpl" %>
+<%@ page import="static org.example.util.NamesUtil.PRODUCT_CATEGORY_ID_PARAMETER" %><%--
   Created by IntelliJ IDEA.
   User: System Administrator
   Date: 25.04.2026
@@ -39,7 +40,7 @@
 
         <div>
             Категория продукта:
-            <select name="productCategory">
+            <select name="<%=PRODUCT_CATEGORY_ID_PARAMETER%>">
                 <option value="<%=product.getProductCategory().getId()%>" selected>
                     <%=product.getProductCategory().getCategory()%>
                 </option>

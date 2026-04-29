@@ -11,6 +11,7 @@ public class SellerDAOImpl extends DAOImpl<Seller> implements SellerDAO {
         super(Seller.class);
     }
 
+    @Override
     public List<Seller> getSellerList() {
         return getEm().createQuery("from Seller s", Seller.class)
                 .getResultList();

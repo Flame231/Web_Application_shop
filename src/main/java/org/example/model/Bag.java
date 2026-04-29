@@ -34,9 +34,11 @@ public class Bag {
     private Integer count;
 
     @CreationTimestamp
+    @Column(updatable = false, nullable = false)
     private Timestamp createDateTime;
 
     @UpdateTimestamp
+    @Column(nullable = false)
     private Timestamp updateDateTime;
 
     @Override

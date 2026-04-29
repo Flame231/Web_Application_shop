@@ -12,7 +12,7 @@ public class BagConverter {
         UserDAO userDAO = new UserDAOImpl();
         ProductDAO productDAO = new ProductDAOImpl();
         Bag bag = Bag.builder().user(userDAO.get(bagDTO.getUserId())).count(bagDTO.getCount())
-                .product(productDAO.get(bagDTO.getProduct_id())).build();
+                .product(productDAO.get(bagDTO.getProductId())).build();
         return bag;
     }
 }

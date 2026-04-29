@@ -13,7 +13,7 @@
     <p>
         Имя:
         <input type="text" name="name" value="<%= userDTO.getName()%>" required/>
-        <input type="hidden" name="id" value="<%=userDTO.getId()%>">
+        <input type="hidden" name="userId" value="<%=userDTO.getId()%>">
     </p>
 
     <p>

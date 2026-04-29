@@ -8,7 +8,10 @@ import lombok.ToString;
 @Builder
 @Getter
 public class BagDTO {
+
     private Integer userId;
-    private Integer product_id;
+
+    private Integer productId;
+
     private Integer count;
 }

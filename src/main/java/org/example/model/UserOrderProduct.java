@@ -38,11 +38,11 @@ public class UserOrderProduct {
     @Column
     private BigDecimal productPrice;
 
-    @Column
     @CreationTimestamp
+    @Column(updatable = false, nullable = false)
     private Timestamp createDateTime;
 
-    @Column
     @UpdateTimestamp
+    @Column(nullable = false)
     private Timestamp updateDateTime;
 }

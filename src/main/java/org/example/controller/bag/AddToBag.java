@@ -3,6 +3,7 @@ package org.example.controller.bag;
 import org.example.controller.postConverters.PostToBagDTO;
 import org.example.converterDTO.BagConverter;
 import org.example.dto.BagDTO;
+import org.example.model.Bag;
 import org.example.service.bag.BagService;
 import org.example.service.bag.BagServiceImpl;
 
@@ -11,8 +12,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.List;
+import java.util.stream.Stream;
 
 import static org.example.util.NamesUtil.*;
+
 
 public class AddToBag extends HttpServlet {
     BagService bagService = new BagServiceImpl();
@@ -20,10 +24,11 @@ public class AddToBag extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        BagDTO bagDTO = PostToBagDTO.toBagDTO(request);
+        List<BagDTO> bagDTOList = PostToBagDTO.toBagDTO(request);
 
-        bagService.addProductToBag(BagConverter.toBagEntity(bagDTO));
-        if(CATALOG_NAME.equals(request.getParameter("func"))){
+        bagDTOList.stream().map(BagConverter::toBagEntity).forEach(bagService::addProductToBag);
+       /* bagService.addProductToBag(BagConverter.toBagEntity(bagDTO));*/
+        if(CATALOG_PARAMETER.equals(request.getParameter("func"))){
             response.sendRedirect(SHOW_CATALOG);
         }
         else{

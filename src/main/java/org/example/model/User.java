@@ -31,7 +31,7 @@ public class User extends DataEntity {
     @Column
     private String password;
 
-    @Column
+    @Column(nullable = false)
     @Temporal(TemporalType.DATE)
     private LocalDate birthday;
 

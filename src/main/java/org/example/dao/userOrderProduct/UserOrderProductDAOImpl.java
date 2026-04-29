@@ -10,6 +10,7 @@ public class UserOrderProductDAOImpl extends DAOImpl<UserOrderProduct> implement
         super(UserOrderProduct.class);
     }
 
+    @Override
     public void addUserOrder(UserOrderProduct userOrderProduct, UserOrder userOrder) {
         begin();
         userOrderProduct.setUserOrder(userOrder);
@@ -17,6 +18,7 @@ public class UserOrderProductDAOImpl extends DAOImpl<UserOrderProduct> implement
         commit();
     }
 
+    @Override
     public void addProduct(UserOrderProduct userOrderProduct, Product product) {
         begin();
         userOrderProduct.setProduct(product);

@@ -6,5 +6,6 @@ import org.example.model.ProductCategory;
 import java.util.List;
 
 public interface ProductCategoryDAO extends DAO<ProductCategory> {
+
     List<ProductCategory> getProductCategoryList();
 }

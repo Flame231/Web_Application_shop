@@ -48,8 +48,51 @@ public class NamesUtil {
 
 
 
-    //Parameters
-    public static final String CATALOG_NAME = "catalog";
+    //ParametersNames:
+
+
+
+
+    public static final String COUNT_PARAMETER = "count";
+    public static final String USER_ID_PARAMETER = "userId";
+    public static final String PRODUCT_ID_PARAMETER = "productId";
+
+
+
+    public static final String PRODUCT_NAME_PARAMETER = "productName";
+    public static final String PRODUCT_CATEGORY_NAME_PARAMETER = "productCategoryName";
+    public static final String PRODUCT_CATEGORY_ID_PARAMETER = "productCategoryId";
+
+    public static final String PRICE_PARAMETER = "price";
+    public static final String SELLER_PARAMETER = "seller";
+
+
+    public static final String SELLER_NAME_PARAMETER = "sellerName";
+    public static final String SELLER_ADDRESS_PARAMETER = "sellerAddress";
+
+    public static final String SELLER_ID_PARAMETER = "sellerId";
+
+    //user
+    public static final String LOGIN_PARAMETER = "login";
+    public static final String PASSWORD_PARAMETER = "password";
+    public static final String OLD_PASSWORD_PARAMETER = "oldPassword";
+    public static final String NEW_PASSWORD_PARAMETER = "newPassword";
+    public static final String NEW_PASSWORD_REPEAT_PARAMETER = "newPasswordRepeat";
+    public static final String BIRTHDAY_PARAMETER = "birthday";
+    public static final String PAYMENT_METHODS_PARAMETER = "paymentMethods";
+
+
+
+
+
+
+
+
+
+
+
+
+    public static final String CATALOG_PARAMETER = "catalog";
 
 
 }

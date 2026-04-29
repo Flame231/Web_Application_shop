@@ -8,6 +8,7 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.sql.Timestamp;
+
 @MappedSuperclass
 @SuperBuilder
 @NoArgsConstructor
@@ -18,11 +19,11 @@ public class DataEntity {
     @Column
     private Integer id;
 
-    @Column
     @CreationTimestamp
+    @Column(updatable = false, nullable = false)
     private Timestamp createDateTime;
 
-    @Column
     @UpdateTimestamp
+    @Column(nullable = false)
     private Timestamp updateDateTime;
 }

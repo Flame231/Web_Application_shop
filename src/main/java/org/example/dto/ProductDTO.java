@@ -20,14 +20,4 @@ public class ProductDTO{
 
     private Seller seller;
 
-    @Override
-    public String toString() {
-        return "ProductDTO{" +
-                "id=" + id +
-                ", productName='" + productName + '\'' +
-                ", productCategory=" + productCategory +
-                ", price=" + price +
-                ", seller=" + seller +
-                '}';
-    }
 }

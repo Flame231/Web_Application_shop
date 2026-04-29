@@ -15,4 +15,8 @@ public interface UserService {
     UserDTO getUserData(Serializable id);
 
     void updateUseProfile(UserDTO userDTO);
+
+    public boolean passwordValidation(UserDTO userDTO);
+
+    public User getUser(Serializable id);
 }

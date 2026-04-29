@@ -38,12 +38,9 @@
 </style>
 <html>
 <head>
-
-    <h1>Мои Заказы</h1>
     <div><a href="<%=ACCOUNT_JSP%>">Вернуться в личный кабинет</a></div>
+    <h1>Мои Заказы</h1>
     <title>Мои Заказы</title>
-
-
     <br>
     <br>
 </head>

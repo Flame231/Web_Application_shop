@@ -53,77 +53,76 @@
 
 </head>
 <body>
+<form action="<%=ADD_TO_BAG%>" method="post">
+    <input type="submit" value="Редактировать количество"/>
+    <table>
+        <thead>
+        <tr>
+            <th>Номер товара</th>
+            <th>Название</th>
+            <th>Категория</th>
+            <th>Цена</th>
+            <th>Продавец</th>
+            <th>Редактировать</th>
+        </tr>
+        </thead>
+        <tbody>
+        <%
+            // Получаем список из request, который положил туда Сервлет
+            List<ProductDTO> products = (List<ProductDTO>) request.getAttribute("productList");
+            User user = (User) request.getSession().getAttribute("user");
+            Set<Bag> bags = user.getBags();
+            int value = 0;
+            ProductDAO productDAO = new ProductDAOImpl();
 
-<table>
-    <thead>
-    <tr>
-        <th>Номер товара</th>
-        <th>Название</th>
-        <th>Категория</th>
-        <th>Цена</th>
-        <th>Продавец</th>
-        <th>Редактировать</th>
-    </tr>
-    </thead>
-    <tbody>
-    <%
-        // Получаем список из request, который положил туда Сервлет
-        List<ProductDTO> products = (List<ProductDTO>) request.getAttribute("productList");
-        UserDAO userDAO = new UserDAOImpl();
-        Integer userId = (Integer)(session.getAttribute("userId"));
-        User user = userDAO.get(userId);
-        Set<Bag> bags = user.getBags();
-        int value = 0;
-        ProductDAO productDAO = new ProductDAOImpl();
+            // Проверяем, что список не null, чтобы не было ошибки
 
-        // Проверяем, что список не null, чтобы не было ошибки
-
-        if (products != null && !products.isEmpty()) {
-            for (ProductDTO productDTO : products) {
-                for (Bag b1 : bags) {
-                    for (Bag b2 : productDAO.get(productDTO.getId()).getBags()) {
-                        if (b1 == b2) {
-                            value = b1.getCount();
+            if (products != null && !products.isEmpty()) {
+                for (ProductDTO productDTO : products) {
+                    for (Bag b1 : bags) {
+                        for (Bag b2 : productDAO.get(productDTO.getId()).getBags()) {
+                            if (b1 == b2) {
+                                value = b1.getCount();
+                            }
                         }
                     }
-                }
-    %>
-    <tr>
-        <td><%= productDTO.getId() %>
-        </td>
-        <td><%= productDTO.getProductName() %>
-        </td>
-        <td><%= productDTO.getProductCategory().getCategory() %>
-        </td>
-        <td><%= productDTO.getPrice() %>
-        </td>
-        <td><%= productDTO.getSeller().getSellerName() %>
-        </td>
-        <td>
-            <form action="<%=ADD_TO_BAG%>" method="post">
+        %>
+        <tr>
+            <td><%= productDTO.getId() %>
+            </td>
+            <td><%= productDTO.getProductName() %>
+            </td>
+            <td><%= productDTO.getProductCategory().getCategory() %>
+            </td>
+            <td><%= productDTO.getPrice() %>
+            </td>
+            <td><%= productDTO.getSeller().getSellerName() %>
+            </td>
+            <td>
+
                 <input type="hidden" name="func" value="catalog">
-                <input type="submit" value="Редактировать количество"/>
+
                 <input type="hidden" name="productId" value="<%= productDTO.getId()%>"/>
                 Количество: <input type="number" name="count"
                                    value="<%=value%>" min="0" max="99" step="1">
-            </form>
-            <%
-                    value = 0;
-                }%>
-        </td>
 
-    </tr>
-    <%
-    } else {
-    %>
-    <tr>
-        <td colspan="2" style="text-align: center;">База товаров пуста".</td>
-    </tr>
-    <%
-        }
-    %>
-    </tbody>
-</table>
+                <%
+                        value = 0;
+                    }%>
+            </td>
 
+        </tr>
+        <%
+        } else {
+        %>
+        <tr>
+            <td colspan="2" style="text-align: center;">База товаров пуста".</td>
+        </tr>
+        <%
+            }
+        %>
+        </tbody>
+    </table>
+</form>
 </body>
 </html>
