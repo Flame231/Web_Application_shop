@@ -12,8 +12,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+import static org.example.util.NameUtils2.ADD_PRODUCT_CATEGORY;
 
-@WebServlet("/AddProductCategory")
+
+@WebServlet("/" + ADD_PRODUCT_CATEGORY)
 public class AddProductCategory extends HttpServlet {
     ProductCategoryService productCategoryService = new ProductCategoryServiceImpl();
 

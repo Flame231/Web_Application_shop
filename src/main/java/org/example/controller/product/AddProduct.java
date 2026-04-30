@@ -13,7 +13,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet("/AddProduct")
+import static org.example.util.NameUtils2.ADD_PRODUCT;
+import static org.example.util.NameUtils2.EDIT_CATALOG;
+
+@WebServlet("/" + ADD_PRODUCT)
 public class AddProduct extends HttpServlet {
     ProductService productService = new ProductServiceImpl();
 
@@ -22,7 +25,7 @@ public class AddProduct extends HttpServlet {
         ProductDTO productDTO = PostToProductDTO.toProductDTO(request);
         Product product = ProductConverter.toProduct(productDTO);
         productService.addProduct(product);
-        response.sendRedirect("EditCatalog");
+        response.sendRedirect(EDIT_CATALOG);
     }
 
 }

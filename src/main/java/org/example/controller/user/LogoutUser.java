@@ -8,9 +8,10 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
+import static org.example.util.NameUtils2.LOGOUT_USER;
 import static org.example.util.NamesUtil.LOGIN_JSP;
 
-@WebServlet("/LogoutUser")
+@WebServlet("/" + LOGOUT_USER)
 public class LogoutUser extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

@@ -11,9 +11,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+import static org.example.util.NameUtils2.REGISTER_USER;
 import static org.example.util.NamesUtil.ACCOUNT_JSP;
 
-@WebServlet("/RegisterUser")
+@WebServlet("/" + REGISTER_USER)
 public class RegisterUser extends HttpServlet {
     UserService userService = new UserServiceImpl();
 

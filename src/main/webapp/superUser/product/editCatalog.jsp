@@ -39,7 +39,7 @@
     <h1>Редактировать каталог товаров</h1>
 </head>
 <body>
-<form action="addProductPage" method="post">
+<form action="AddProductPage" method="post">
     <input type="submit" value="Добавить товар в каталог">
 </form>
 <table>

@@ -12,9 +12,9 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-import static org.example.util.NamesUtil.GET_PRODUCT_CATEGORIES_ROOT;
+import static org.example.util.NameUtils2.GET_ALL_PRODUCT_CATEGORIES;
 
-@WebServlet(GET_PRODUCT_CATEGORIES_ROOT)
+@WebServlet("/" + GET_ALL_PRODUCT_CATEGORIES)
 public class GetAllProductCategories extends HttpServlet {
     ProductCategoryService productCategoryService = new ProductCategoryServiceImpl();
 

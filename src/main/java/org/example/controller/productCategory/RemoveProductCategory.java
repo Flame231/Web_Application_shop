@@ -10,7 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet("/RemoveProductCategory")
+import static org.example.util.NameUtils2.REMOVE_PRODUCT_CATEGORY;
+
+@WebServlet("/" + REMOVE_PRODUCT_CATEGORY)
 public class RemoveProductCategory extends HttpServlet {
     ProductCategoryService productCategoryService = new ProductCategoryServiceImpl();
 

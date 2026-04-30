@@ -1,5 +1,9 @@
 <%@ page import="static org.example.util.NamesUtil.LOGOUT_USER" %>
 <%@ page import="static org.example.util.NamesUtil.*" %>
+<%@ page import="static org.example.util.NameUtils2.SHOW_CATALOG" %>
+<%@ page import="static org.example.util.NameUtils2.EDIT_CATALOG" %>
+<%@ page import="static org.example.util.NameUtils2.*" %>
+<%@ page import="static org.example.util.NameUtils2.SHOW_USER_PROFILE" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -40,13 +44,13 @@
 
 <h1>Интернет-магазин</h1>
 <form method="post">
-    <input type="submit" value="выйти из кабинета" formaction="<%=request.getContextPath() + LOGOUT_USER%>">
+    <input type="submit" value="выйти из кабинета" formaction="<%=request.getContextPath() +"/"+ LOGOUT_USER%>">
     <input type="submit" value="Просмотреть каталог товаров" formaction="<%=SHOW_CATALOG%>">
-    <input type="submit" value="Мои заказы" formaction="showUserOrders">
+    <input type="submit" value="Мои заказы" formaction="<%=request.getContextPath() +"/"+ SHOW_USER_ORDERS%>">
     <input type="submit" value="Посмотреть профиль" formaction="<%=SHOW_USER_PROFILE%>">
     <input type="submit" value="Редактировать каталог" formaction="<%=EDIT_CATALOG%>">
-    <input type="submit" value="Редактировать Категории товаров" formaction="editProductCategories">
-    <input type="submit" value="Редактировать продавцов" formaction="editSellers">
+    <input type="submit" value="Редактировать Категории товаров" formaction="EditProductCategories">
+    <input type="submit" value="Редактировать продавцов" formaction="EditSellers">
 </form>
 
 </body>

@@ -15,10 +15,11 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
+import static org.example.util.NameUtils2.AUTHORIZE_USER;
 import static org.example.util.NamesUtil.ACCOUNT_JSP_ROOT;
 import static org.example.util.NamesUtil.LOGIN_JSP;
 
-@WebServlet("/AuthorizeUser")
+@WebServlet("/" + AUTHORIZE_USER)
 public class AuthorizeUser extends HttpServlet {
     UserService userService = new UserServiceImpl();
 

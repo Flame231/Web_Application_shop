@@ -1,4 +1,4 @@
-package org.example.controller.productCategory;
+package org.example.controller.seller;
 
 import org.example.service.seller.SellerService;
 import org.example.service.seller.SellerServiceImpl;
@@ -10,8 +10,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+import static org.example.util.NameUtils2.ADD_SELLER_PAGE;
 
-@WebServlet("/AddSellerPage")
+
+@WebServlet("/" + ADD_SELLER_PAGE)
 public class AddSellerPage extends HttpServlet {
     SellerService sellerService = new SellerServiceImpl();
 

@@ -5,6 +5,7 @@
 <%@ page import="static org.example.util.NamesUtil.*" %>
 <%@ page import="org.example.dto.OrderPointDTO" %>
 <%@ page import="javax.swing.*" %>
+<%@ page import="static org.example.util.NameUtils2.SHOW_CATALOG" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <style>
 
@@ -51,7 +52,7 @@
     <br>
 </head>
 <body>
-<form action="confirmOrder" method="post">
+<form action="ConfirmOrder" method="post">
     <input type="submit" value="Оформить заказ">
     Выбрать пункт выдачи:
     <select name="orderPointId">

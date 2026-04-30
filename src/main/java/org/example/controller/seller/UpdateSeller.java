@@ -13,8 +13,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+import static org.example.util.NameUtils2.UPDATE_SELLER;
 
-@WebServlet("/UpdateSeller")
+
+@WebServlet("/" + UPDATE_SELLER)
 public class UpdateSeller extends HttpServlet {
     SellerService sellerService = new SellerServiceImpl();
 

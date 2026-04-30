@@ -40,7 +40,7 @@
 
 </head>
 <body>
-<form action="addSellerPage" method="post">
+<form action="AddSellerPage" method="post">
     <input type="submit" value="Добавить продавца">
 </form>
 <table>

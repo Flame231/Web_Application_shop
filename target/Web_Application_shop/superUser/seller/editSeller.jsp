@@ -13,7 +13,7 @@
     Seller seller = sellerDAO.get(sellerId);
 
 %>
-<form action="updateSeller" method="post">
+<form action="UpdateSeller" method="post">
     Номер продавца:
     <%=seller.getId()%>
     Название продавца:

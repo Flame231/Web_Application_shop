@@ -13,7 +13,7 @@
     ProductCategory productCategory = productCategoryDAO.get(productCategoryId);
 
 %>
-<form action="updateProductCategory" method="post">
+<form action="UpdateProductCategory" method="post">
     Номер категории:
     <%=productCategory.getId()%>
     Название категории:

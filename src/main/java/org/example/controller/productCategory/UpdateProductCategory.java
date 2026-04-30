@@ -12,7 +12,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet("/UpdateProductCategory")
+import static org.example.util.NameUtils2.UPDATE_PRODUCT_CATEGORY;
+
+@WebServlet("/" + UPDATE_PRODUCT_CATEGORY)
 public class UpdateProductCategory extends HttpServlet {
     ProductCategoryService productCategoryService = new ProductCategoryServiceImpl();
 

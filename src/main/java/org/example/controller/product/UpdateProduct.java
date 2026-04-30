@@ -13,7 +13,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet("/UpdateProduct")
+import static org.example.util.NameUtils2.UPDATE_PRODUCT;
+
+@WebServlet("/" + UPDATE_PRODUCT)
 public class UpdateProduct extends HttpServlet {
     ProductService productService = new ProductServiceImpl();
 

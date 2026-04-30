@@ -15,7 +15,7 @@
     %>
     <title>Редактировать продукт</title>
     <h1>Редактировать продукт</h1>
-    <form action="updateProduct" method="post">
+    <form action="UpdateProduct" method="post">
         Номер продукта:
         <%=product.getId()%>
         <input type="hidden" name="productId" value="<%=product.getId()%>">

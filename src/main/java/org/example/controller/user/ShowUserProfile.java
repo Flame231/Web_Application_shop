@@ -13,9 +13,10 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
+import static org.example.util.NameUtils2.SHOW_USER_PROFILE;
 import static org.example.util.NamesUtil.USER_PROFILE_JSP_ROOT;
 
-@WebServlet("/ShowUserProfile")
+@WebServlet("/" + SHOW_USER_PROFILE)
 public class ShowUserProfile extends HttpServlet {
     UserService userService = new UserServiceImpl();
 

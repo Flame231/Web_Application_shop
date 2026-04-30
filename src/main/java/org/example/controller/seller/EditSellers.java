@@ -8,8 +8,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+import static org.example.util.NameUtils2.EDIT_SELLERS;
 
-@WebServlet("/EditSellers")
+
+@WebServlet("/" + EDIT_SELLERS)
 public class EditSellers extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         RequestDispatcher dispatcher = request.getRequestDispatcher("/GetAllSellers");

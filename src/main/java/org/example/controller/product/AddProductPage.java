@@ -18,7 +18,10 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet("/AddProductPage")
+import static org.example.util.NameUtils2.ADD_PRODUCT_JSP;
+import static org.example.util.NameUtils2.ADD_PRODUCT_PAGE;
+
+@WebServlet("/" + ADD_PRODUCT_PAGE)
 public class AddProductPage extends HttpServlet {
     ProductCategoryService productCategoryService = new ProductCategoryServiceImpl();
     SellerService sellerService = new SellerServiceImpl();
@@ -29,7 +32,7 @@ public class AddProductPage extends HttpServlet {
         List<SellerDTO> listSeller = sellerService.getSellerDTOList();
         request.setAttribute("productCategoryDTOList", list);
         request.setAttribute("sellerDTOList", listSeller);
-        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/superUser/product/AddProduct.jsp");
+        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(ADD_PRODUCT_JSP);
         dispatcher.forward(request, response);
     }
 }

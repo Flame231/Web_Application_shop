@@ -4,16 +4,12 @@ public class NamesUtil {
 
 
     //Servlets Names
-    public static final String GET_ALL_PRODUCTS = "GetAllProducts";
-    public static final String SHOW_BAG = "ShowBag";
+    // public static final String SHOW_BAG = "ShowBag";
     public static final String SHOW_USER_PROFILE = "ShowUserProfile";
     public static final String LOGOUT_USER = "LogoutUser";
-    public static final String ADD_TO_BAG = "AddToBag";
     public static final String AUTHORIZE_USER = "AuthorizeUser";
     public static final String REGISTER_USER = "RegisterUser";
-    public static final String SHOW_CATALOG = "ShowCatalog";
     public static final String EDIT_ALL_CATEGORIES = "EditCategories";
-    public static final String EDIT_CATALOG = "EditCatalog";
 
     //Servlet Root
     public static final String SHOW_CATALOG_ROOT = "/ShowCatalog";
@@ -23,7 +19,7 @@ public class NamesUtil {
 
     public static final String EDIT_PRODUCT_CATEGORIES_ROOT = "/EditProductCategories";
     public static final String EDIT_PRODUCT_ROOT = "/EditProduct";
-    public static final String EDIT_PRODUCT = "EditProduct";
+
 
 
     //JSP

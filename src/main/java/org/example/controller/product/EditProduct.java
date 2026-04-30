@@ -19,9 +19,9 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-import static org.example.util.NamesUtil.*;
+import static org.example.util.NameUtils2.*;
 
-@WebServlet(EDIT_PRODUCT_ROOT)
+@WebServlet("/" + EDIT_PRODUCT)
 public class EditProduct extends HttpServlet {
     ProductCategoryService productCategoryService = new ProductCategoryServiceImpl();
     SellerService sellerService = new SellerServiceImpl();
@@ -31,9 +31,9 @@ public class EditProduct extends HttpServlet {
         List<SellerDTO> listSeller = sellerService.getSellerDTOList();
         request.setAttribute("productCategoryDTOList", list);
         request.setAttribute("sellerDTOList", listSeller);
-        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(GET_ALL_PRODUCTS_ROOT);
+        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/" + GET_ALL_PRODUCTS);
         dispatcher.include(request,response);
-        RequestDispatcher dispatcher1 = getServletContext().getRequestDispatcher(EDIT_PRODUCT_JSP_ROOT);
+        RequestDispatcher dispatcher1 = getServletContext().getRequestDispatcher("/" + EDIT_PRODUCT_JSP);
         dispatcher1.forward(request,response);
     }
 }

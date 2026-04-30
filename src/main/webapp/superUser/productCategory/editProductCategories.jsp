@@ -38,7 +38,7 @@
     <h1>Категории</h1>
 </head>
 <body>
-<form action="addProductCategoryPage" method="post">
+<form action="AddProductCategoryPage" method="post">
     <input type="submit" value="Добавить категорию">
 </form>
 <table>

@@ -5,7 +5,7 @@
 </head>
 <body>
 
-<form action="/Web_Application_shop_war/addSeller" method="post">
+<form action="/Web_Application_shop_war/AddSeller" method="post">
     Название продавца:
     <input type="text" name="sellerName">
     Адрес продавца:

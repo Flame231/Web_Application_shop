@@ -12,7 +12,9 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet("/GetAllProducts")
+import static org.example.util.NameUtils2.GET_ALL_PRODUCTS;
+
+@WebServlet("/" + GET_ALL_PRODUCTS)
 public class GetAllProducts extends HttpServlet {
     ProductService productService = new ProductServiceImpl();
 

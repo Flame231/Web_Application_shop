@@ -5,7 +5,7 @@
 </head>
 <body>
 
-<form action="/Web_Application_shop_war/addProductCategory" method="post">
+<form action="/Web_Application_shop_war/AddProductCategory" method="post">
     Название категории:
     <input type="text" name="productCategoryName">
     <input type="submit" value="Подтвердить">

@@ -8,10 +8,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+import static org.example.util.NameUtils2.EDIT_PRODUCT_CATEGORIES;
 import static org.example.util.NamesUtil.*;
 
 
-@WebServlet("/EditProductCategories")
+@WebServlet("/" + EDIT_PRODUCT_CATEGORIES)
 public class EditProductCategories extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         RequestDispatcher dispatcher1 = getServletContext().getRequestDispatcher(GET_PRODUCT_CATEGORIES_ROOT);

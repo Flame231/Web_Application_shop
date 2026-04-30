@@ -13,9 +13,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+import static org.example.util.NameUtils2.BAG_JSP;
+import static org.example.util.NameUtils2.SHOW_BAG;
 import static org.example.util.NamesUtil.BAG_JSP_ROOT;
 
-@WebServlet("/ShowBag")
+@WebServlet("/" + SHOW_BAG)
 public class ShowBag extends HttpServlet {
     BagService bagService = new BagServiceImpl();
     OrderPointService orderPointService = new OrderPointServiceImpl();
@@ -26,7 +28,7 @@ public class ShowBag extends HttpServlet {
         request.setAttribute("BagList",
                 bagService.showAllBags((Integer) request.getSession().getAttribute("userId")));
         RequestDispatcher dispatcher = getServletContext()
-                .getRequestDispatcher(BAG_JSP_ROOT);
+                .getRequestDispatcher("/" + BAG_JSP);
         request.setAttribute("orderPointList", orderPointService.getAllOrderPoints());
         dispatcher.forward(request, response);
     }

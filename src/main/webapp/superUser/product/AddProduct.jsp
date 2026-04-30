@@ -12,7 +12,7 @@ To change this template use File | Settings | File Templates.
 <head>
     <title>Добавить товар в каталог</title>
     <h1>Добавить товар в каталог</h1>
-    <form action="addProduct" method="post">
+    <form action="AddProduct" method="post">
         <div>
             Название продукта:
             <input type="text" name="productName">

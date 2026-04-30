@@ -9,7 +9,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet("/RemoveSeller")
+import static org.example.util.NameUtils2.REMOVE_SELLER;
+
+@WebServlet("/" + REMOVE_SELLER)
 public class RemoveSeller extends HttpServlet {
     SellerService sellerService = new SellerServiceImpl();
 

@@ -1,6 +1,5 @@
 <%@ page import="java.util.List" %>
 <%@ page import="org.example.dto.ProductDTO" %>
-<%@ page import="static org.example.util.NamesUtil.SHOW_BAG" %>
 <%@ page import="static org.example.util.NamesUtil.ACCOUNT_JSP" %>
 <%@ page import="static org.example.util.NamesUtil.*" %>
 <%@ page import="org.example.model.User" %>
@@ -8,6 +7,8 @@
 <%@ page import="java.util.Set" %>
 <%@ page import="org.example.dao.product.ProductDAO" %>
 <%@ page import="org.example.dao.product.ProductDAOImpl" %>
+<%@ page import="static org.example.util.NameUtils2.ADD_TO_BAG" %>
+<%@ page import="static org.example.util.NameUtils2.SHOW_BAG" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <style>
 
