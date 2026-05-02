@@ -1,4 +1,4 @@
-package org.example.controller.productCategory;
+package org.example.controller.seller;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -8,16 +8,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-import static org.example.util.NameUtils2.EDIT_SELLERS;
+import static org.example.util.NamesUtil.*;
 
 
-@WebServlet("/" + EDIT_SELLERS)
+@WebServlet(EDIT_SELLERS)
 public class EditSellers extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/GetAllSellers");
-        dispatcher.include(request, response);
-        RequestDispatcher dispatcher1 = request.getRequestDispatcher("/superUser/seller/EditSellers.jsp");
-        dispatcher1.forward(request, response);
+        RequestDispatcher includeDispatcher = request.getRequestDispatcher(GET_ALL_SELLERS);
+        includeDispatcher.include(request, response);
+        RequestDispatcher forwardDispatcher = request.getRequestDispatcher(EDIT_SELLERS_JSP);
+        forwardDispatcher.forward(request, response);
     }
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

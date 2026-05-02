@@ -3,14 +3,16 @@ package org.example.converterDTO;
 import org.example.dto.ProductCategoryDTO;
 import org.example.model.ProductCategory;
 
-public class ProductCategoryConverter {
+public class ProductCategoryConverter implements ConverterDTO<ProductCategory, ProductCategoryDTO> {
 
-    public static ProductCategoryDTO toProductCategoryDTO(ProductCategory productCategory) {
+    @Override
+    public ProductCategoryDTO toDTO(ProductCategory productCategory) {
         return ProductCategoryDTO.builder().id(productCategory.getId())
                 .category(productCategory.getCategory()).build();
     }
 
-    public static ProductCategory toProductCategory(ProductCategoryDTO productCategoryDTO) {
+    @Override
+    public ProductCategory toEntity(ProductCategoryDTO productCategoryDTO) {
         if (productCategoryDTO.getId() != null) {
             return ProductCategory.builder()
                     .products(null).category(productCategoryDTO.getCategory())

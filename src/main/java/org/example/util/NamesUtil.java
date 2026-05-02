@@ -3,47 +3,84 @@ package org.example.util;
 public class NamesUtil {
 
 
-    //Servlets Names
-    // public static final String SHOW_BAG = "ShowBag";
-    public static final String SHOW_USER_PROFILE = "ShowUserProfile";
-    public static final String LOGOUT_USER = "LogoutUser";
+    //НАЗВАНИЯ СЕРВЛЕТОВ
+
+    public static final String MAIN_PAGE_CLIENT = "/client/MainPage";
+    public static final String MAIN_PAGE_ADMINISTRATOR = "/administrator/MainPage";
+    public static final String MAIN_PAGE_OPERATOR = "/operator/MainPage";
+
+    //BAG
+
+    public static final String ADD_TO_BAG = "/client/AddToBag";
+    public static final String CONFIRM_ORDER = "/client/ConfirmOrder";
+    public static final String SHOW_BAG = "/client/ShowBag";
+    //PRODUCT
+    public static final String ADD_PRODUCT = "/administrator/AddProduct";
+    public static final String ADD_PRODUCT_PAGE = "/administrator/AddProductPage";
+    public static final String EDIT_CATALOG = "/administrator/EditCatalog";
+    public static final String EDIT_PRODUCT = "/administrator/EditProduct";
+    public static final String GET_ALL_PRODUCTS = "/GetAllProducts";
+    public static final String REMOVE_PRODUCT = "/administrator/RemoveProduct";
+    public static final String SHOW_CATALOG = "/client/ShowCatalog";
+    public static final String UPDATE_PRODUCT = "/administrator/UpdateProduct";
+    public static final String PRODUCT_PAGE = "/client/ProductPage";
+    //PRODUCT CATEGORY
+    public static final String ADD_PRODUCT_CATEGORY = "/administrator/AddProductCategory";
+    public static final String ADD_PRODUCT_CATEGORY_PAGE = "/administrator/AddProductCategoryPage";
+    public static final String EDIT_PRODUCT_CATEGORIES = "/administrator/EditProductCategories";
+    public static final String EDIT_PRODUCT_CATEGORY = "/administrator/EditProductCategory";
+    public static final String GET_ALL_PRODUCT_CATEGORIES = "/GetProductCategories";
+    public static final String REMOVE_PRODUCT_CATEGORY = "/administrator/RemoveProductCategory";
+    public static final String UPDATE_PRODUCT_CATEGORY = "/administrator/UpdateProductCategory";
+    //SELLER
+    public static final String ADD_SELLER = "/administrator/AddSeller";
+    public static final String ADD_SELLER_PAGE = "/administrator/AddSellerPage";
+    public static final String EDIT_SELLER = "/administrator/EditSeller";
+    public static final String EDIT_SELLERS = "/administrator/EditSellers";
+    public static final String GET_ALL_SELLERS = "/GetAllSellers";
+    public static final String REMOVE_SELLER = "/administrator/RemoveSeller";
+    public static final String UPDATE_SELLER = "/administrator/UpdateSeller";
+
+    //USER
     public static final String AUTHORIZE_USER = "AuthorizeUser";
-    public static final String REGISTER_USER = "RegisterUser";
-    public static final String EDIT_ALL_CATEGORIES = "EditCategories";
+    public static final String LOGOUT_USER = "/LogoutUser";
+    public static final String REGISTER_USER = "/RegisterUser";
+    public static final String SHOW_USER_PROFILE = "/client/ShowUserProfile";
 
-    //Servlet Root
-    public static final String SHOW_CATALOG_ROOT = "/ShowCatalog";
-    public static final String GET_ALL_PRODUCTS_ROOT = "/GetAllProducts";
-    public static final String EDIT_CATALOG_ROOT = "/EditCatalog";
-    public static final String GET_PRODUCT_CATEGORIES_ROOT = "/GetProductCategories";
+    //USER_ORDER
+    public static final String GET_ALL_USER_ORDERS = "GetAllUserOrders";
+    public static final String SHOW_USER_ORDERS = "/client/ShowUserOrders";
+    public static final String SHOW_ORDER_POINT_ORDERS = "/operator/ShowOrderPointOrders";
 
-    public static final String EDIT_PRODUCT_CATEGORIES_ROOT = "/EditProductCategories";
-    public static final String EDIT_PRODUCT_ROOT = "/EditProduct";
-
-
-
-    //JSP
-    public static final String GET_ALL_CATEGORIES = "GetAllCategories";
-    public static final String EDIT_PRODUCT_JSP = "EditProduct.jsp";
-
-
-    //JSP root
-    public static final String ACCOUNT_JSP_ROOT = "/account.jsp";
-    public static final String ACCOUNT_JSP = "account.jsp";
-    public static final String LOGIN_JSP = "login.jsp";
-    public static final String CATALOG_JSP_ROOT = "/catalog.jsp";
-    public static final String BAG_JSP_ROOT = "/bag.jsp";
-    public static final String USER_PROFILE_JSP_ROOT = "/userProfile.jsp";
-    public static final String REGISTRATION_JSP = "registration.jsp";
-    public static final String EDIT_CATALOG_JSP_ROOT = "/superUser/product/editCatalog.jsp";
-    public static final String EDIT_CATALOG_JSP = "editCatalog.jsp";
+    //НАЗВАНИЯ JSP
+    //папка webapp
+    public static final String ACCOUNT_CLIENT_JSP = "/account/accountClient.jsp";
+    public static final String ACCOUNT_ADMINISTRATOR_JSP = "/account/accountAdministrator.jsp";
+    public static final String ACCOUNT_OPERATOR_JSP = "/account/accountOperator.jsp";
+    public static final String BAG_JSP = "/bag.jsp";
+    public static final String CATALOG_JSP = "/catalog.jsp";
+    public static final String LOGIN_JSP = "/login.jsp";
+    public static final String REGISTRATION_JSP = "/registration.jsp";
+    public static final String USER_PROFILE_JSP = "/userProfile.jsp";
+    //order
+    public static final String ORDERS_JSP = "/order/orders.jsp";
+    public static final String SHOW_ORDER_POINT_ORDERS_JSP = "/order/showOrderPointOrders.jsp";
+    //product
+    public static final String ADD_PRODUCT_JSP = "/superUser/product/addProduct.jsp";
+    public static final String EDIT_CATALOG_JSP = "/superUser/product/editCatalog.jsp";
+    public static final String EDIT_PRODUCT_JSP = "/superUser/product/editProduct.jsp";
+    public static final String PRODUCT_PAGE_JSP = "/superUser/product/productPage.jsp";
+    //productCategory
+    public static final String ADD_PRODUCT_CATEGORY_JSP = "/superUser/productCategory/addProductCategory.jsp";
     public static final String EDIT_PRODUCT_CATEGORIES_JSP = "/superUser/productCategory/editProductCategories.jsp";
-    public static final String EDIT_PRODUCT_JSP_ROOT = "/superUser/product/editProduct.jsp";
+    public static final String EDIT_PRODUCT_CATEGORY_JSP = "/superUser/productCategory/editProductCategory.jsp";
+    //seller
+    public static final String ADD_SELLER_PAGE_JSP = "/superUser/seller/addSellerPage.jsp";
+    public static final String EDIT_SELLER_JSP = "/superUser/seller/editSeller.jsp";
+    public static final String EDIT_SELLERS_JSP = "/superUser/seller/editSellers.jsp";
 
 
-    //ParametersNames:
-
-
+    //НАЗВАНИЯ ПАРАМЕТРОВ:
     public static final String COUNT_PARAMETER = "count";
     public static final String USER_ID_PARAMETER = "userId";
     public static final String PRODUCT_ID_PARAMETER = "productId";
@@ -70,8 +107,6 @@ public class NamesUtil {
     public static final String NEW_PASSWORD_REPEAT_PARAMETER = "newPasswordRepeat";
     public static final String BIRTHDAY_PARAMETER = "birthday";
     public static final String PAYMENT_METHODS_PARAMETER = "paymentMethods";
-
-
     public static final String CATALOG_PARAMETER = "catalog";
 
 

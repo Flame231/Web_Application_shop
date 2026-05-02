@@ -1,6 +1,7 @@
 <%@ page import="java.util.List" %>
 <%@ page import="org.example.dto.ProductDTO" %>
-<%@ page import="static org.example.util.NamesUtil.ACCOUNT_JSP" %>
+<%@ page import="static org.example.util.NamesUtil.EDIT_PRODUCT" %>
+<%@ page import="static org.example.util.NamesUtil.ACCOUNT_CLIENT_JSP" %>
 <%@ page import="static org.example.util.NamesUtil.*" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <style>
@@ -34,12 +35,14 @@
 </style>
 <html>
 <head>
-    <br><a href="<%=ACCOUNT_JSP%>">Вернуться в личный кабинет</a></br>
+    <form action="<%=request.getContextPath() + MAIN_PAGE_ADMINISTRATOR%>" method="post">
+        <input type="submit" value="Вернуться в личный кабинет">
+    </form>
     <title>Редактировать каталог</title>
     <h1>Редактировать каталог товаров</h1>
 </head>
 <body>
-<form action="AddProductPage" method="post">
+<form action="<%=request.getContextPath() + ADD_PRODUCT_PAGE%>" method="post">
     <input type="submit" value="Добавить товар в каталог">
 </form>
 <table>
@@ -74,8 +77,8 @@
             <form method="post">
                 <input type="hidden" name="productId" value="<%=productDTO.getId()%>">
                 <input type="hidden" name="func" value="catalog">
-                <input type="submit" value="Редактировать" formaction="<%=EDIT_PRODUCT%>"/>
-                <input type="submit" value="Удалить" formaction="removeProduct"/>
+                <input type="submit" value="Редактировать" formaction="<%=request.getContextPath() + EDIT_PRODUCT%>"/>
+                <input type="submit" value="Удалить" formaction="<%=request.getContextPath() + REMOVE_PRODUCT%>"/>
             </form>
         </td>
     </tr>

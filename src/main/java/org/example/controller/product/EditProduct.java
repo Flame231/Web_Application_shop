@@ -1,7 +1,5 @@
 package org.example.controller.product;
 
-import org.example.dao.productCategory.ProductCategoryDAO;
-import org.example.dao.productCategory.ProductCategoryDAOImpl;
 import org.example.dto.ProductCategoryDTO;
 import org.example.dto.SellerDTO;
 import org.example.service.productCategory.ProductCategoryService;
@@ -15,25 +13,24 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import java.io.IOException;
 import java.util.List;
 
-import static org.example.util.NameUtils2.*;
+import static org.example.util.NamesUtil.*;
 
-@WebServlet("/" + EDIT_PRODUCT)
+@WebServlet(EDIT_PRODUCT)
 public class EditProduct extends HttpServlet {
-    ProductCategoryService productCategoryService = new ProductCategoryServiceImpl();
-    SellerService sellerService = new SellerServiceImpl();
-    ProductCategoryDAO productCategoryDAO = new ProductCategoryDAOImpl();
+    private ProductCategoryService productCategoryService = new ProductCategoryServiceImpl();
+    private SellerService sellerService = new SellerServiceImpl();
+
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List<ProductCategoryDTO> list = productCategoryService.getProductCategoryDTOList();
         List<SellerDTO> listSeller = sellerService.getSellerDTOList();
         request.setAttribute("productCategoryDTOList", list);
         request.setAttribute("sellerDTOList", listSeller);
-        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/" + GET_ALL_PRODUCTS);
-        dispatcher.include(request,response);
-        RequestDispatcher dispatcher1 = getServletContext().getRequestDispatcher("/" + EDIT_PRODUCT_JSP);
-        dispatcher1.forward(request,response);
+        RequestDispatcher includeDispatcher = getServletContext().getRequestDispatcher(GET_ALL_PRODUCTS);
+        includeDispatcher.include(request, response);
+        RequestDispatcher forwardDispatcher = getServletContext().getRequestDispatcher(EDIT_PRODUCT_JSP);
+        forwardDispatcher.forward(request, response);
     }
 }

@@ -1,11 +1,16 @@
 <%@ page import="org.example.model.ProductCategory" %>
 <%@ page import="org.example.dao.productCategory.ProductCategoryDAO" %>
 <%@ page import="org.example.dao.productCategory.ProductCategoryDAOImpl" %>
+<%@ page import="static org.example.util.NamesUtil.MAIN_PAGE_ADMINISTRATOR" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
     <title>Редактировать категорию</title>
 </head>
+
+<form action="<%=request.getContextPath() + MAIN_PAGE_ADMINISTRATOR%>" method="post">
+    <input type="submit" value="Вернуться в личный кабинет">
+</form>
 <body>
 <%
     ProductCategoryDAO productCategoryDAO = new ProductCategoryDAOImpl();

@@ -1,12 +1,12 @@
 package org.example.model.additional;
 
-import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import javax.persistence.*;
 import java.sql.Timestamp;
 
 @MappedSuperclass

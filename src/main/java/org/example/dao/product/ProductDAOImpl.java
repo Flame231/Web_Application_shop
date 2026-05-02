@@ -4,7 +4,6 @@ import org.example.dao.DAOImpl;
 import org.example.model.Product;
 import org.example.model.ProductCategory;
 import org.example.model.Seller;
-import org.example.model.User;
 
 import java.util.List;
 

@@ -12,15 +12,15 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-import static org.example.util.NameUtils2.GET_ALL_PRODUCTS;
+import static org.example.util.NamesUtil.GET_ALL_PRODUCTS;
 
-@WebServlet("/" + GET_ALL_PRODUCTS)
+@WebServlet(GET_ALL_PRODUCTS)
 public class GetAllProducts extends HttpServlet {
-    ProductService productService = new ProductServiceImpl();
+    private ProductService productService = new ProductServiceImpl();
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        List<ProductDTO> list = productService.getAllProducts();
-        request.setAttribute("productList", list);
+        List<ProductDTO> productList = productService.getAllProducts();
+        request.setAttribute("productList", productList);
     }
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

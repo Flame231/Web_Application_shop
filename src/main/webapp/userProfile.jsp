@@ -1,15 +1,17 @@
 <%@ page import="org.example.dto.UserDTO" %>
-<%@ page import="static org.example.util.NamesUtil.ACCOUNT_JSP" %>
+<%@ page import="static org.example.util.NamesUtil.ACCOUNT_CLIENT_JSP" %>
 <%@ page import="static org.example.util.NamesUtil.REGISTER_USER" %>
+<%@ page import="static org.example.util.NamesUtil.*" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <body>
 
 <% UserDTO userDTO = (UserDTO) request.getAttribute("userDTO"); %>
-
+<form action="<%=request.getContextPath() + MAIN_PAGE_CLIENT%>" method="post">
+    <input type="submit" value="Вернуться в личный кабинет">
+</form>
 <h1>Профиль пользователя</h1>
-<a href="<%=ACCOUNT_JSP%>">Вернуться в личный кабинет</a>
-<form action="<%=REGISTER_USER%>" method="post">
+<form action="<%=request.getContextPath() + REGISTER_USER%>" method="post">
     <p>
         Имя:
         <input type="text" name="name" value="<%= userDTO.getName()%>" required/>

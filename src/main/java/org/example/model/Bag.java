@@ -1,14 +1,15 @@
 package org.example.model;
 
-import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 import org.example.model.additional.primaryKeys.PrimaryKeyBag;
+import org.example.model.user.User;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import javax.persistence.*;
 import java.sql.Timestamp;
 
 @Entity

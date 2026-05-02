@@ -1,18 +1,23 @@
 package org.example.converterDTO;
 
-import org.example.dao.product.ProductDAO;
-import org.example.dao.product.ProductDAOImpl;
-import org.example.dao.user.UserDAO;
-import org.example.dao.user.UserDAOImpl;
+import org.example.dao.bag.BagDAO;
+import org.example.dao.bag.BagDAOImpl;
 import org.example.dto.BagDTO;
 import org.example.model.Bag;
 
-public class BagConverter {
-    public static Bag toBagEntity(BagDTO bagDTO) {
-        UserDAO userDAO = new UserDAOImpl();
-        ProductDAO productDAO = new ProductDAOImpl();
-        Bag bag = Bag.builder().user(userDAO.get(bagDTO.getUserId())).count(bagDTO.getCount())
-                .product(productDAO.get(bagDTO.getProductId())).build();
-        return bag;
+public class BagConverter implements ConverterDTO<Bag, BagDTO> {
+    @Override
+    public Bag toEntity(BagDTO bagDTO) {
+        BagDAO bagDAO = new BagDAOImpl();
+        return Bag.builder().user(bagDTO.getUser()).product(bagDTO.getProduct())
+                .count(bagDTO.getCount())
+                .build();
+    }
+
+    @Override
+    public BagDTO toDTO(Bag bag) {
+        return BagDTO.builder().user(bag.getUser())
+                .product(bag.getProduct())
+                .count(bag.getCount()).build();
     }
 }

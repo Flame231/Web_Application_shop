@@ -1,7 +1,9 @@
 <%@ page import="java.util.List" %>
-<%@ page import="static org.example.util.NamesUtil.ACCOUNT_JSP" %>
 <%@ page import="org.example.dto.SellerDTO" %>
 <%@ page import="org.example.model.*" %>
+<%@ page import="static org.example.util.NamesUtil.ACCOUNT_CLIENT_JSP" %>
+<%@ page import="static org.example.util.NamesUtil.ADD_SELLER_PAGE" %>
+<%@ page import="static org.example.util.NamesUtil.*" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <style>
 
@@ -34,13 +36,15 @@
 </style>
 <html>
 <head>
-    <br><a href="<%=ACCOUNT_JSP%>">Вернуться в личный кабинет</a></br>
+    <form action="<%=request.getContextPath() +MAIN_PAGE_ADMINISTRATOR%>" method="post">
+        <input type="submit" value="Вернуться в личный кабинет">
+    </form>
     <title>Редактировать продавцов</title>
     <h1>Редактировать продавцов</h1>
 
 </head>
 <body>
-<form action="AddSellerPage" method="post">
+<form action="<%=request.getContextPath() + ADD_SELLER_PAGE%>" method="post">
     <input type="submit" value="Добавить продавца">
 </form>
 <table>
@@ -68,8 +72,8 @@
                 <%= seller.getSellerAddress() %>
         <td>
             <form method="post">
-                <input type="submit" value="Редактировать" formaction="editSeller">
-                <input type="submit" value="Удалить" formaction="removeSeller">
+                <input type="submit" value="Редактировать" formaction="<%=request.getContextPath() + EDIT_SELLER%>">
+                <input type="submit" value="Удалить" formaction="<%=request.getContextPath() + REMOVE_SELLER%>">
                 <input type="hidden" name="sellerId" value="<%=seller.getId()%>">
             </form>
         </td>

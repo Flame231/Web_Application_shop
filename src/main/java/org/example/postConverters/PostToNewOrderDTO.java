@@ -1,4 +1,4 @@
-package org.example.controller.postConverters;
+package org.example.postConverters;
 
 import org.example.dto.NewOrderDTO;
 

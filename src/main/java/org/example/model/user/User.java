@@ -1,13 +1,17 @@
-package org.example.model;
+package org.example.model.user;
 
-import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
+import org.example.model.Bag;
+import org.example.model.Discount;
+import org.example.model.OrderPoint;
+import org.example.model.UserOrder;
 import org.example.model.additional.DataEntity;
 
+import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.HashSet;
@@ -32,7 +36,6 @@ public class User extends DataEntity {
     private String password;
 
     @Column(nullable = false)
-    @Temporal(TemporalType.DATE)
     private LocalDate birthday;
 
     @Column
@@ -51,4 +54,11 @@ public class User extends DataEntity {
     @OneToMany(mappedBy = "user")
     private Set<Bag> bags = new HashSet<>();
 
+    @Column(updatable = false)
+    @Enumerated(EnumType.STRING)
+    private Role role = Role.CLIENT;
+
+    @ManyToOne
+    @JoinColumn(name = "orderPoint_id")
+    private OrderPoint orderPoint;
 }

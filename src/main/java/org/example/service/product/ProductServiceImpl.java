@@ -1,47 +1,47 @@
 package org.example.service.product;
 
+import org.example.converterDTO.ConverterDTO;
 import org.example.converterDTO.ProductConverter;
-import org.example.converterDTO.UserConverter;
-import org.example.dao.bag.BagDAO;
-import org.example.dao.bag.BagDAOImpl;
 import org.example.dao.product.ProductDAO;
 import org.example.dao.product.ProductDAOImpl;
-import org.example.dao.user.UserDAO;
-import org.example.dao.user.UserDAOImpl;
 import org.example.dto.ProductDTO;
-import org.example.dto.UserDTO;
-import org.example.model.Bag;
 import org.example.model.Product;
-import org.example.model.User;
-import org.example.model.additional.primaryKeys.PrimaryKeyBag;
-import org.example.model.additional.primaryKeys.PrimaryKeyUtil;
 
 import java.io.Serializable;
 import java.util.List;
 
 public class ProductServiceImpl implements ProductService {
     private ProductDAO productDAO = new ProductDAOImpl();
+    private ConverterDTO<Product, ProductDTO> converterDTO = new ProductConverter();
 
     @Override
     public List<ProductDTO> getAllProducts() {
+        ConverterDTO<Product, ProductDTO> converterDTO = new ProductConverter();
         return productDAO.getProductList().stream()
-                .map(ProductConverter::toProductDTO)
+                .map(converterDTO::toDTO)
                 .toList();
     }
 
-    public Product findProduct(Serializable id) {
-        return productDAO.get(id);
+    public ProductDTO findProduct(Serializable id) {
+        return converterDTO.toDTO(productDAO.get(id));
     }
 
-    public void addProduct(Product product) {
+    @Override
+    public void addProduct(ProductDTO productDTO) {
+        ConverterDTO<Product, ProductDTO> converterDTO = new ProductConverter();
+        Product product = converterDTO.toEntity(productDTO);
         productDAO.save(product);
     }
 
-    public void updateProduct(Product product) {
+    @Override
+    public void updateProduct(ProductDTO productDTO) {
+        Product product = converterDTO.toEntity(productDTO);
         productDAO.update(product);
     }
 
-    public void removeProduct(Product product) {
-        productDAO.delete(product.getId());
+    @Override
+    public void removeProduct(Serializable id) {
+
+        productDAO.delete(id);
     }
 }

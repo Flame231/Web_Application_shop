@@ -1,13 +1,14 @@
 package org.example.model;
 
-import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 import org.example.model.additional.DataEntity;
+import org.example.model.user.User;
 
+import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.HashSet;
 import java.util.Set;
@@ -34,7 +35,7 @@ public class UserOrder extends DataEntity {
     private OrderPoint orderPoint;
 
     @OneToMany(mappedBy = "userOrder")
-    private Set<UserOrderProduct> userOrderProduct = new HashSet<>();
+    private Set<UserOrderProductDTO> userOrderProduct = new HashSet<>();
 
     private BigDecimal orderSum;
 }

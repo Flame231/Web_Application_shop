@@ -5,8 +5,8 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.example.model.OrderPoint;
-import org.example.model.User;
-import org.example.model.UserOrderProduct;
+import org.example.model.UserOrderProductDTO;
+import org.example.model.user.User;
 
 import java.math.BigDecimal;
 import java.sql.Timestamp;
@@ -18,7 +18,7 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
-public class UserOrderDTO{
+public class UserOrderDTO {
 
     private Integer id;
 
@@ -28,10 +28,9 @@ public class UserOrderDTO{
 
     private OrderPoint orderPoint;
 
-    private Set<UserOrderProduct> userOrderProduct = new HashSet<>();
+    private Set<UserOrderProductDTO> userOrderProduct = new HashSet<>();
 
     private BigDecimal orderSum;
-
 
     private Timestamp createDateTime;
 }

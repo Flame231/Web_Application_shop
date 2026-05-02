@@ -1,12 +1,11 @@
 package org.example.dao.user;
 
-import jakarta.persistence.NoResultException;
 import org.example.dao.DAOImpl;
 import org.example.model.Discount;
-import org.example.model.User;
 import org.example.model.UserOrder;
+import org.example.model.user.User;
 
-import java.util.Optional;
+import javax.persistence.NoResultException;
 
 public class UserDAOImpl extends DAOImpl<User> implements UserDAO {
 

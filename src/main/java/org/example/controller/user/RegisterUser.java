@@ -1,7 +1,7 @@
 package org.example.controller.user;
 
-import org.example.controller.postConverters.PostToUserDTO;
 import org.example.dto.UserDTO;
+import org.example.postConverters.PostToUserDTO;
 import org.example.service.user.UserService;
 import org.example.service.user.UserServiceImpl;
 
@@ -11,20 +11,20 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-import static org.example.util.NameUtils2.REGISTER_USER;
-import static org.example.util.NamesUtil.ACCOUNT_JSP;
+import static org.example.util.NamesUtil.MAIN_PAGE_CLIENT;
+import static org.example.util.NamesUtil.REGISTER_USER;
 
-@WebServlet("/" + REGISTER_USER)
+@WebServlet(REGISTER_USER)
 public class RegisterUser extends HttpServlet {
-    UserService userService = new UserServiceImpl();
+    private UserService userService = new UserServiceImpl();
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         UserDTO userDTO = PostToUserDTO.toUserDTO(request);
         if (userDTO.getId() == null) {
             userService.registerUser(userDTO);
         } else {
-            userService.updateUseProfile(userDTO);
+            userService.updateUser(userDTO);
         }
-        response.sendRedirect(ACCOUNT_JSP);
+        response.sendRedirect(request.getContextPath() + MAIN_PAGE_CLIENT);
     }
 }

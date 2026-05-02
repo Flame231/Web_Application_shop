@@ -68,5 +68,12 @@
                 constraintName="fk_bag_product"
                 referencedTableName="product"
                 referencedColumnNames="id"/>
+
+        <addForeignKeyConstraint
+                baseTableName="User"
+                baseColumnNames="orderPoint_id"
+                constraintName="fk_user_orderPoint"
+                referencedTableName="orderPoint"
+                referencedColumnNames="id"/>
     </changeSet>
 </databaseChangeLog>

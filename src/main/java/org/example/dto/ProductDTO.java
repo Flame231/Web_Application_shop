@@ -6,9 +6,11 @@ import org.example.model.ProductCategory;
 import org.example.model.Seller;
 
 import java.math.BigDecimal;
+import java.sql.Timestamp;
+
 @Builder
 @Getter
-public class ProductDTO{
+public class ProductDTO {
 
     private Integer id;
 
@@ -19,5 +21,7 @@ public class ProductDTO{
     private BigDecimal price;
 
     private Seller seller;
+
+    private Timestamp updateDateTime;
 
 }

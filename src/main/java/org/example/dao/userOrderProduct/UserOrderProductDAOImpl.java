@@ -3,15 +3,15 @@ package org.example.dao.userOrderProduct;
 import org.example.dao.DAOImpl;
 import org.example.model.Product;
 import org.example.model.UserOrder;
-import org.example.model.UserOrderProduct;
+import org.example.model.UserOrderProductDTO;
 
-public class UserOrderProductDAOImpl extends DAOImpl<UserOrderProduct> implements UserOrderProductDAO {
+public class UserOrderProductDAOImpl extends DAOImpl<UserOrderProductDTO> implements UserOrderProductDAO {
     public UserOrderProductDAOImpl() {
-        super(UserOrderProduct.class);
+        super(UserOrderProductDTO.class);
     }
 
     @Override
-    public void addUserOrder(UserOrderProduct userOrderProduct, UserOrder userOrder) {
+    public void addUserOrder(UserOrderProductDTO userOrderProduct, UserOrder userOrder) {
         begin();
         userOrderProduct.setUserOrder(userOrder);
         userOrder.getUserOrderProduct().add(userOrderProduct);
@@ -19,7 +19,7 @@ public class UserOrderProductDAOImpl extends DAOImpl<UserOrderProduct> implement
     }
 
     @Override
-    public void addProduct(UserOrderProduct userOrderProduct, Product product) {
+    public void addProduct(UserOrderProductDTO userOrderProduct, Product product) {
         begin();
         userOrderProduct.setProduct(product);
         product.getUserOrderProducts().add(userOrderProduct);

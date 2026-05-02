@@ -1,7 +1,8 @@
-import jakarta.persistence.EntityManager;
-import org.example.util.HibernateUtil;
 import org.example.model.*;
+import org.example.model.user.User;
+import org.example.util.HibernateUtil;
 
+import javax.persistence.EntityManager;
 import java.math.BigDecimal;
 import java.sql.Time;
 import java.time.LocalDate;
@@ -46,7 +47,7 @@ public class Application {
                 .price(new BigDecimal(10000))
                 .seller(seller).build();
 
-        UserOrderProduct orderProduct = UserOrderProduct.builder()
+        UserOrderProductDTO orderProduct = UserOrderProductDTO.builder()
                 .userOrder(order).product(product).productCount(2).build();
 
         Bag bag = Bag.builder().user(user).product(product)

@@ -5,17 +5,22 @@
 <%@ page import="org.example.service.product.ProductServiceImpl" %>
 <%@ page import="org.example.dto.SellerDTO" %>
 <%@ page import="static org.example.util.NamesUtil.PRODUCT_CATEGORY_ID_PARAMETER" %>
+<%@ page import="static org.example.util.NamesUtil.MAIN_PAGE_ADMINISTRATOR" %>
+<%@ page import="static org.example.util.NamesUtil.*" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
     <%
-        String productId = request.getParameter("productId");
+        Integer productId = Integer.parseInt(request.getParameter("productId"));
         ProductService productService = new ProductServiceImpl();
         Product product = productService.findProduct(productId);
     %>
+    <form action="<%=request.getContextPath() + MAIN_PAGE_ADMINISTRATOR%>" method="post">
+        <input type="submit" value="Вернуться в личный кабинет">
+    </form>
     <title>Редактировать продукт</title>
     <h1>Редактировать продукт</h1>
-    <form action="UpdateProduct" method="post">
+    <form action="<%=request.getContextPath() + UPDATE_PRODUCT%>" method="post">
         Номер продукта:
         <%=product.getId()%>
         <input type="hidden" name="productId" value="<%=product.getId()%>">

@@ -1,6 +1,5 @@
 package org.example.model;
 
-import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -10,6 +9,7 @@ import org.example.model.additional.primaryKeys.PrimaryKeyUserOrderProduct;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import javax.persistence.*;
 import java.math.BigDecimal;
 import java.sql.Timestamp;
 
@@ -21,7 +21,7 @@ import java.sql.Timestamp;
 @Setter
 @Getter
 @IdClass(PrimaryKeyUserOrderProduct.class)
-public class UserOrderProduct {
+public class UserOrderProductDTO {
     @Id
     @ManyToOne
     @JoinColumn(name = "userOrder_id")

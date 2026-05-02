@@ -1,4 +1,4 @@
-package org.example.controller.postConverters;
+package org.example.postConverters;
 
 import org.example.dto.ProductDTO;
 import org.example.service.productCategory.ProductCategoryService;
@@ -13,18 +13,18 @@ import static org.example.util.NamesUtil.*;
 public class PostToProductDTO {
 
     public static ProductDTO toProductDTO(HttpServletRequest request) {
-        PostConverter postConverter = new PostConverter(request);
+        ConverterPost converterPost = new ConverterPost(request);
 
-        String productName = postConverter.convert(PRODUCT_NAME_PARAMETER, String.class);
-        Integer productCategoryId = postConverter.convert("productCategoryId", Integer.class);
-        BigDecimal price = postConverter.convert(PRICE_PARAMETER, BigDecimal.class);
-        Integer sellerId = postConverter.convert(SELLER_PARAMETER, Integer.class);
+        String productName = converterPost.convertParameter(PRODUCT_NAME_PARAMETER, String.class);
+        Integer productCategoryId = converterPost.convertParameter("productCategoryId", Integer.class);
+        BigDecimal price = converterPost.convertParameter(PRICE_PARAMETER, BigDecimal.class);
+        Integer sellerId = converterPost.convertParameter(SELLER_PARAMETER, Integer.class);
 
         ProductCategoryService productCategoryService = new ProductCategoryServiceImpl();
         SellerServiceImpl sellerService = new SellerServiceImpl();
 
         if (request.getParameter(PRODUCT_ID_PARAMETER) != null) {
-            Integer productId = postConverter.convert(PRODUCT_ID_PARAMETER, Integer.class);
+            Integer productId = converterPost.convertParameter(PRODUCT_ID_PARAMETER, Integer.class);
             return ProductDTO.builder().id(productId)
                     .productName(productName)
                     .productCategory(productCategoryService.findProductCategory(productCategoryId))

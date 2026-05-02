@@ -1,5 +1,6 @@
 package org.example.service.seller;
 
+import org.example.converterDTO.ConverterDTO;
 import org.example.converterDTO.SellerConverter;
 import org.example.dao.seller.SellerDAO;
 import org.example.dao.seller.SellerDAOImpl;
@@ -10,13 +11,14 @@ import java.io.Serializable;
 import java.util.List;
 
 public class SellerServiceImpl implements SellerService {
-
-    SellerDAO sellerDAO = new SellerDAOImpl();
+    private SellerDAO sellerDAO = new SellerDAOImpl();
+    private ConverterDTO<Seller, SellerDTO> converterDTO = new SellerConverter();
 
     public List<SellerDTO> getSellerDTOList() {
+        ConverterDTO<Seller, SellerDTO> converterDTO = new SellerConverter();
         return sellerDAO.getSellerList()
                 .stream()
-                .map(SellerConverter::toSellerDTO)
+                .map(converterDTO::toDTO)
                 .toList();
     }
 
@@ -25,12 +27,14 @@ public class SellerServiceImpl implements SellerService {
     }
 
     @Override
-    public void updateSeller(Seller seller) {
+    public void updateSeller(SellerDTO sellerDTO) {
+        Seller seller = converterDTO.toEntity(sellerDTO);
         sellerDAO.update(seller);
     }
 
     @Override
-    public void addSeller(Seller seller) {
+    public void addSeller(SellerDTO sellerDTO) {
+        Seller seller = converterDTO.toEntity(sellerDTO);
         sellerDAO.save(seller);
     }
 

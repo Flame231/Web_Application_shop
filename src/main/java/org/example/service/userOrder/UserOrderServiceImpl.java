@@ -1,5 +1,6 @@
 package org.example.service.userOrder;
 
+import org.example.converterDTO.ConverterDTO;
 import org.example.converterDTO.UserOrderConverter;
 import org.example.dao.bag.BagDAO;
 import org.example.dao.bag.BagDAOImpl;
@@ -16,19 +17,22 @@ import org.example.dao.userOrderProduct.UserOrderProductDAOImpl;
 import org.example.dto.NewOrderDTO;
 import org.example.dto.UserOrderDTO;
 import org.example.model.UserOrder;
-import org.example.model.UserOrderProduct;
+import org.example.model.UserOrderProductDTO;
 import org.example.model.additional.primaryKeys.PrimaryKeyBag;
-import org.example.service.bag.BagServiceImpl;
+import org.example.model.user.User;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.List;
 
 public class UserOrderServiceImpl implements UserOrderService {
-    UserOrderDAO userOrderDAO = new UserOrderDAOImpl();
+    private UserOrderDAO userOrderDAO = new UserOrderDAOImpl();
+    private UserDAO userDAO = new UserDAOImpl();
+    ConverterDTO<UserOrder, UserOrderDTO> converterDTO = new UserOrderConverter();
 
     @Override
     public void confirmOrder(List<NewOrderDTO> list) {
-        UserDAO userDAO = new UserDAOImpl();
+
         OrderPointDAO orderPointDAO = new OrderPointDAOIml();
         ProductDAO productDAO = new ProductDAOImpl();
         UserOrderProductDAO userOrderProductDAO = new UserOrderProductDAOImpl();
@@ -42,7 +46,7 @@ public class UserOrderServiceImpl implements UserOrderService {
         userOrderDAO.save(userOrder);
         for (int i = 0; i < list.size(); i++) {
             if (list.get(i).getCount() != 0) {
-                UserOrderProduct userOrderProduct = UserOrderProduct.builder()
+                UserOrderProductDTO userOrderProduct = UserOrderProductDTO.builder()
                         .userOrder(userOrder).product(productDAO.get(list.get(i).getProductId()))
                         .productCount(list.get(i).getCount()).productPrice(list.get(i).getProductPrice()).build();
 
@@ -60,8 +64,18 @@ public class UserOrderServiceImpl implements UserOrderService {
 
     @Override
     public List<UserOrderDTO> showAllUserOrders() {
-        return userOrderDAO.getUserOrderList().stream().map(UserOrderConverter::toUserOrderDTO)
+        ConverterDTO<UserOrder, UserOrderDTO> converterDTO = new UserOrderConverter();
+        return userOrderDAO.getUserOrderList().stream().map(converterDTO::toDTO)
                 .toList();
+    }
+
+    @Override
+    public List<UserOrderDTO> showUserOrdersByOrderPoint(Serializable userId) {
+        User user = userDAO.get(userId);
+        Integer orderPointId = user.getOrderPoint().getId();
+        List<UserOrder> userOrderList = userOrderDAO.getUserOrderByOrderPoint(orderPointId);
+        List<UserOrderDTO> userDTOList = userOrderList.stream().map(converterDTO::toDTO).toList();
+        return userDTOList;
     }
 
 }

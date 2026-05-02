@@ -1,10 +1,13 @@
 package org.example.model;
 
-import jakarta.persistence.*;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 import org.example.model.additional.DataEntity;
 
+import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.HashSet;
 import java.util.Set;
@@ -36,7 +39,7 @@ public class Product extends DataEntity {
     private Set<Bag> bags = new HashSet<>();
 
     @OneToMany(mappedBy = "product")
-    private Set<UserOrderProduct> userOrderProducts = new HashSet<>();
+    private Set<UserOrderProductDTO> userOrderProducts = new HashSet<>();
 
     @Override
     public String toString() {

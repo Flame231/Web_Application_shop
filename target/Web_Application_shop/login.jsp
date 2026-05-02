@@ -1,5 +1,5 @@
-<%@ page import="static org.example.util.NamesUtil.AUTHORIZE_USER" %>
 <%@ page import="static org.example.util.NamesUtil.REGISTRATION_JSP" %>
+<%@ page import="static org.example.util.NamesUtil.AUTHORIZE_USER" %>
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <style>
@@ -62,7 +62,8 @@
         Логин: <p><input name="login" type="text"/></p>
         Пароль: <p><input name="password" type="password"/></p>
         <p><input type="submit" value="Войти" formaction="<%=AUTHORIZE_USER%>"/></p>
-        <p><input type="submit" value="Регистрация нового пользователя" formaction="<%=REGISTRATION_JSP%>"/></p>
+        <p><input type="submit" value="Регистрация нового пользователя"
+                  formaction="<%=request.getContextPath() + "/"+ REGISTRATION_JSP%>"/></p>
     </form>
 
 </head>

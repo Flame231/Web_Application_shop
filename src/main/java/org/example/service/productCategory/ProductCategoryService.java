@@ -1,6 +1,5 @@
 package org.example.service.productCategory;
 
-import org.example.converterDTO.ProductCategoryConverter;
 import org.example.dao.productCategory.ProductCategoryDAO;
 import org.example.dao.productCategory.ProductCategoryDAOImpl;
 import org.example.dto.ProductCategoryDTO;
@@ -16,9 +15,9 @@ public interface ProductCategoryService {
 
     ProductCategory findProductCategory(Serializable id);
 
-    void addProductCategory(ProductCategory productCategory);
+    void addProductCategory(ProductCategoryDTO productCategoryDTO);
 
-    void updateProductCategory(ProductCategory productCategory);
+    void updateProductCategory(ProductCategoryDTO productCategoryDTO);
 
     void deleteProductCategory(Serializable id);
 }

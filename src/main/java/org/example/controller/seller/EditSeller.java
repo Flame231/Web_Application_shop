@@ -8,14 +8,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-import static org.example.util.NameUtils2.EDIT_SELLER;
+import static org.example.util.NamesUtil.EDIT_SELLER;
+import static org.example.util.NamesUtil.EDIT_SELLER_JSP;
 
 
-@WebServlet("/" + EDIT_SELLER)
+@WebServlet(EDIT_SELLER)
 public class EditSeller extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        RequestDispatcher dispatcher1 = request.getRequestDispatcher("/superUser/seller/EditSeller.jsp");
-        dispatcher1.forward(request, response);
+        RequestDispatcher dispatcher = request.getRequestDispatcher(EDIT_SELLER_JSP);
+        dispatcher.forward(request, response);
     }
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

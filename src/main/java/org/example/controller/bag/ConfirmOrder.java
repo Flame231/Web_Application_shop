@@ -1,7 +1,7 @@
 package org.example.controller.bag;
 
-import org.example.controller.postConverters.PostToNewOrderDTO;
 import org.example.dto.NewOrderDTO;
+import org.example.postConverters.PostToNewOrderDTO;
 import org.example.service.userOrder.UserOrderService;
 import org.example.service.userOrder.UserOrderServiceImpl;
 
@@ -12,17 +12,17 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-import static org.example.util.NameUtils2.CONFIRM_ORDER;
-import static org.example.util.NameUtils2.SHOW_USER_ORDERS;
+import static org.example.util.NamesUtil.CONFIRM_ORDER;
+import static org.example.util.NamesUtil.SHOW_USER_ORDERS;
 
-@WebServlet("/" + CONFIRM_ORDER)
+@WebServlet(CONFIRM_ORDER)
 public class ConfirmOrder extends HttpServlet {
-    UserOrderService userOrderService = new UserOrderServiceImpl();
+    private UserOrderService userOrderService = new UserOrderServiceImpl();
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         List<NewOrderDTO> list = PostToNewOrderDTO.toNewOrderDTO(request);
         userOrderService.confirmOrder(list);
-        response.sendRedirect(request.getContextPath() + "/" +  SHOW_USER_ORDERS);
+        response.sendRedirect(request.getContextPath() + SHOW_USER_ORDERS);
     }
 
     public void goGet(HttpServletRequest request, HttpServletResponse response) throws IOException {

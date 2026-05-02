@@ -1,13 +1,10 @@
 package org.example.dto;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
-import lombok.*;
-import lombok.experimental.SuperBuilder;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 import org.example.model.UserOrder;
-import org.example.model.additional.DataEntity;
 
 import java.sql.Time;
 import java.util.Set;

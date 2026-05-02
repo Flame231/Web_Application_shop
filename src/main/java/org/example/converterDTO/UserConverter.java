@@ -1,16 +1,11 @@
 package org.example.converterDTO;
 
-import jakarta.transaction.UserTransaction;
-import org.example.dao.user.UserDAO;
-import org.example.dao.user.UserDAOImpl;
 import org.example.dto.UserDTO;
-import org.example.model.User;
+import org.example.model.user.User;
 
-import java.time.LocalDate;
-import java.util.Date;
-
-public class UserConverter {
-    public static UserDTO toUserDTO(User user) {
+public class UserConverter implements ConverterDTO<User, UserDTO> {
+    @Override
+    public UserDTO toDTO(User user) {
         if (user != null) {
             return UserDTO.builder().id(user.getId())
                     .name(user.getName())
@@ -19,14 +14,19 @@ public class UserConverter {
                     .paymentMethods(user.getPaymentMethods())
                     .sumOfPurchases(user.getSumOfPurchases())
                     .userOrders(user.getUserOrders())
-                    .discount(user.getDiscount()).build();
+                    .discount(user.getDiscount())
+                    .bags(user.getBags())
+                    .role(user.getRole())
+                    .build();
         } else {
             return null;
         }
     }
 
-    public static User toUserEntity(UserDTO userDTO) {
+    @Override
+    public User toEntity(UserDTO userDTO) {
         return User.builder().name(userDTO.getName())
+                .id(userDTO.getId())
                 .login((userDTO.getLogin()))
                 .password((userDTO.getNewPassword()))
                 .birthday((userDTO.getBirthday()))
@@ -36,7 +36,7 @@ public class UserConverter {
                 .discount((userDTO.getDiscount())).build();
     }
 
-    public static User userProfileToEntity(UserDTO userDTO) {
+ /*   public static User userProfileToEntity(UserDTO userDTO) {
         UserDAO userDAO = new UserDAOImpl();
         User user = userDAO.get(userDTO.getId());
         user.setName(userDTO.getName());
@@ -45,7 +45,7 @@ public class UserConverter {
         user.setBirthday(LocalDate.parse(userDTO.getBirthday().toString()));
         user.setPaymentMethods(userDTO.getPaymentMethods());
         return user;
-    }
+    }*/
 
 
 }

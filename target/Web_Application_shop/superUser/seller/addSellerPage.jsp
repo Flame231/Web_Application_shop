@@ -1,3 +1,4 @@
+<%@ page import="static org.example.util.NamesUtil.ADD_SELLER" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -5,7 +6,7 @@
 </head>
 <body>
 
-<form action="/Web_Application_shop_war/AddSeller" method="post">
+<form action="<%=request.getContextPath() + ADD_SELLER%>" method="post">
     Название продавца:
     <input type="text" name="sellerName">
     Адрес продавца:

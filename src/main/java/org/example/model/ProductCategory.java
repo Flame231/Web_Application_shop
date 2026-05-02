@@ -1,13 +1,12 @@
 package org.example.model;
 
-import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 import org.example.model.additional.DataEntity;
 
+import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 

@@ -1,11 +1,12 @@
 package org.example.dto;
 
-import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
+import org.example.model.Bag;
 import org.example.model.Discount;
 import org.example.model.UserOrder;
+import org.example.model.user.Role;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -36,6 +37,10 @@ public class UserDTO {
 
     private Set<UserOrder> userOrders;
 
+    private Set<Bag> bags;
+
     private Discount discount;
+
+    private Role role;
 
 }

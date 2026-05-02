@@ -1,17 +1,15 @@
 package org.example.service.bag;
 
-import org.example.dto.ProductBagDTO;
-import org.example.dto.ProductDTO;
-import org.example.model.Bag;
-import org.example.model.Product;
-import org.example.model.User;
+import org.example.dto.BagDTO;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 public interface BagService {
-    void addProductToBag(Bag bag);
+    void addProductToBag(BagDTO bagDTO);
 
-    List<ProductBagDTO> showAllBags(Integer userId);
+    List<BagDTO> showAllBags(HttpServletRequest request);
 
-    public  void closeBag();
+
+    public void closeBag();
 }

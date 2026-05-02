@@ -1,7 +1,7 @@
 package org.example.model.additional.primaryKeys;
 
 import org.example.model.Product;
-import org.example.model.User;
+import org.example.model.user.User;
 
 public class PrimaryKeyUtil {
     public static PrimaryKeyBag getPrimaryKeyBag(User user, Product product) {

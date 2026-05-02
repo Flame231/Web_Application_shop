@@ -1,21 +1,13 @@
 package org.example.converterDTO;
 
 import org.example.dto.ProductDTO;
-import org.example.model.Bag;
 import org.example.model.Product;
-import org.example.model.User;
 
-public class ProductConverter {
+public class ProductConverter implements ConverterDTO<Product, ProductDTO> {
 
-    public static ProductDTO toProductDTO(Product product) {
-        return ProductDTO.builder().id(product.getId())
-                .productName(product.getProductName())
-                .productCategory(product.getProductCategory())
-                .price(product.getPrice())
-                .seller(product.getSeller()).build();
-    }
 
-    public static Product toProduct(ProductDTO productDTO){
+    @Override
+    public Product toEntity(ProductDTO productDTO) {
         return Product.builder().id(productDTO.getId())
                 .productName(productDTO.getProductName())
                 .productCategory(productDTO.getProductCategory())
@@ -23,4 +15,18 @@ public class ProductConverter {
                 .seller(productDTO.getSeller())
                 .userOrderProducts(null).build();
     }
+
+
+    @Override
+    public ProductDTO toDTO(Product product) {
+        return ProductDTO.builder().id(product.getId())
+                .productName(product.getProductName())
+                .productCategory(product.getProductCategory())
+                .price(product.getPrice())
+                .seller(product.getSeller())
+                .updateDateTime(product.getUpdateDateTime())
+                .build();
+    }
+
+
 }

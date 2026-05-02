@@ -11,35 +11,35 @@
 
     <build>
         <finalName>Web_Application_shop</finalName>
-    <plugins>
-        <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-compiler-plugin</artifactId>
-            <version>3.13.0</version>
-            <configuration>
-                <annotationProcessorPaths>
-                    <!-- ОБЯЗАТЕЛЬНО: указываем путь к Lombok для компилятора -->
-                    <path>
-                        <groupId>org.projectlombok</groupId>
-                        <artifactId>lombok</artifactId>
-                        <version>1.18.30</version> <!-- Укажите вашу версию -->
-                    </path>
-                </annotationProcessorPaths>
-            </configuration>
-        </plugin>
-        <plugin>
-            <groupId>org.liquibase</groupId>
-            <artifactId>liquibase-maven-plugin</artifactId>
-            <version>4.27.0</version> <!-- или твоя версия -->
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.13.0</version>
+                <configuration>
+                    <annotationProcessorPaths>
+                        <!-- ОБЯЗАТЕЛЬНО: указываем путь к Lombok для компилятора -->
+                        <path>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok</artifactId>
+                            <version>1.18.30</version> <!-- Укажите вашу версию -->
+                        </path>
+                    </annotationProcessorPaths>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.liquibase</groupId>
+                <artifactId>liquibase-maven-plugin</artifactId>
+                <version>4.27.0</version> <!-- или твоя версия -->
 
-            <configuration>
-                <url>jdbc:mysql://localhost:3306/shop?createDatabaseIfNotExist=true</url>
-                <propertyFile>liquibase.properties</propertyFile>
-                <searchPath>src/main/resources/</searchPath>
-            </configuration>
-        </plugin>
-    </plugins>
-</build>
+                <configuration>
+                    <url>jdbc:mysql://localhost:3306/shop?createDatabaseIfNotExist=true</url>
+                    <propertyFile>liquibase.properties</propertyFile>
+                    <searchPath>src/main/resources/</searchPath>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
@@ -50,7 +50,13 @@
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-core</artifactId>
-            <version>6.4.4.Final</version>
+            <version>5.6.15.Final</version>
+        </dependency>
+
+        <dependency>
+            <groupId>javax.persistence</groupId>
+            <artifactId>javax.persistence-api</artifactId>
+            <version>2.2</version>
         </dependency>
 
         <dependency>
@@ -79,7 +85,6 @@
             <scope>provided</scope>
         </dependency>
     </dependencies>
-
 
 
 </project>

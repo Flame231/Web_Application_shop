@@ -8,17 +8,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-import static org.example.util.NameUtils2.EDIT_PRODUCT_CATEGORIES;
 import static org.example.util.NamesUtil.*;
 
 
-@WebServlet("/" + EDIT_PRODUCT_CATEGORIES)
+@WebServlet(EDIT_PRODUCT_CATEGORIES)
 public class EditProductCategories extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        RequestDispatcher dispatcher1 = getServletContext().getRequestDispatcher(GET_PRODUCT_CATEGORIES_ROOT);
-        dispatcher1.include(request, response);
-        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(EDIT_PRODUCT_CATEGORIES_JSP);
-        dispatcher.forward(request, response);
+        RequestDispatcher includeDispatcher = getServletContext().getRequestDispatcher(GET_ALL_PRODUCT_CATEGORIES);
+        includeDispatcher.include(request, response);
+        RequestDispatcher forwardDispatcher = getServletContext().getRequestDispatcher(EDIT_PRODUCT_CATEGORIES_JSP);
+        forwardDispatcher.forward(request, response);
     }
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

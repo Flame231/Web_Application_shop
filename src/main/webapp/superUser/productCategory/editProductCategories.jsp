@@ -1,6 +1,7 @@
 <%@ page import="java.util.List" %>
-<%@ page import="static org.example.util.NamesUtil.ACCOUNT_JSP" %>
 <%@ page import="org.example.dto.ProductCategoryDTO" %>
+<%@ page import="static org.example.util.NamesUtil.REMOVE_PRODUCT_CATEGORY" %>
+<%@ page import="static org.example.util.NamesUtil.*" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <style>
 
@@ -33,12 +34,14 @@
 </style>
 <html>
 <head>
-    <br><a href="<%=ACCOUNT_JSP%>">Вернуться в личный кабинет</a></br>
+    <form action="<%=request.getContextPath() + MAIN_PAGE_ADMINISTRATOR%>" method="post">
+        <input type="submit" value="Вернуться в личный кабинет">
+    </form>
     <title>Редактировать категории товаров</title>
     <h1>Категории</h1>
 </head>
 <body>
-<form action="AddProductCategoryPage" method="post">
+<form action="<%=request.getContextPath() + ADD_PRODUCT_CATEGORY_PAGE%>" method="post">
     <input type="submit" value="Добавить категорию">
 </form>
 <table>
@@ -65,8 +68,10 @@
 
         <td>
             <form method="post">
-                <input type="submit" value="Редактировать" formaction="editProductCategory">
-                <input type="submit" value="Удалить" formaction="removeProductCategory">
+                <input type="submit" value="Редактировать"
+                       formaction="<%=request.getContextPath() + EDIT_PRODUCT_CATEGORY%>">
+                <input type="submit" value="Удалить"
+                       formaction="<%=request.getContextPath() + REMOVE_PRODUCT_CATEGORY%>">
                 <input type="hidden" name="productCategoryId" value="<%=productCategoryDTO.getId()%>">
             </form>
         </td>

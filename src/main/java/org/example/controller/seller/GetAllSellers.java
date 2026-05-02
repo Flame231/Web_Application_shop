@@ -10,11 +10,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-import static org.example.util.NameUtils2.GET_ALL_SELLERS;
+import static org.example.util.NamesUtil.GET_ALL_SELLERS;
 
-@WebServlet("/" + GET_ALL_SELLERS)
+@WebServlet(GET_ALL_SELLERS)
 public class GetAllSellers extends HttpServlet {
-    SellerService sellerService = new SellerServiceImpl();
+    private SellerService sellerService = new SellerServiceImpl();
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setAttribute("sellerList", sellerService.getSellerDTOList());

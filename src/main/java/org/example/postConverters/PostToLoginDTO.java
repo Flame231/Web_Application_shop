@@ -1,4 +1,4 @@
-package org.example.controller.postConverters;
+package org.example.postConverters;
 
 import org.example.dto.LoginDTO;
 
@@ -10,9 +10,9 @@ import static org.example.util.NamesUtil.PASSWORD_PARAMETER;
 public class PostToLoginDTO {
 
     public static LoginDTO toLoginDTO(HttpServletRequest request) {
-        PostConverter tPostConverter = new PostConverter(request);
-        String login = tPostConverter.convert(LOGIN_PARAMETER, String.class);
-        String password = tPostConverter.convert(PASSWORD_PARAMETER, String.class);
+        ConverterPost tConverterPost = new ConverterPost(request);
+        String login = tConverterPost.convertParameter(LOGIN_PARAMETER, String.class);
+        String password = tConverterPost.convertParameter(PASSWORD_PARAMETER, String.class);
         return LoginDTO.builder().login(login).password(password).build();
     }
 }

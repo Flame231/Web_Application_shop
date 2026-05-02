@@ -1,5 +1,5 @@
-<%@ page import="static org.example.util.NamesUtil.LOGIN_JSP" %>
 <%@ page import="static org.example.util.NamesUtil.REGISTER_USER" %>
+<%@ page import="static org.example.util.NamesUtil.LOGIN_JSP" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -37,7 +37,7 @@
 <body>
 
 <h1>Регистрация нового пользователя</h1>
-<a href="<%=LOGIN_JSP%>"> На главную</a>
+<a href="<%=request.getContextPath() + LOGIN_JSP%>"> На главную</a>
 <form action="<%=REGISTER_USER%>" method="post">
     <div class="form-container">
 

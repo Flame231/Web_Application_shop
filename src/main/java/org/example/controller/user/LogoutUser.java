@@ -8,15 +8,15 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-import static org.example.util.NameUtils2.LOGOUT_USER;
 import static org.example.util.NamesUtil.LOGIN_JSP;
+import static org.example.util.NamesUtil.LOGOUT_USER;
 
-@WebServlet("/" + LOGOUT_USER)
+@WebServlet(LOGOUT_USER)
 public class LogoutUser extends HttpServlet {
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        HttpSession session = req.getSession();
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        HttpSession session = request.getSession();
         session.invalidate();
-        resp.sendRedirect(LOGIN_JSP);
+        response.sendRedirect(request.getContextPath() + LOGIN_JSP);
     }
 }

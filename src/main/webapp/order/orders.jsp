@@ -1,8 +1,10 @@
 <%@ page import="java.util.List" %>
-<%@ page import="static org.example.util.NamesUtil.ACCOUNT_JSP" %>
 <%@ page import="javax.swing.*" %>
 <%@ page import="org.example.dto.UserOrderDTO" %>
-<%@ page import="org.example.model.UserOrderProduct" %>
+<%@ page import="org.example.model.UserOrderProductDTO" %>
+<%@ page import="static org.example.util.NamesUtil.ACCOUNT_CLIENT_JSP" %>
+<%@ page import="static org.example.util.NamesUtil.AUTHORIZE_USER" %>
+<%@ page import="static org.example.util.NamesUtil.*" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <style>
 
@@ -35,7 +37,11 @@
 </style>
 <html>
 <head>
-    <div><a href="<%=ACCOUNT_JSP%>">Вернуться в личный кабинет</a></div>
+    <div>
+        <form action="<%=request.getContextPath() + MAIN_PAGE_CLIENT%>" method="post">
+            <input type="submit" value="Вернуться в личный кабинет">
+        </form>
+    </div>
     <h1>Мои Заказы</h1>
     <title>Мои Заказы</title>
     <br>
@@ -73,7 +79,7 @@
     </thead>
     <tbody>
 
-    <%for (UserOrderProduct userOrderProduct : userOrderDTO.getUserOrderProduct()) {%>
+    <%for (UserOrderProductDTO userOrderProduct : userOrderDTO.getUserOrderProduct()) {%>
     <tr>
 
         <td><%=userOrderProduct.getProduct().getProductName()%>
