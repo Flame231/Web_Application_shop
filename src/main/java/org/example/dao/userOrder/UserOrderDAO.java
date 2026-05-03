@@ -11,4 +11,5 @@ public interface UserOrderDAO extends DAO<UserOrder> {
     List<UserOrder> getUserOrderList();
 
     List<UserOrder> getUserOrderByOrderPoint(Serializable orderPointId);
+
 }

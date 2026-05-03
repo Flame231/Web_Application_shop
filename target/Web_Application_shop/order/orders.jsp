@@ -1,7 +1,7 @@
 <%@ page import="java.util.List" %>
 <%@ page import="javax.swing.*" %>
 <%@ page import="org.example.dto.UserOrderDTO" %>
-<%@ page import="org.example.model.UserOrderProductDTO" %>
+<%@ page import="org.example.model.UserOrderProduct" %>
 <%@ page import="static org.example.util.NamesUtil.ACCOUNT_CLIENT_JSP" %>
 <%@ page import="static org.example.util.NamesUtil.AUTHORIZE_USER" %>
 <%@ page import="static org.example.util.NamesUtil.*" %>
@@ -79,7 +79,7 @@
     </thead>
     <tbody>
 
-    <%for (UserOrderProductDTO userOrderProduct : userOrderDTO.getUserOrderProduct()) {%>
+    <%for (UserOrderProduct userOrderProduct : userOrderDTO.getUserOrderProduct()) {%>
     <tr>
 
         <td><%=userOrderProduct.getProduct().getProductName()%>

@@ -39,7 +39,7 @@ public class Product extends DataEntity {
     private Set<Bag> bags = new HashSet<>();
 
     @OneToMany(mappedBy = "product")
-    private Set<UserOrderProductDTO> userOrderProducts = new HashSet<>();
+    private Set<UserOrderProduct> userOrderProducts = new HashSet<>();
 
     @Override
     public String toString() {

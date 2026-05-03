@@ -17,7 +17,7 @@ import org.example.dao.userOrderProduct.UserOrderProductDAOImpl;
 import org.example.dto.NewOrderDTO;
 import org.example.dto.UserOrderDTO;
 import org.example.model.UserOrder;
-import org.example.model.UserOrderProductDTO;
+import org.example.model.UserOrderProduct;
 import org.example.model.additional.primaryKeys.PrimaryKeyBag;
 import org.example.model.user.User;
 
@@ -46,7 +46,7 @@ public class UserOrderServiceImpl implements UserOrderService {
         userOrderDAO.save(userOrder);
         for (int i = 0; i < list.size(); i++) {
             if (list.get(i).getCount() != 0) {
-                UserOrderProductDTO userOrderProduct = UserOrderProductDTO.builder()
+                UserOrderProduct userOrderProduct = UserOrderProduct.builder()
                         .userOrder(userOrder).product(productDAO.get(list.get(i).getProductId()))
                         .productCount(list.get(i).getCount()).productPrice(list.get(i).getProductPrice()).build();
 
@@ -76,6 +76,12 @@ public class UserOrderServiceImpl implements UserOrderService {
         List<UserOrder> userOrderList = userOrderDAO.getUserOrderByOrderPoint(orderPointId);
         List<UserOrderDTO> userDTOList = userOrderList.stream().map(converterDTO::toDTO).toList();
         return userDTOList;
+    }
+
+    @Override
+    public UserOrderDTO getUserOrderDTO(Serializable id) {
+        UserOrder userOrder = userOrderDAO.get(id);
+        return converterDTO.toDTO(userOrder);
     }
 
 }

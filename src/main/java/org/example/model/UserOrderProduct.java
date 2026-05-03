@@ -21,7 +21,7 @@ import java.sql.Timestamp;
 @Setter
 @Getter
 @IdClass(PrimaryKeyUserOrderProduct.class)
-public class UserOrderProductDTO {
+public class UserOrderProduct {
     @Id
     @ManyToOne
     @JoinColumn(name = "userOrder_id")

@@ -3,11 +3,13 @@ package org.example.dao.userOrderProduct;
 import org.example.dao.DAO;
 import org.example.model.Product;
 import org.example.model.UserOrder;
-import org.example.model.UserOrderProductDTO;
+import org.example.model.UserOrderProduct;
 
-public interface UserOrderProductDAO extends DAO<UserOrderProductDTO> {
+public interface UserOrderProductDAO extends DAO<UserOrderProduct> {
 
-    void addUserOrder(UserOrderProductDTO userOrderProduct, UserOrder userOrder);
+    void addUserOrder(UserOrderProduct userOrderProduct, UserOrder userOrder);
 
-    void addProduct(UserOrderProductDTO userOrderProduct, Product product);
+    void addProduct(UserOrderProduct userOrderProduct, Product product);
+
+    void ChangeBag(Integer value);
 }

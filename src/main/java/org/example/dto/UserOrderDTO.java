@@ -5,7 +5,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.example.model.OrderPoint;
-import org.example.model.UserOrderProductDTO;
+import org.example.model.UserOrderProduct;
 import org.example.model.user.User;
 
 import java.math.BigDecimal;
@@ -28,7 +28,7 @@ public class UserOrderDTO {
 
     private OrderPoint orderPoint;
 
-    private Set<UserOrderProductDTO> userOrderProduct = new HashSet<>();
+    private Set<UserOrderProduct> userOrderProduct = new HashSet<>();
 
     private BigDecimal orderSum;
 

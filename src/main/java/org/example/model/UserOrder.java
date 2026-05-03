@@ -35,7 +35,7 @@ public class UserOrder extends DataEntity {
     private OrderPoint orderPoint;
 
     @OneToMany(mappedBy = "userOrder")
-    private Set<UserOrderProductDTO> userOrderProduct = new HashSet<>();
+    private Set<UserOrderProduct> userOrderProduct = new HashSet<>();
 
     private BigDecimal orderSum;
 }

@@ -7,7 +7,7 @@ import java.io.Serializable;
 import java.util.List;
 
 public class UserOrderDAOImpl extends DAOImpl<UserOrder> implements UserOrderDAO {
-
+    
     public UserOrderDAOImpl() {
         super(UserOrder.class);
     }
@@ -23,4 +23,6 @@ public class UserOrderDAOImpl extends DAOImpl<UserOrder> implements UserOrderDAO
                 " userOrder.orderPoint.id =:orderPointId", UserOrder.class).setParameter(
                 "orderPointId", orderPointId).getResultList();
     }
+
+
 }

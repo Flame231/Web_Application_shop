@@ -47,7 +47,7 @@ public class Application {
                 .price(new BigDecimal(10000))
                 .seller(seller).build();
 
-        UserOrderProductDTO orderProduct = UserOrderProductDTO.builder()
+        UserOrderProduct orderProduct = UserOrderProduct.builder()
                 .userOrder(order).product(product).productCount(2).build();
 
         Bag bag = Bag.builder().user(user).product(product)

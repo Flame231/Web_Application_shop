@@ -1,16 +1,15 @@
 <%@ page import="java.util.List" %>
 <%@ page import="org.example.dto.UserOrderDTO" %>
-<%@ page import="org.example.dto.ProductDTO" %>
-<%@ page import="org.example.model.UserOrderProductDTO" %><%--
-  Created by IntelliJ IDEA.
-  User: Олег
-  Date: 03.05.2026
-  Time: 01:35
-  To change this template use File | Settings | File Templates.
---%>
+<%@ page import="org.example.model.UserOrderProduct" %>
+<%@ page import="static org.example.util.NamesUtil.MAIN_PAGE_CLIENT" %>
+<%@ page import="static org.example.util.NamesUtil.SHOW_ORDER_POINT_ORDER_PAGE" %>
+<%@ page import="static org.example.util.NamesUtil.*" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
+    <form action="<%=request.getContextPath() + MAIN_PAGE_OPERATOR%>" method="post">
+        <input type="submit" value="Вернуться в личный кабинет">
+    </form>
     <title>Заказы на пункте выдачи</title>
 
 </head>
@@ -22,19 +21,32 @@
 <div>Ваш пункт выдачи: <%=userOrderDTOList.get(0).getOrderPoint().getOrderPointAddress()%>
 </div>
 <%for (UserOrderDTO userOrderDTO : userOrderDTOList) {%>
-<div>Номер заказа: <%=userOrderDTO.getId()%>
+<br>
+<div><a href="<%=request.getContextPath() + SHOW_ORDER_POINT_ORDER_PAGE%>?userOrderId=<%=userOrderDTO.getId()%>">Номер
+    заказа: <%=userOrderDTO.getId()%>
+</a>
 </div>
-<%for (UserOrderProductDTO userOrderProductDTO : userOrderDTO.getUserOrderProduct()) {%>
-<div>Название товара: <%=userOrderProductDTO.getProduct().getProductName()%>
-</div>
-<div>Цена товара: <%=userOrderProductDTO.getProduct().getPrice()%>
-</div>
-<%}%>
-
+<br>
+<table border="2">
+    <tr>
+        <th>Название товара</th>
+        <th>Цена товара</th>
+        <th>Количество товара</th>
+    </tr>
+    <%for (UserOrderProduct userOrderProductDTO : userOrderDTO.getUserOrderProduct()) {%>
+    <tr>
+        <td><%=userOrderProductDTO.getProduct().getProductName()%>
+        </td>
+        <td><%=userOrderProductDTO.getProduct().getPrice()%>
+        </td>
+        <td><%=userOrderProductDTO.getProductCount()%>
+        </td>
+        <%}%>
+    </tr>
+</table>
 <div>Сумма заказа: <%=userOrderDTO.getOrderSum()%>
 </div>
-<% }
-%>
+<%}%>
 
 </body>
 </html>
