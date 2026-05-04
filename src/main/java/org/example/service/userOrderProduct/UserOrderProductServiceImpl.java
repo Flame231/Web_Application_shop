@@ -15,13 +15,15 @@ public class UserOrderProductServiceImpl implements UserOrderProductService {
         PrimaryKeyUserOrderProduct primaryKeyUserOrderProduct =
                 PrimaryKeyUtil.getPrimaryKeyUserOrderProduct(userOrderId, productId);
         UserOrderProduct userOrderProduct = userOrderProductDAO.get(primaryKeyUserOrderProduct);
-        if (userOrderProduct.getProductCount() + count >= 0) {
-            Integer newCount = userOrderProduct.getProductCount() + count;
-            userOrderProductDAO.begin();
-            userOrderProduct.setProductCount(newCount);
-            userOrderProductDAO.commit();
-        } else {
-            userOrderProductDAO.delete(primaryKeyUserOrderProduct);
+        userOrderProductDAO.refresh(userOrderProduct);
+        if (userOrderProduct.getActualProductCount() + count >= 0) {
+            if (userOrderProduct.getActualProductCount() + count <= userOrderProduct.getProductCount()) {
+                Integer newCount = userOrderProduct.getActualProductCount() + count;
+                userOrderProductDAO.begin();
+                userOrderProduct.setActualProductCount(newCount);
+                userOrderProductDAO.flush();
+                userOrderProductDAO.commit();
+            }
         }
     }
 }

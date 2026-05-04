@@ -56,4 +56,14 @@ public class DAOImpl<T> implements DAO<T> {
     public void commit() {
         getEm().getTransaction().commit();
     }
+
+    @Override
+    public void flush() {
+        getEm().flush();
+    }
+
+    @Override
+    public void refresh(T t) {
+        getEm().refresh(t);
+    }
 }

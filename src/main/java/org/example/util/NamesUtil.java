@@ -14,7 +14,7 @@ public class NamesUtil {
     public static final String ADD_TO_BAG = "/client/AddToBag";
     public static final String CONFIRM_ORDER = "/client/ConfirmOrder";
     public static final String SHOW_BAG = "/client/ShowBag";
-    public static final String CHANGE_BAG = "/client/ChangeBag";
+    public static final String CHANGE_ORDER = "/operator/ChangeOrder";
     //PRODUCT
     public static final String ADD_PRODUCT = "/administrator/AddProduct";
     public static final String ADD_PRODUCT_PAGE = "/administrator/AddProductPage";
@@ -52,6 +52,7 @@ public class NamesUtil {
     public static final String GET_ALL_USER_ORDERS = "GetAllUserOrders";
     public static final String SHOW_USER_ORDERS = "/client/ShowUserOrders";
     public static final String SHOW_ORDER_POINT_ORDERS = "/operator/ShowOrderPointOrders";
+    public static final String SHOW_ARRIVED_ORDER_POINT_ORDERS = "/operator/ShowArrivedOrderPointOrders";
     public static final String SHOW_ORDER_POINT_ORDER_PAGE = "/operator/ShowUserOrderPage";
 
     //НАЗВАНИЯ JSP

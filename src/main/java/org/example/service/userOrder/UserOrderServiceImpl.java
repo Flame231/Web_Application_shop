@@ -48,7 +48,7 @@ public class UserOrderServiceImpl implements UserOrderService {
             if (list.get(i).getCount() != 0) {
                 UserOrderProduct userOrderProduct = UserOrderProduct.builder()
                         .userOrder(userOrder).product(productDAO.get(list.get(i).getProductId()))
-                        .productCount(list.get(i).getCount()).productPrice(list.get(i).getProductPrice()).build();
+                        .productCount(list.get(i).getCount()).actualProductCount(list.get(i).getCount()).productPrice(list.get(i).getProductPrice()).build();
 
                 orderSum = orderSum.add((list.get(i).getProductPrice()));
 
@@ -74,6 +74,15 @@ public class UserOrderServiceImpl implements UserOrderService {
         User user = userDAO.get(userId);
         Integer orderPointId = user.getOrderPoint().getId();
         List<UserOrder> userOrderList = userOrderDAO.getUserOrderByOrderPoint(orderPointId);
+        List<UserOrderDTO> userDTOList = userOrderList.stream().map(converterDTO::toDTO).toList();
+        return userDTOList;
+    }
+
+    @Override
+    public List<UserOrderDTO> showArrivedUserOrdersByOrderPoint(Serializable userId) {
+        User user = userDAO.get(userId);
+        Integer orderPointId = user.getOrderPoint().getId();
+        List<UserOrder> userOrderList = userOrderDAO.getArrivedUserOrderByOrderPoint(orderPointId);
         List<UserOrderDTO> userDTOList = userOrderList.stream().map(converterDTO::toDTO).toList();
         return userDTOList;
     }

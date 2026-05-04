@@ -13,7 +13,6 @@ import java.math.BigDecimal;
 import java.util.HashSet;
 import java.util.Set;
 
-
 @Entity
 @Table
 @SuperBuilder
@@ -35,6 +34,7 @@ public class UserOrder extends DataEntity {
     private OrderPoint orderPoint;
 
     @OneToMany(mappedBy = "userOrder")
+   @org.hibernate.annotations.OrderBy(clause = "id ASC")
     private Set<UserOrderProduct> userOrderProduct = new HashSet<>();
 
     private BigDecimal orderSum;

@@ -2,8 +2,6 @@
 <%@ page import="javax.swing.*" %>
 <%@ page import="org.example.dto.UserOrderDTO" %>
 <%@ page import="org.example.model.UserOrderProduct" %>
-<%@ page import="static org.example.util.NamesUtil.ACCOUNT_CLIENT_JSP" %>
-<%@ page import="static org.example.util.NamesUtil.AUTHORIZE_USER" %>
 <%@ page import="static org.example.util.NamesUtil.*" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <style>

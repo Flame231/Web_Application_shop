@@ -25,31 +25,43 @@
 <br>
 <table border="2">
     <tr>
-        <th>Номер товара</th>
-        <th>Название товара</th>
-        <th>Цена товара</th>
-        <th>Количество товара</th>
+        <th width="100">Номер товара</th>
+        <th width="100">Название товара</th>
+        <th width="100">Цена товара</th>
+        <th width="60">Заказано товара</th>
+        <%if (userOrderDTO.getOrderStatus().equals("Готов")) {%>
+        <th width="100">Изменить
+            количество товара
+        </th>
+        <%}%>
     </tr>
 
     <%
         BigDecimal TotalSum = BigDecimal.ZERO;
+        BigDecimal actualTotalSum = BigDecimal.ZERO;
         for (UserOrderProduct userOrderProductDTO : userOrderDTO.getUserOrderProduct()) {
     %>
-    <tr>
+    <tr height="30">
         <td><%=userOrderProductDTO.getProduct().getId()%>
         </td>
         <td><%=userOrderProductDTO.getProduct().getProductName()%>
         </td>
         <td><%=userOrderProductDTO.getProduct().getPrice()%>
         </td>
-        <td><%=userOrderProductDTO.getProductCount()%>
-            <form action="<%=CHANGE_BAG%>">
+        <td>
+            <%=userOrderProductDTO.getProductCount()%>
+        </td>
+        <%if (userOrderDTO.getOrderStatus().equals("Готов")) {%>
+        <td>
+            <%=userOrderProductDTO.getActualProductCount()%>
+            <form action="<%=request.getContextPath() + CHANGE_ORDER%>" method="post">
                 <input type="submit" name="plus" value="+">
                 <input type="hidden" name="count" value="1">
                 <input type="hidden" name="userOrderId" value="<%=userOrderProductDTO.getUserOrder().getId()%>">
                 <input type="hidden" name="productId" value="<%=userOrderProductDTO.getProduct().getId()%>">
             </form>
-            <form action="<%=CHANGE_BAG%>">
+
+            <form action="<%=request.getContextPath() + CHANGE_ORDER%>" method="post">
                 <input type="submit" name="minus" value="-">
                 <input type="hidden" name="count" value="-1">
                 <input type="hidden" name="userOrderId" value="<%=userOrderProductDTO.getUserOrder().getId()%>">
@@ -57,14 +69,22 @@
             </form>
         </td>
         <%
+            }
             BigDecimal productSum = userOrderProductDTO.getProduct().getPrice()
                     .multiply(new BigDecimal(userOrderProductDTO.getProductCount()));
             TotalSum = TotalSum.add(productSum);
+            BigDecimal actualProductSum = userOrderProductDTO.getProduct().getPrice()
+                    .multiply(new BigDecimal(userOrderProductDTO.getActualProductCount()));
+            actualTotalSum = actualTotalSum.add(actualProductSum);
         %>
     </tr>
     <%}%>
 </table>
 <div>Сумма заказа: <%=TotalSum%>
+    <br>
+    <%if (userOrderDTO.getOrderStatus().equals("Готов")) {%>
+    Итоговая сумма заказа: <%=actualTotalSum%>
+    <%}%>
 </div>
 </body>
 </html>

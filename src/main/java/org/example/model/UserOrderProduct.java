@@ -32,8 +32,11 @@ public class UserOrderProduct {
     @JoinColumn(name = "product_id")
     private Product product;
 
-    @Column
+    @Column(updatable = false)
     private Integer productCount;
+
+    @Column
+    private Integer actualProductCount;
 
     @Column
     private BigDecimal productPrice;

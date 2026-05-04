@@ -15,9 +15,14 @@
 </head>
 <body>
 <h1>Заказы на пункте выдачи</h1>
+<form action="<%=request.getContextPath() + SHOW_ARRIVED_ORDER_POINT_ORDERS%>" method="post">
+    <input type="submit" value="Доставленные заказы">
+</form>
 <%
     List<UserOrderDTO> userOrderDTOList = (List<UserOrderDTO>) request.getAttribute("userOrderDTOList");
+    if (userOrderDTOList != null && !userOrderDTOList.isEmpty()) {
 %>
+
 <div>Ваш пункт выдачи: <%=userOrderDTOList.get(0).getOrderPoint().getOrderPointAddress()%>
 </div>
 <%for (UserOrderDTO userOrderDTO : userOrderDTOList) {%>
@@ -46,6 +51,11 @@
 </table>
 <div>Сумма заказа: <%=userOrderDTO.getOrderSum()%>
 </div>
+<%
+    }
+} else {
+%>
+Нет активных заказов
 <%}%>
 
 </body>

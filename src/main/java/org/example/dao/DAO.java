@@ -15,4 +15,8 @@ public interface DAO <T>{
     void begin();
 
     void commit();
+
+    void refresh(T t);
+
+    void flush();
 }

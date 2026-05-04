@@ -12,11 +12,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-import static org.example.util.NamesUtil.CHANGE_BAG;
+import static org.example.util.NamesUtil.CHANGE_ORDER;
 import static org.example.util.NamesUtil.SHOW_ORDER_POINT_ORDER_PAGE;
 
-@WebServlet(CHANGE_BAG)
-public class ChangeBag extends HttpServlet {
+@WebServlet(CHANGE_ORDER)
+public class ChangeOrder extends HttpServlet {
     UserOrderProductService userOrderProductService = new UserOrderProductServiceImpl();
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

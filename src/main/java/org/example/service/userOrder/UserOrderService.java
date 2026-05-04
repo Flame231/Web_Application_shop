@@ -14,6 +14,8 @@ public interface UserOrderService {
 
     List<UserOrderDTO> showUserOrdersByOrderPoint(Serializable userId);
 
+    List<UserOrderDTO> showArrivedUserOrdersByOrderPoint(Serializable userId);
+
     UserOrderDTO getUserOrderDTO(Serializable id);
 
 }

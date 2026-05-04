@@ -24,5 +24,10 @@ public class UserOrderDAOImpl extends DAOImpl<UserOrder> implements UserOrderDAO
                 "orderPointId", orderPointId).getResultList();
     }
 
-
+    @Override
+    public List<UserOrder> getArrivedUserOrderByOrderPoint(Serializable orderPointId) {
+        return getEm().createQuery("from UserOrder userOrder where" +
+                " userOrder.orderPoint.id =:orderPointId AND userOrder.orderStatus=:orderStatus", UserOrder.class).setParameter(
+                "orderPointId", orderPointId).setParameter("orderStatus","Готов").getResultList();
+    }
 }
