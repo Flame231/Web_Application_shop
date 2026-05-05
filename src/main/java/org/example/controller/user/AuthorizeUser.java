@@ -19,7 +19,7 @@ import java.io.IOException;
 import static org.example.util.NamesUtil.*;
 
 @WebServlet("/" + AUTHORIZE_USER)
-public class AuthorizeUser1111111111111111111111111111111111111111 extends HttpServlet {
+public class AuthorizeUser extends HttpServlet {
     private UserService userService = new UserServiceImpl();
 
     @Override

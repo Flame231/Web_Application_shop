@@ -1,14 +1,18 @@
 package org.example.service.archivedUserOrder;
 
+import org.example.converterDTO.ArchivedUserOrderConverter;
+import org.example.converterDTO.ConverterDTO;
 import org.example.dao.archivedUserOrder.ArchivedUserOrderDAO;
 import org.example.dao.archivedUserOrder.ArchivedUserOrderDAOImpl;
 import org.example.dao.userOrder.UserOrderDAO;
 import org.example.dao.userOrder.UserOrderDAOImpl;
+import org.example.dto.ArchivedUserOrderDTO;
 import org.example.model.ArchivedUserOrder;
 import org.example.model.UserOrder.OrderStatus;
 import org.example.model.UserOrder.UserOrder;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 public class ArchivedUserOrderServiceImpl implements ArchivedUserOrderService {
     private ArchivedUserOrderDAO archivedUserOrderDAO = new ArchivedUserOrderDAOImpl();
@@ -60,8 +64,11 @@ public class ArchivedUserOrderServiceImpl implements ArchivedUserOrderService {
     }
 
     @Override
-    public void showArchivedUserOrders(Integer userId) {
-
+    public List<ArchivedUserOrderDTO> showArchivedUserOrders(Integer userId) {
+        ConverterDTO<ArchivedUserOrder, ArchivedUserOrderDTO> converterDTO = new ArchivedUserOrderConverter();
+        List<ArchivedUserOrderDTO> list = archivedUserOrderDAO.getArchivedUserOrders(userId).stream()
+                .map(converterDTO::toDTO).toList();
+        return list;
     }
 
     @Override
