@@ -4,7 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.example.model.UserOrder;
+import org.example.model.UserOrder.UserOrder;
 
 import java.sql.Time;
 import java.util.Set;

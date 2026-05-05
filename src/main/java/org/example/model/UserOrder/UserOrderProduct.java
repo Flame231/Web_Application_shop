@@ -1,10 +1,11 @@
-package org.example.model;
+package org.example.model.UserOrder;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
+import org.example.model.Product;
 import org.example.model.additional.primaryKeys.PrimaryKeyUserOrderProduct;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;

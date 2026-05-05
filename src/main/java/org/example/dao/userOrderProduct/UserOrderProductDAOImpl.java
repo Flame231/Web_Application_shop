@@ -2,8 +2,8 @@ package org.example.dao.userOrderProduct;
 
 import org.example.dao.DAOImpl;
 import org.example.model.Product;
-import org.example.model.UserOrder;
-import org.example.model.UserOrderProduct;
+import org.example.model.UserOrder.UserOrder;
+import org.example.model.UserOrder.UserOrderProduct;
 
 public class UserOrderProductDAOImpl extends DAOImpl<UserOrderProduct> implements UserOrderProductDAO {
     public UserOrderProductDAOImpl() {

@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
+import org.example.model.UserOrder.UserOrderProduct;
 import org.example.model.additional.DataEntity;
 
 import javax.persistence.*;

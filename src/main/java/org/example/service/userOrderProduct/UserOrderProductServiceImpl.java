@@ -2,7 +2,7 @@ package org.example.service.userOrderProduct;
 
 import org.example.dao.userOrderProduct.UserOrderProductDAO;
 import org.example.dao.userOrderProduct.UserOrderProductDAOImpl;
-import org.example.model.UserOrderProduct;
+import org.example.model.UserOrder.UserOrderProduct;
 import org.example.model.additional.primaryKeys.PrimaryKeyUserOrderProduct;
 import org.example.model.additional.primaryKeys.PrimaryKeyUtil;
 

@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
+import org.example.model.UserOrder.UserOrder;
 import org.example.model.additional.DataEntity;
 import org.example.model.user.User;
 

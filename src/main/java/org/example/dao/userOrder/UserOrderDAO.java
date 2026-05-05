@@ -1,7 +1,7 @@
 package org.example.dao.userOrder;
 
 import org.example.dao.DAO;
-import org.example.model.UserOrder;
+import org.example.model.UserOrder.UserOrder;
 
 import java.io.Serializable;
 import java.util.List;

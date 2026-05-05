@@ -9,14 +9,12 @@
     <form action="<%=request.getContextPath() + MAIN_PAGE_OPERATOR%>" method="post">
         <input type="submit" value="Вернуться в личный кабинет">
     </form>
-    <title>Заказы на пункте выдачи</title>
+    <title>Готовые заказы на пункте выдачи</title>
 
 </head>
 <body>
-<h1>Заказы на пункте выдачи</h1>
-<form action="<%=request.getContextPath() + SHOW_ARRIVED_ORDER_POINT_ORDERS%>" method="post">
-    <input type="submit" value="Доставленные заказы">
-</form>
+<h1>Готовые заказы на пункте выдачи</h1>
+
 <%
     List<UserOrderDTO> userOrderDTOList = (List<UserOrderDTO>) request.getAttribute("userOrderDTOList");
     if (userOrderDTOList != null && !userOrderDTOList.isEmpty()) {

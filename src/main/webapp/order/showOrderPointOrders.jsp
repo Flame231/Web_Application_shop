@@ -1,7 +1,6 @@
 <%@ page import="java.util.List" %>
 <%@ page import="org.example.dto.UserOrderDTO" %>
-<%@ page import="org.example.model.UserOrderProduct" %>
-<%@ page import="static org.example.util.NamesUtil.MAIN_PAGE_CLIENT" %>
+<%@ page import="org.example.model.UserOrder.UserOrderProduct" %>
 <%@ page import="static org.example.util.NamesUtil.SHOW_ORDER_POINT_ORDER_PAGE" %>
 <%@ page import="static org.example.util.NamesUtil.*" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>

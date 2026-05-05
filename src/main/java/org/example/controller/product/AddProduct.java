@@ -15,7 +15,7 @@ import static org.example.util.NamesUtil.ADD_PRODUCT;
 import static org.example.util.NamesUtil.EDIT_CATALOG;
 
 @WebServlet(ADD_PRODUCT)
-public class AddProduct1111111111111111111111111 extends HttpServlet {
+public class AddProduct extends HttpServlet {
     private ProductService productService = new ProductServiceImpl();
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {

@@ -1,7 +1,7 @@
 <%@ page import="java.util.List" %>
 <%@ page import="javax.swing.*" %>
 <%@ page import="org.example.dto.UserOrderDTO" %>
-<%@ page import="org.example.model.UserOrderProduct" %>
+<%@ page import="org.example.model.UserOrder.UserOrderProduct" %>
 <%@ page import="static org.example.util.NamesUtil.*" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <style>
@@ -54,7 +54,7 @@
 <div>Номер заказа:<%=userOrderDTO.getId()%>
 </div>
 <br>
-<div>Статус заказа: <%=userOrderDTO.getOrderStatus()%>
+<div>Статус заказа: <%=userOrderDTO.getOrderStatus().getDescription()%>
 </div>
 <br>
 <div>Пункт выдачи: <%=userOrderDTO.getOrderPoint().getOrderPointAddress()%>

@@ -25,7 +25,7 @@ public class ShowArrivedOrderPointOrders extends HttpServlet {
         Integer userId = converterPost.convertSessionAttribute("userId");
         List<UserOrderDTO> userOrderDTOList = userOrderService.showArrivedUserOrdersByOrderPoint(userId);
         request.setAttribute("userOrderDTOList", userOrderDTOList);
-        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(SHOW_ORDER_POINT_ORDERS_JSP);
+        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(SHOW_ARRIVED_ORDER_POINT_ORDERS_JSP);
         dispatcher.forward(request, response);
     }
 }

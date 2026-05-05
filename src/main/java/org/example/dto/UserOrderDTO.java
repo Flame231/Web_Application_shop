@@ -5,7 +5,8 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.example.model.OrderPoint;
-import org.example.model.UserOrderProduct;
+import org.example.model.UserOrder.OrderStatus;
+import org.example.model.UserOrder.UserOrderProduct;
 import org.example.model.user.User;
 
 import java.math.BigDecimal;
@@ -22,7 +23,7 @@ public class UserOrderDTO {
 
     private Integer id;
 
-    private String orderStatus;
+    private OrderStatus orderStatus;
 
     private User user;
 
@@ -33,4 +34,6 @@ public class UserOrderDTO {
     private BigDecimal orderSum;
 
     private Timestamp createDateTime;
+
+    private Timestamp updateDateTime;
 }

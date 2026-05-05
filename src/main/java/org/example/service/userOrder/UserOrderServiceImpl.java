@@ -16,8 +16,9 @@ import org.example.dao.userOrderProduct.UserOrderProductDAO;
 import org.example.dao.userOrderProduct.UserOrderProductDAOImpl;
 import org.example.dto.NewOrderDTO;
 import org.example.dto.UserOrderDTO;
-import org.example.model.UserOrder;
-import org.example.model.UserOrderProduct;
+import org.example.model.UserOrder.OrderStatus;
+import org.example.model.UserOrder.UserOrder;
+import org.example.model.UserOrder.UserOrderProduct;
 import org.example.model.additional.primaryKeys.PrimaryKeyBag;
 import org.example.model.user.User;
 
@@ -39,7 +40,7 @@ public class UserOrderServiceImpl implements UserOrderService {
         UserOrderDAO userOrderDAO = new UserOrderDAOImpl();
         BagDAO bagDAO = new BagDAOImpl();
         BigDecimal orderSum = BigDecimal.ZERO;
-        UserOrder userOrder = UserOrder.builder().orderStatus("Оформлен")
+        UserOrder userOrder = UserOrder.builder().orderStatus(OrderStatus.CREATED)
                 .user(userDAO.get(list.get(0).getUserId()))
                 .orderPoint(orderPointDAO.get(list.get(0).getOrderPointId()))
                 .build();
@@ -50,7 +51,7 @@ public class UserOrderServiceImpl implements UserOrderService {
                         .userOrder(userOrder).product(productDAO.get(list.get(i).getProductId()))
                         .productCount(list.get(i).getCount()).actualProductCount(list.get(i).getCount()).productPrice(list.get(i).getProductPrice()).build();
 
-                orderSum = orderSum.add((list.get(i).getProductPrice()));
+                orderSum = orderSum.add(((list.get(i).getProductPrice()).multiply(new BigDecimal(list.get(i).getCount()))));
 
                 userOrderProductDAO.save(userOrderProduct);
                 PrimaryKeyBag primaryKeyBag = new PrimaryKeyBag(list.get(i).getUserId(), list.get(i).getProductId());
@@ -59,7 +60,6 @@ public class UserOrderServiceImpl implements UserOrderService {
         }
         userOrder.setOrderSum(orderSum);
         userOrderDAO.update(userOrder);
-
     }
 
     @Override

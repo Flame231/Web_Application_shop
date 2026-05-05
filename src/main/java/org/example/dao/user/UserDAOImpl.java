@@ -2,7 +2,7 @@ package org.example.dao.user;
 
 import org.example.dao.DAOImpl;
 import org.example.model.Discount;
-import org.example.model.UserOrder;
+import org.example.model.UserOrder.UserOrder;
 import org.example.model.user.User;
 
 import javax.persistence.NoResultException;

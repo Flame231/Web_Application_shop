@@ -1,7 +1,7 @@
 package org.example.converterDTO;
 
 import org.example.dto.UserOrderDTO;
-import org.example.model.UserOrder;
+import org.example.model.UserOrder.UserOrder;
 
 public class UserOrderConverter implements ConverterDTO<UserOrder, UserOrderDTO> {
     @Override
@@ -18,6 +18,8 @@ public class UserOrderConverter implements ConverterDTO<UserOrder, UserOrderDTO>
         return UserOrderDTO.builder().id(userOrder.getId()).orderStatus(userOrder.getOrderStatus())
                 .user(userOrder.getUser()).orderPoint(userOrder.getOrderPoint())
                 .userOrderProduct(userOrder.getUserOrderProduct())
-                .orderSum(userOrder.getOrderSum()).createDateTime(userOrder.getCreateDateTime()).build();
+                .orderSum(userOrder.getOrderSum()).createDateTime(userOrder.getCreateDateTime())
+                .updateDateTime(userOrder.getUpdateDateTime())
+                .build();
     }
 }

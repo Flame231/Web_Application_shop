@@ -8,7 +8,7 @@ import lombok.experimental.SuperBuilder;
 import org.example.model.Bag;
 import org.example.model.Discount;
 import org.example.model.OrderPoint;
-import org.example.model.UserOrder;
+import org.example.model.UserOrder.UserOrder;
 import org.example.model.additional.DataEntity;
 
 import javax.persistence.*;

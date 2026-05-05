@@ -17,7 +17,6 @@ public class PostToBagDTO {
         Integer userId = converterPost.convertParameter(USER_ID_PARAMETER, Integer.class);
         Integer productId = converterPost.convertParameter(PRODUCT_ID_PARAMETER, Integer.class);
         Integer count = converterPost.convertParameter(COUNT_PARAMETER, Integer.class);
-        System.out.println(count + "!!!!!!!!!!!!!!!!!!!!!!");
         UserDAO userDAO = new UserDAOImpl();
         ProductDAO productDAO = new ProductDAOImpl();
 

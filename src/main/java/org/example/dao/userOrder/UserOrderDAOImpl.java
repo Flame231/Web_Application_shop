@@ -1,7 +1,8 @@
 package org.example.dao.userOrder;
 
 import org.example.dao.DAOImpl;
-import org.example.model.UserOrder;
+import org.example.model.UserOrder.OrderStatus;
+import org.example.model.UserOrder.UserOrder;
 
 import java.io.Serializable;
 import java.util.List;
@@ -14,7 +15,7 @@ public class UserOrderDAOImpl extends DAOImpl<UserOrder> implements UserOrderDAO
 
     @Override
     public List<UserOrder> getUserOrderList() {
-        return getEm().createQuery("from UserOrder userOrder", UserOrder.class).getResultList();
+        return getEm().createQuery("from UserOrder userOrder ORDER BY userOrder.id DESC", UserOrder.class).getResultList();
     }
 
     @Override
@@ -28,6 +29,6 @@ public class UserOrderDAOImpl extends DAOImpl<UserOrder> implements UserOrderDAO
     public List<UserOrder> getArrivedUserOrderByOrderPoint(Serializable orderPointId) {
         return getEm().createQuery("from UserOrder userOrder where" +
                 " userOrder.orderPoint.id =:orderPointId AND userOrder.orderStatus=:orderStatus", UserOrder.class).setParameter(
-                "orderPointId", orderPointId).setParameter("orderStatus","Готов").getResultList();
+                "orderPointId", orderPointId).setParameter("orderStatus", OrderStatus.READY).getResultList();
     }
 }

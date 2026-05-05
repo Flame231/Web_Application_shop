@@ -3,6 +3,8 @@ package org.example.postConverters;
 import javax.servlet.http.HttpServletRequest;
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.example.util.NamesUtil.USER_ID_PARAMETER;
 
@@ -48,7 +50,7 @@ public class ConverterPost {
     }
 
 
- /*   public <T> List<T> convertValues(String parameter, Class<T> tclass) {
+    public <T> List<T> convertValues(String parameter, Class<T> tclass) {
         List<T> list = new ArrayList<>();
         if (parameter != null) {
             String[] requestResult = request.getParameterValues(parameter);
@@ -64,5 +66,5 @@ public class ConverterPost {
             return list;
         }
         return null;
-    }*/
+    }
 }

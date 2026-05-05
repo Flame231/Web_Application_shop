@@ -1,12 +1,14 @@
-package org.example.model;
+package org.example.model.UserOrder;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
+import org.example.model.OrderPoint;
 import org.example.model.additional.DataEntity;
 import org.example.model.user.User;
+import org.hibernate.engine.internal.Cascade;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -23,7 +25,8 @@ import java.util.Set;
 public class UserOrder extends DataEntity {
 
     @Column
-    private String orderStatus;
+    @Enumerated(EnumType.STRING)
+    private OrderStatus orderStatus;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
@@ -33,8 +36,8 @@ public class UserOrder extends DataEntity {
     @JoinColumn(name = "orderPoint_id")
     private OrderPoint orderPoint;
 
-    @OneToMany(mappedBy = "userOrder")
-   @org.hibernate.annotations.OrderBy(clause = "id ASC")
+    @OneToMany(mappedBy = "userOrder", cascade = CascadeType.REMOVE)
+    @org.hibernate.annotations.OrderBy(clause = "id ASC")
     private Set<UserOrderProduct> userOrderProduct = new HashSet<>();
 
     private BigDecimal orderSum;
