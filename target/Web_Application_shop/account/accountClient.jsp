@@ -46,9 +46,9 @@
     <input type="submit" value="Просмотреть каталог товаров"
            formaction="<%=request.getContextPath() + SHOW_CATALOG%>">
     <input type="submit" value="Мои заказы" formaction="<%=request.getContextPath() + SHOW_USER_ORDERS%>">
+    <input type="submit" value="История заказов" formaction="<%=request.getContextPath() + SHOW_USERS_ORDER_HISTORY%>">
     <input type="submit" value="Посмотреть профиль"
            formaction="<%=request.getContextPath() + SHOW_USER_PROFILE%>">
 </form>
-
 </body>
 </html>

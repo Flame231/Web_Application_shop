@@ -1,8 +1,12 @@
 <%@ page import="java.util.List" %>
 <%@ page import="org.example.dto.ArchivedUserOrderDTO" %>
 <%@ page import="java.util.Objects" %>
+Created by IntelliJ IDEA.
+User: System Administrator
+Date: 05.05.2026
+Time: 16:11:59
+To change this template use File | Settings | File Templates.
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
 <html>
 <head>
     <title>История заказов</title>
@@ -29,6 +33,7 @@
         <th>Цена продукта на момент заказа</th>
     </tr>
     </thead>
+
     <%
         for (ArchivedUserOrderDTO archivedUserOrderDTO1 : archivedUserOrderDTOList) {
             if (Objects.equals(archivedUserOrderDTO.getUserOrderId(), archivedUserOrderDTO1.getUserOrderId())) {
@@ -43,8 +48,7 @@
         <td><%=archivedUserOrderDTO1.getProductPrice()%>
         </td>
     </tr>
-    <%
-            }
+    <%}
         }
     %>
 

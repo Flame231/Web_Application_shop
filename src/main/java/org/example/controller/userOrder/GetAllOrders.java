@@ -14,7 +14,7 @@ import static org.example.util.NamesUtil.GET_ALL_USER_ORDERS;
 
 @WebServlet("/" + GET_ALL_USER_ORDERS)
 public class GetAllOrders extends HttpServlet {
-    UserOrderService userOrderService = new UserOrderServiceImpl();
+    private UserOrderService userOrderService = new UserOrderServiceImpl();
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) {
         List<UserOrderDTO> list = userOrderService.showAllUserOrders();

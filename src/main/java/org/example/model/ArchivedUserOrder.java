@@ -29,7 +29,7 @@ public class ArchivedUserOrder extends DataEntity {
     private Integer userOrderId;
 
     @Column(updatable = false, nullable = false)
-    private Integer productId;
+    private String productName;
 
     @Column(updatable = false, nullable = false)
     private Integer productCount;

@@ -55,7 +55,7 @@ public class NamesUtil {
     public static final String SHOW_ARRIVED_ORDER_POINT_ORDERS = "/operator/ShowArrivedOrderPointOrders";
     public static final String SHOW_ORDER_POINT_ORDER_PAGE = "/operator/ShowUserOrderPage";
     public static final String CHANGE_USER_ORDER_STATUS = "/operator/ChangeUserOrderStatus";
-    public static final String SHOW_USERS_ORDER_HISTORY = "/client/showUsersOrderHistory";
+    public static final String SHOW_USERS_ORDER_HISTORY = "/client/ShowUsersOrderHistory";
 
     //НАЗВАНИЯ JSP
     //папка webapp

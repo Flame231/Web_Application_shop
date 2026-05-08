@@ -18,8 +18,8 @@ import java.util.List;
 import static org.example.util.NamesUtil.*;
 
 @WebServlet(SHOW_USERS_ORDER_HISTORY)
-public class showUsersOrderHistory extends HttpServlet {
-    ArchivedUserOrderService archivedUserOrderService = new ArchivedUserOrderServiceImpl();
+public class ShowUsersOrderHistory extends HttpServlet {
+    private ArchivedUserOrderService archivedUserOrderService = new ArchivedUserOrderServiceImpl();
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         ConverterPost converterPost = new ConverterPost(request);

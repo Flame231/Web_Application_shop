@@ -22,7 +22,7 @@
                 <constraints nullable="false"/>
             </column>
 
-            <column name="productId" type="INT">
+            <column name="productName" type="varchar(50)">
                 <constraints nullable="false"/>
             </column>
 

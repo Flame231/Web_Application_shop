@@ -11,7 +11,6 @@ import org.example.model.user.User;
 @Getter
 public class BagDTO {
 
-
     private User user;
 
     private Product product;

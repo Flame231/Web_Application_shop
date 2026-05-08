@@ -2,6 +2,8 @@ package org.example.dto;
 
 import lombok.Builder;
 import lombok.Getter;
+import org.example.model.Product;
+import org.example.model.UserOrder.UserOrder;
 
 import java.math.BigDecimal;
 import java.sql.Timestamp;
@@ -19,7 +21,7 @@ public class ArchivedUserOrderDTO {
 
     private Integer userId;
 
-    private Integer productId;
+    private String productName;
 
     private Integer productCount;
 
