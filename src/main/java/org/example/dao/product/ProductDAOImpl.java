@@ -7,6 +7,8 @@ import org.example.model.Seller;
 
 import java.util.List;
 
+import static org.example.util.NamesUtil.PRODUCT_PER_PAGE;
+
 public class ProductDAOImpl extends DAOImpl<Product> implements ProductDAO {
     public ProductDAOImpl() {
         super(Product.class);
@@ -29,8 +31,15 @@ public class ProductDAOImpl extends DAOImpl<Product> implements ProductDAO {
     }
 
     @Override
-    public List<Product> getProductList() {
+    public List<Product> getProductList(int currentPage) {
         getEm().clear();
-        return getEm().createQuery("from Product product", Product.class).getResultList();
+        return getEm().createQuery("from Product product", Product.class)
+                .setFirstResult((currentPage - 1) * PRODUCT_PER_PAGE).setMaxResults(PRODUCT_PER_PAGE).getResultList();
+    }
+
+    @Override
+    public Integer getProductsCount() {
+        Long count = (Long) getEm().createQuery("select count(*) from  Product ").getSingleResult();
+        return count.intValue();
     }
 }

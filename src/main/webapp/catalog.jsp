@@ -1,11 +1,6 @@
 <%@ page import="java.util.List" %>
 <%@ page import="static org.example.util.NamesUtil.SHOW_BAG" %>
 <%@ page import="static org.example.util.NamesUtil.*" %>
-<%@ page import="org.example.model.Bag" %>
-<%@ page import="java.util.Set" %>
-<%@ page import="org.example.dao.product.ProductDAO" %>
-<%@ page import="org.example.dao.product.ProductDAOImpl" %>
-<%@ page import="org.example.dto.UserDTO" %>
 <%@ page import="org.example.dto.NewDTO.NewProductDTO" %>
 <%@ page import="org.example.dto.NewDTO.BagDTO" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -27,17 +22,20 @@
         background-color: #f2f2f2;
     }
 
-    /* Стилизуем форму как сетку */
-    .my-form {
-        display: grid;
-        grid-template-columns: 120px 300px; /* 1-я колонка для текста, 2-я для полей */
-        gap: 15px; /* Расстояние между строками и столбцами */
-        align-items: center; /* Центрируем текст по вертикали относительно инпута */
+    {
+        display: grid
+    ;
+        grid-template-columns: 120px 300px
+    ;
+        gap: 15px
+    ;
+        align-items: center
+    ;
     }
 </style>
 <html>
 <head>
-    <form action="<%=request.getContextPath()+MAIN_PAGE_CLIENT%>" method="post">
+    <form action="<%=request.getContextPath()+ "/"+ ROLE + "/MainPage"%>" method="post">
         <input type="submit" value="Вернуться в личный кабинет">
     </form>
     <title>Каталог товаров</title>
@@ -67,17 +65,11 @@
         List<NewProductDTO> products = (List<NewProductDTO>) request.getAttribute("productList");
         List<BagDTO> bagDTO = (List<BagDTO>) request.getSession().getAttribute("bagDTOList");
         int value = 0;
-        ProductDAO productDAO = new ProductDAOImpl();
         if (products != null && !products.isEmpty()) {
             for (NewProductDTO productDTO : products) {
                 for (BagDTO b1 : bagDTO) {
-                    for (NewProductDTO b2 : products) {
-                        if (b1.getProduct().getProductName().equals(b2.getProductName())) {
-                            value = b1.getCount();
-                        }
-                        else{
-                            value = 0;
-                        }
+                    if (b1.getProduct().getId().equals(productDTO.getId())) {
+                        value = b1.getCount();
                     }
                 }
     %>
@@ -111,7 +103,9 @@
 
             <%
 
-                }%>
+                    value = 0;
+                }
+            %>
         </td>
 
     </tr>
@@ -127,5 +121,38 @@
     </tbody>
 </table>
 
+<% int currentPage = (int) request.getAttribute("currentPage");
+    int productCountResult = (int) request.getAttribute("productCountResult");
+    int lastPage = productCountResult / PRODUCT_PER_PAGE;
+    int minPage = currentPage - 3;
+    int maxPage = currentPage + 3;
+    if (minPage < 1) {
+        minPage = 1;
+    }
+
+    if (productCountResult % PRODUCT_PER_PAGE != 0) {
+        lastPage = lastPage + 1;
+    }
+    if (maxPage > lastPage) {
+        maxPage = lastPage;
+    }%>
+
+<a href="<%=request.getContextPath() + SHOW_CATALOG+"?currentPage=1"%>">Первая
+</a>
+<% for (int i = minPage; i < maxPage + 1; i++) {
+    if (i == currentPage) {%>
+<a href="<%=request.getContextPath() + SHOW_CATALOG + "?currentPage=" + i%>"><span style="font-size: 25px;"><%=i%>
+</span>&nbsp;
+</a>
+<%} else {%><a href="<%=request.getContextPath() + SHOW_CATALOG + "?currentPage=" + i%>"><span
+        style="font-size: 20px;"><%=i%>
+</span>&nbsp;
+</a>
+<%
+        }
+    }
+%>
+<a href="<%=request.getContextPath() + SHOW_CATALOG+"?currentPage=" + lastPage%>">Последняя
+</a>
 </body>
 </html>

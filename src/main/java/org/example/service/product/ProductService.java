@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface ProductService {
 
-    List<NewProductDTO> getAllProducts();
+    List<NewProductDTO> getAllProducts(int currentPage);
 
     NewProductDTO findProduct(Serializable id);
 
@@ -16,4 +16,6 @@ public interface ProductService {
     void updateProduct(NewProductDTO productDTO);
 
     void removeProduct(Serializable id);
+
+    Integer getProductCountResult();
 }

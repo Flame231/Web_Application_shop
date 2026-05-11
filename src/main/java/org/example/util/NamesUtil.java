@@ -116,5 +116,7 @@ public class NamesUtil {
 
     public static String ROLE;
 
+    public static final int PRODUCT_PER_PAGE = 4;
+
 
 }

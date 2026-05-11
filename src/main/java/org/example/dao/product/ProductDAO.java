@@ -13,7 +13,7 @@ public interface ProductDAO extends DAO<Product> {
 
     void addProductCategory(Product product, ProductCategory productCategory);
 
-    List<Product> getProductList();
+    List<Product> getProductList(int currentPage);
 
-
+    Integer getProductsCount();
 }

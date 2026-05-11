@@ -15,8 +15,8 @@ public class ProductServiceImpl implements ProductService {
     private ConverterDTO<Product, NewProductDTO> converterDTO = new ProductDTOConverter();
 
     @Override
-    public List<NewProductDTO> getAllProducts() {
-        return productDAO.getProductList().stream()
+    public List<NewProductDTO> getAllProducts(int currentPage) {
+        return productDAO.getProductList(currentPage).stream()
                 .map(converterDTO::toDTO)
                 .toList();
     }
@@ -41,5 +41,10 @@ public class ProductServiceImpl implements ProductService {
     public void removeProduct(Serializable id) {
 
         productDAO.delete(id);
+    }
+
+    @Override
+    public Integer getProductCountResult() {
+        return productDAO.getProductsCount();
     }
 }
