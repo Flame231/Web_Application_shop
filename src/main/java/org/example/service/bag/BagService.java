@@ -1,6 +1,6 @@
 package org.example.service.bag;
 
-import org.example.dto.BagDTO;
+import org.example.dto.NewDTO.BagDTO;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;

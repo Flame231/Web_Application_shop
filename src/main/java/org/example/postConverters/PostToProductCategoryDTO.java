@@ -1,6 +1,6 @@
 package org.example.postConverters;
 
-import org.example.dto.ProductCategoryDTO;
+import org.example.dto.NewDTO.ProductCategoryDTO;
 
 import javax.servlet.http.HttpServletRequest;
 

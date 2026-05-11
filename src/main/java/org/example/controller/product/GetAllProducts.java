@@ -1,6 +1,6 @@
 package org.example.controller.product;
 
-import org.example.dto.ProductDTO;
+import org.example.dto.NewDTO.NewProductDTO;
 import org.example.service.product.ProductService;
 import org.example.service.product.ProductServiceImpl;
 
@@ -19,7 +19,7 @@ public class GetAllProducts extends HttpServlet {
     private ProductService productService = new ProductServiceImpl();
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        List<ProductDTO> productList = productService.getAllProducts();
+        List<NewProductDTO> productList = productService.getAllProducts();
         request.setAttribute("productList", productList);
     }
 

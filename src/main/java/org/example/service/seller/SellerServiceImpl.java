@@ -1,10 +1,10 @@
 package org.example.service.seller;
 
-import org.example.converterDTO.ConverterDTO;
-import org.example.converterDTO.SellerConverter;
 import org.example.dao.seller.SellerDAO;
 import org.example.dao.seller.SellerDAOImpl;
-import org.example.dto.SellerDTO;
+import org.example.dto.NewDTO.NewConverterDTO.ConverterDTO;
+import org.example.dto.NewDTO.NewConverterDTO.SellerDTOConverter;
+import org.example.dto.NewDTO.SellerDTO;
 import org.example.model.Seller;
 
 import java.io.Serializable;
@@ -12,10 +12,10 @@ import java.util.List;
 
 public class SellerServiceImpl implements SellerService {
     private SellerDAO sellerDAO = new SellerDAOImpl();
-    private ConverterDTO<Seller, SellerDTO> converterDTO = new SellerConverter();
+    private ConverterDTO<Seller, SellerDTO> converterDTO = new SellerDTOConverter();
 
     public List<SellerDTO> getSellerDTOList() {
-        ConverterDTO<Seller, SellerDTO> converterDTO = new SellerConverter();
+        ConverterDTO<Seller, SellerDTO> converterDTO = new SellerDTOConverter();
         return sellerDAO.getSellerList()
                 .stream()
                 .map(converterDTO::toDTO)

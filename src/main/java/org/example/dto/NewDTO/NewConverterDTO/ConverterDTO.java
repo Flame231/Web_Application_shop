@@ -1,4 +1,4 @@
-package org.example.converterDTO;
+package org.example.dto.NewDTO.NewConverterDTO;
 
 public interface ConverterDTO<T, V> {
 

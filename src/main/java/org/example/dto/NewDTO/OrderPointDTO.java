@@ -1,13 +1,11 @@
-package org.example.dto;
+package org.example.dto.NewDTO;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.example.model.UserOrder.UserOrder;
 
 import java.sql.Time;
-import java.util.Set;
 
 @Builder
 @NoArgsConstructor
@@ -22,6 +20,4 @@ public class OrderPointDTO {
     private Time openingTime;
 
     private Time closeTime;
-
-    private Set<UserOrder> userOrder;
 }

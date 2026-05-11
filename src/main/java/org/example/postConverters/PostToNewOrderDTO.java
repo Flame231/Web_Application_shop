@@ -1,6 +1,6 @@
 package org.example.postConverters;
 
-import org.example.dto.NewOrderDTO;
+import org.example.dto.NewDTO.NewOrderDTO;
 
 import javax.servlet.http.HttpServletRequest;
 import java.math.BigDecimal;

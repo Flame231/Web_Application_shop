@@ -8,11 +8,10 @@ import lombok.experimental.SuperBuilder;
 import org.example.model.OrderPoint;
 import org.example.model.additional.DataEntity;
 import org.example.model.user.User;
-import org.hibernate.engine.internal.Cascade;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
-import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 @Entity
@@ -37,8 +36,8 @@ public class UserOrder extends DataEntity {
     private OrderPoint orderPoint;
 
     @OneToMany(mappedBy = "userOrder", cascade = CascadeType.REMOVE)
-    @org.hibernate.annotations.OrderBy(clause = "id ASC")
-    private Set<UserOrderProduct> userOrderProduct = new HashSet<>();
+    @OrderBy("userOrder desc")
+    private Set<UserOrderProduct> userOrderProduct = new LinkedHashSet<>();
 
     private BigDecimal orderSum;
 }

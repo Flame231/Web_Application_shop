@@ -1,20 +1,21 @@
-package org.example.converterDTO;
+package org.example.dto.NewDTO.NewConverterDTO;
 
-import org.example.dto.SellerDTO;
+
+import org.example.dto.NewDTO.SellerDTO;
 import org.example.model.Seller;
 
-public class SellerConverter implements ConverterDTO<Seller, SellerDTO> {
+public class SellerDTOConverter implements ConverterDTO<Seller, SellerDTO> {
 
     @Override
     public SellerDTO toDTO(Seller seller) {
         return SellerDTO.builder().id(seller.getId()).sellerName(seller.getSellerName())
-                .sellerAddress(seller.getSellerAddress()).product(seller.getProduct()).build();
+                .sellerAddress(seller.getSellerAddress()).build();
     }
 
     @Override
     public Seller toEntity(SellerDTO seller) {
         return Seller.builder().sellerName(seller.getSellerName()).sellerAddress(seller.getSellerAddress())
-                .product(seller.getProduct()).id(seller.getId())
+                .id(seller.getId())
                 .build();
     }
 }

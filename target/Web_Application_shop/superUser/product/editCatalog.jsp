@@ -1,8 +1,7 @@
 <%@ page import="java.util.List" %>
-<%@ page import="org.example.dto.ProductDTO" %>
 <%@ page import="static org.example.util.NamesUtil.EDIT_PRODUCT" %>
-<%@ page import="static org.example.util.NamesUtil.ACCOUNT_CLIENT_JSP" %>
 <%@ page import="static org.example.util.NamesUtil.*" %>
+<%@ page import="org.example.dto.NewDTO.NewProductDTO" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <style>
 
@@ -58,24 +57,24 @@
     </thead>
     <tbody>
     <%
-        List<ProductDTO> products = (List<ProductDTO>) request.getAttribute("productList");
+        List<NewProductDTO> products = (List<NewProductDTO>) request.getAttribute("productList");
         if (products != null && !products.isEmpty()) {
-            for (ProductDTO productDTO : products) {
+            for (NewProductDTO newProductDTO : products) {
     %>
     <tr>
-        <td><%= productDTO.getId() %>
+        <td><%= newProductDTO.getId() %>
         </td>
-        <td><%= productDTO.getProductName() %>
+        <td><%= newProductDTO.getProductName() %>
         </td>
-        <td><%= productDTO.getProductCategory().getCategory() %>
+        <td><%= newProductDTO.getProductCategory().getCategory() %>
         </td>
-        <td><%= productDTO.getPrice() %>
+        <td><%= newProductDTO.getPrice() %>
         </td>
-        <td><%= productDTO.getSeller().getSellerName() %>
+        <td><%= newProductDTO.getSeller().getSellerName() %>
         </td>
         <td>
             <form method="post">
-                <input type="hidden" name="productId" value="<%=productDTO.getId()%>">
+                <input type="hidden" name="productId" value="<%=newProductDTO.getId()%>">
                 <input type="hidden" name="func" value="catalog">
                 <input type="submit" value="Редактировать" formaction="<%=request.getContextPath() + EDIT_PRODUCT%>"/>
                 <input type="submit" value="Удалить" formaction="<%=request.getContextPath() + REMOVE_PRODUCT%>"/>
@@ -94,6 +93,5 @@
     %>
     </tbody>
 </table>
-
 </body>
 </html>

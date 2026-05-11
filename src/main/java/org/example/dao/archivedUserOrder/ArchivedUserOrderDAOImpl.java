@@ -13,7 +13,7 @@ public class ArchivedUserOrderDAOImpl extends DAOImpl<ArchivedUserOrder> impleme
 
     @Override
     public List<ArchivedUserOrder> getArchivedUserOrders(Integer userId) {
-        return getEm().createQuery("from ArchivedUserOrder a where a.userId=:userId", ArchivedUserOrder.class)
+        return getEm().createQuery("from ArchivedUserOrder a where a.userId=:userId order by a.userOrderId desc", ArchivedUserOrder.class)
                 .setParameter("userId", userId).getResultList();
     }
 

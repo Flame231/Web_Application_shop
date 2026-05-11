@@ -1,6 +1,6 @@
 package org.example.controller.productCategory;
 
-import org.example.dto.ProductCategoryDTO;
+import org.example.dto.NewDTO.ProductCategoryDTO;
 import org.example.service.productCategory.ProductCategoryService;
 import org.example.service.productCategory.ProductCategoryServiceImpl;
 

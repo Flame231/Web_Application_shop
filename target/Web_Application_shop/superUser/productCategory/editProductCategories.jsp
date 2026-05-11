@@ -1,5 +1,5 @@
 <%@ page import="java.util.List" %>
-<%@ page import="org.example.dto.ProductCategoryDTO" %>
+<%@ page import="org.example.dto.NewDTO.ProductCategoryDTO" %>
 <%@ page import="static org.example.util.NamesUtil.REMOVE_PRODUCT_CATEGORY" %>
 <%@ page import="static org.example.util.NamesUtil.*" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>

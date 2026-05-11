@@ -1,7 +1,7 @@
 package org.example.service.userOrder;
 
-import org.example.dto.NewOrderDTO;
-import org.example.dto.UserOrderDTO;
+import org.example.dto.NewDTO.NewOrderDTO;
+import org.example.dto.NewDTO.NewUserOrderDTO;
 
 import java.io.Serializable;
 import java.util.List;
@@ -10,12 +10,12 @@ public interface UserOrderService {
 
     void confirmOrder(List<NewOrderDTO> list);
 
-    List<UserOrderDTO> showAllUserOrders();
+    List<org.example.dto.NewDTO.NewUserOrderDTO> showAllUserOrders();
 
-    List<UserOrderDTO> showUserOrdersByOrderPoint(Serializable userId);
+    List<org.example.dto.NewDTO.NewUserOrderDTO> showUserOrdersByOrderPoint(Serializable userId);
 
-    List<UserOrderDTO> showArrivedUserOrdersByOrderPoint(Serializable userId);
+    List<NewUserOrderDTO> showArrivedUserOrdersByOrderPoint(Serializable userId);
 
-    UserOrderDTO getUserOrderDTO(Serializable id);
+    NewUserOrderDTO getUserOrderDTO(Serializable id);
 
 }

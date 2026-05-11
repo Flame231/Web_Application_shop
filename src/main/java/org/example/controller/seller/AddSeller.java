@@ -1,6 +1,6 @@
 package org.example.controller.seller;
 
-import org.example.dto.SellerDTO;
+import org.example.dto.NewDTO.SellerDTO;
 import org.example.postConverters.PostToSellerDTO;
 import org.example.service.seller.SellerService;
 import org.example.service.seller.SellerServiceImpl;

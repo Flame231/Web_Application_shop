@@ -1,6 +1,6 @@
 package org.example.controller.bag;
 
-import org.example.dto.NewOrderDTO;
+import org.example.dto.NewDTO.NewOrderDTO;
 import org.example.postConverters.PostToNewOrderDTO;
 import org.example.service.userOrder.UserOrderService;
 import org.example.service.userOrder.UserOrderServiceImpl;

@@ -1,10 +1,10 @@
 package org.example.service.bag;
 
-import org.example.converterDTO.BagConverter;
-import org.example.converterDTO.ConverterDTO;
 import org.example.dao.bag.BagDAO;
 import org.example.dao.bag.BagDAOImpl;
-import org.example.dto.BagDTO;
+import org.example.dto.NewDTO.BagDTO;
+import org.example.dto.NewDTO.NewConverterDTO.BagDTOConverter;
+import org.example.dto.NewDTO.NewConverterDTO.ConverterDTO;
 import org.example.model.Bag;
 import org.example.model.additional.primaryKeys.PrimaryKeyBag;
 import org.example.model.additional.primaryKeys.PrimaryKeyUtil;
@@ -15,7 +15,7 @@ import java.util.List;
 
 public class BagServiceImpl implements BagService {
     private BagDAO bagDAO = new BagDAOImpl();
-    private ConverterDTO<Bag, BagDTO> converterDTO = new BagConverter();
+    private ConverterDTO<Bag, BagDTO> converterDTO = new BagDTOConverter();
 
     @Override
     public void addProductToBag(BagDTO bagDTO) {

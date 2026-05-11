@@ -1,6 +1,6 @@
 package org.example.controller.product;
 
-import org.example.dto.ProductDTO;
+import org.example.dto.NewDTO.NewProductDTO;
 import org.example.postConverters.PostToProductDTO;
 import org.example.service.product.ProductService;
 import org.example.service.product.ProductServiceImpl;
@@ -19,7 +19,8 @@ public class UpdateProduct extends HttpServlet {
     private ProductService productService = new ProductServiceImpl();
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        ProductDTO productDTO = PostToProductDTO.toProductDTO(request);
+        NewProductDTO productDTO = PostToProductDTO.toProductDTO(request);
+
         productService.updateProduct(productDTO);
         response.sendRedirect(request.getContextPath() + EDIT_CATALOG);
     }

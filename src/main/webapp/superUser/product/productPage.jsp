@@ -1,6 +1,7 @@
 <%@ page import="static org.example.util.NamesUtil.MAIN_PAGE_ADMINISTRATOR" %>
 <%@ page import="org.example.dto.ProductDTO" %>
 <%@ page import="static org.example.util.NamesUtil.MAIN_PAGE_CLIENT" %>
+<%@ page import="org.example.dto.NewDTO.NewProductDTO" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -12,23 +13,23 @@
 </head>
 <body>
 <%
-    ProductDTO productDTO = (ProductDTO) request.getAttribute("productDTO");%>
-<div>Номер товара: <%=productDTO.getId()%>
+    NewProductDTO newProductDTO = (NewProductDTO) request.getAttribute("productDTO");%>
+<div>Номер товара: <%=newProductDTO.getId()%>
 </div>
 <br>
-<div>Название товара: <%=productDTO.getProductName()%>
+<div>Название товара: <%=newProductDTO.getProductName()%>
 </div>
 <br>
-<div>Категория: <%=productDTO.getProductCategory().getCategory()%>
+<div>Категория: <%=newProductDTO.getProductCategory().getCategory()%>
 </div>
 <br>
-<div>Цена: <%=productDTO.getPrice()%>
+<div>Цена: <%=newProductDTO.getPrice()%>
 </div>
 <br>
-<div>Продавец: <%=productDTO.getSeller().getSellerName()%>, <%=productDTO.getSeller().getSellerAddress()%>
+<div>Продавец: <%=newProductDTO.getSeller().getSellerName()%>, <%=newProductDTO.getSeller().getSellerAddress()%>
 </div>
 <br>
-<div>Обновлено: <%=productDTO.getUpdateDateTime()%>
+<div>Обновлено: <%=newProductDTO.getUpdateDateTime()%>
 </div>
 <br>
 </body>

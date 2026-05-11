@@ -1,6 +1,6 @@
 package org.example.service.archivedUserOrder;
 
-import org.example.dto.ArchivedUserOrderDTO;
+import org.example.dto.NewDTO.ArchivedUserOrderDTO;
 
 import java.util.List;
 
@@ -14,5 +14,4 @@ public interface ArchivedUserOrderService {
 
     List<ArchivedUserOrderDTO> showArchivedUserOrders(Integer userId);
 
-    void showAllArchivedUserOrders();
 }

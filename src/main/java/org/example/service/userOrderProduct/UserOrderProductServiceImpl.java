@@ -7,7 +7,7 @@ import org.example.model.additional.primaryKeys.PrimaryKeyUserOrderProduct;
 import org.example.model.additional.primaryKeys.PrimaryKeyUtil;
 
 public class UserOrderProductServiceImpl implements UserOrderProductService {
-    UserOrderProductDAO userOrderProductDAO = new UserOrderProductDAOImpl();
+    private UserOrderProductDAO userOrderProductDAO = new UserOrderProductDAOImpl();
 
     @Override
     public void changeProductCount(Integer userOrderId, Integer productId,

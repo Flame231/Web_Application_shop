@@ -1,10 +1,10 @@
-<%@ page import="org.example.dto.UserOrderDTO" %>
-<%@ page import="org.example.model.UserOrder.UserOrderProduct" %>
 <%@ page import="static org.example.util.NamesUtil.MAIN_PAGE_OPERATOR" %>
 <%@ page import="static org.example.util.NamesUtil.SHOW_ORDER_POINT_ORDERS" %>
 <%@ page import="java.math.BigDecimal" %>
 <%@ page import="static org.example.util.NamesUtil.*" %>
 <%@ page import="org.example.model.UserOrder.OrderStatus" %>
+<%@ page import="org.example.dto.NewDTO.NewUserOrderDTO" %>
+<%@ page import="org.example.dto.NewDTO.NewUserOrderProductDTO" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -20,11 +20,11 @@
 <body>
 <h1>Страница заказа</h1>
 <%
-    UserOrderDTO userOrderDTO = (UserOrderDTO) request.getAttribute("userOrderDTO");
+    NewUserOrderDTO newUserOrderDTO = (NewUserOrderDTO) request.getAttribute("userOrderDTO");
 %>
-Номер заказа: <%=userOrderDTO.getId()%>
+Номер заказа: <%=newUserOrderDTO.getOrderId()%>
 <br>
-Статус заказа: <%=userOrderDTO.getOrderStatus().getDescription()%>
+Статус заказа: <%=newUserOrderDTO.getOrderStatus().getDescription()%>
 <br>
 <table border="2">
     <tr>
@@ -32,7 +32,7 @@
         <th width="100">Название товара</th>
         <th width="100">Цена товара</th>
         <th width="60">Заказано товара</th>
-        <%if (userOrderDTO.getOrderStatus().getDescription().equals(OrderStatus.READY.getDescription())) {%>
+        <%if (newUserOrderDTO.getOrderStatus().getDescription().equals(OrderStatus.READY.getDescription())) {%>
         <th width="100">Изменить
             количество товара
         </th>
@@ -42,42 +42,42 @@
     <%
         BigDecimal TotalSum = BigDecimal.ZERO;
         BigDecimal actualTotalSum = BigDecimal.ZERO;
-        for (UserOrderProduct userOrderProductDTO : userOrderDTO.getUserOrderProduct()) {
+        for (NewUserOrderProductDTO newUserOrderProductDTO : newUserOrderDTO.getUserOrderProducts()) {
     %>
     <tr height="30">
-        <td><%=userOrderProductDTO.getProduct().getId()%>
+        <td><%=newUserOrderProductDTO.getNewProductDTO().getId()%>
         </td>
-        <td><%=userOrderProductDTO.getProduct().getProductName()%>
+        <td><%=newUserOrderProductDTO.getNewProductDTO().getProductName()%>
         </td>
-        <td><%=userOrderProductDTO.getProduct().getPrice()%>
+        <td><%=newUserOrderProductDTO.getNewProductDTO().getPrice()%>
         </td>
         <td>
-            <%=userOrderProductDTO.getProductCount()%>
+            <%=newUserOrderProductDTO.getProductCount()%>
         </td>
-        <%if (userOrderDTO.getOrderStatus() == OrderStatus.READY) {%>
+        <%if (newUserOrderDTO.getOrderStatus() == OrderStatus.READY) {%>
         <td>
-            <%=userOrderProductDTO.getActualProductCount()%>
+            <%=newUserOrderProductDTO.getActualProductCount()%>
             <form action="<%=request.getContextPath() + CHANGE_ORDER%>" method="post">
                 <input type="submit" name="plus" value="+">
                 <input type="hidden" name="count" value="1">
-                <input type="hidden" name="userOrderId" value="<%=userOrderProductDTO.getUserOrder().getId()%>">
-                <input type="hidden" name="productId" value="<%=userOrderProductDTO.getProduct().getId()%>">
+                <input type="hidden" name="userOrderId" value="<%=newUserOrderProductDTO.getUserOrderId()%>">
+                <input type="hidden" name="productId" value="<%=newUserOrderProductDTO.getNewProductDTO().getId()%>">
             </form>
 
             <form action="<%=request.getContextPath() + CHANGE_ORDER%>" method="post">
                 <input type="submit" name="minus" value="-">
                 <input type="hidden" name="count" value="-1">
-                <input type="hidden" name="userOrderId" value="<%=userOrderProductDTO.getUserOrder().getId()%>">
-                <input type="hidden" name="productId" value="<%=userOrderProductDTO.getProduct().getId()%>">
+                <input type="hidden" name="userOrderId" value="<%=newUserOrderProductDTO.getUserOrderId()%>">
+                <input type="hidden" name="productId" value="<%=newUserOrderProductDTO.getNewProductDTO().getId()%>">
             </form>
         </td>
         <%
             }
-            BigDecimal productSum = userOrderProductDTO.getProduct().getPrice()
-                    .multiply(new BigDecimal(userOrderProductDTO.getProductCount()));
+            BigDecimal productSum = newUserOrderProductDTO.getNewProductDTO().getPrice()
+                    .multiply(new BigDecimal(newUserOrderProductDTO.getProductCount()));
             TotalSum = TotalSum.add(productSum);
-            BigDecimal actualProductSum = userOrderProductDTO.getProduct().getPrice()
-                    .multiply(new BigDecimal(userOrderProductDTO.getActualProductCount()));
+            BigDecimal actualProductSum = newUserOrderProductDTO.getNewProductDTO().getPrice()
+                    .multiply(new BigDecimal(newUserOrderProductDTO.getActualProductCount()));
             actualTotalSum = actualTotalSum.add(actualProductSum);
         %>
     </tr>
@@ -85,23 +85,23 @@
 </table>
 <div>Сумма заказа: <%=TotalSum%>
     <br>
-    <%if (userOrderDTO.getOrderStatus() == OrderStatus.CREATED) {%>
+    <%if (newUserOrderDTO.getOrderStatus() == OrderStatus.CREATED) {%>
     <form action="<%=request.getContextPath() + CHANGE_USER_ORDER_STATUS%>" method="post">
-        <input type="hidden" name="userOrderId" value="<%=userOrderDTO.getId()%>">
+        <input type="hidden" name="userOrderId" value="<%=newUserOrderDTO.getOrderId()%>">
         <input type="hidden" name="orderStatus" value="READY">
         <input type="submit" value="Заказ готов к выдаче">
     </form>
     <%}%>
 
-    <%if (userOrderDTO.getOrderStatus() == OrderStatus.READY) {%>
+    <%if (newUserOrderDTO.getOrderStatus() == OrderStatus.READY) {%>
     Итоговая сумма заказа: <%=actualTotalSum%>
     <form action="<%=request.getContextPath() + CHANGE_USER_ORDER_STATUS%>" method="post">
-        <input type="hidden" name="userOrderId" value="<%=userOrderDTO.getId()%>">
+        <input type="hidden" name="userOrderId" value="<%=newUserOrderDTO.getOrderId()%>">
         <input type="hidden" name="orderStatus" value="REFUSED">
         <input type="submit" value="Отказ">
     </form>
     <form action="<%=request.getContextPath() + CHANGE_USER_ORDER_STATUS%>" method="post">
-        <input type="hidden" name="userOrderId" value="<%=userOrderDTO.getId()%>">
+        <input type="hidden" name="userOrderId" value="<%=newUserOrderDTO.getOrderId()%>">
         <input type="hidden" name="orderStatus" value="CLOSED">
         <input type="submit" value="Закрыть заказ">
     </form>

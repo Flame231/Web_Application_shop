@@ -1,6 +1,6 @@
 <%@ page import="java.util.List" %>
-<%@ page import="org.example.dto.ArchivedUserOrderDTO" %>
-<%@ page import="java.util.Objects" %>
+<%@ page import="org.example.dto.NewDTO.ArchivedUserOrderDTO" %>
+<%@ page import="org.example.dto.NewDTO.ArchivedUserOrderProductDTO" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <html>
@@ -15,11 +15,11 @@
     for (ArchivedUserOrderDTO archivedUserOrderDTO : archivedUserOrderDTOList) {
 %>
 Номер заказа:<%=archivedUserOrderDTO.getUserOrderId()%><br>
-Статус заказа: <%=archivedUserOrderDTO.getOrderStatus()%><br>
+Статус заказа: <%=archivedUserOrderDTO.getOrderStatus().getDescription()%><br>
 Сумма заказа: <%=archivedUserOrderDTO.getOrderSum()%><br>
 Сумма выкупленных товаров: <%=archivedUserOrderDTO.getFinalOrderSum()%><br>
 Дата создания заказа: <%=archivedUserOrderDTO.getUserOrderCreateDateTime()%><br>
-Дата закрытия заказа:<%=archivedUserOrderDTO.getUserOrderCloseDateTime()%><br>
+Дата закрытия заказа:<%=archivedUserOrderDTO.getCreateDateTime()%><br>
 <table border="2">
     <thead>
     <tr>
@@ -30,27 +30,25 @@
     </tr>
     </thead>
     <%
-        for (ArchivedUserOrderDTO archivedUserOrderDTO1 : archivedUserOrderDTOList) {
-            if (Objects.equals(archivedUserOrderDTO.getUserOrderId(), archivedUserOrderDTO1.getUserOrderId())) {
+        for (ArchivedUserOrderProductDTO archivedUserOrderProductDTO : archivedUserOrderDTO.getArchivedUserOrderProducts()) {
     %>
     <tr>
-        <td><%=archivedUserOrderDTO1.getProductName()%>
+        <td><%=archivedUserOrderProductDTO.getProductName()%>
         </td>
-        <td><%=archivedUserOrderDTO1.getProductCount()%>
+        <td><%=archivedUserOrderProductDTO.getProductCount()%>
         </td>
-        <td><%=archivedUserOrderDTO1.getActualProductCount()%>
+        <td><%=archivedUserOrderProductDTO.getFinalProductCount()%>
         </td>
-        <td><%=archivedUserOrderDTO1.getProductPrice()%>
+        <td><%=archivedUserOrderProductDTO.getPrice()%>
         </td>
     </tr>
     <%
-            }
-        }
-    %>
-
+        }%>
 
 </table>
-<%}%>
-
+<br>
+<%
+    }
+%>
 </body>
 </html>

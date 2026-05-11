@@ -1,5 +1,4 @@
 <%@ page import="java.util.List" %>
-<%@ page import="org.example.dto.ProductDTO" %>
 <%@ page import="static org.example.util.NamesUtil.SHOW_BAG" %>
 <%@ page import="static org.example.util.NamesUtil.*" %>
 <%@ page import="org.example.model.Bag" %>
@@ -7,6 +6,7 @@
 <%@ page import="org.example.dao.product.ProductDAO" %>
 <%@ page import="org.example.dao.product.ProductDAOImpl" %>
 <%@ page import="org.example.dto.UserDTO" %>
+<%@ page import="org.example.dto.NewDTO.NewProductDTO" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <style>
 
@@ -63,14 +63,14 @@
     <tbody>
     <%
 
-        List<ProductDTO> products = (List<ProductDTO>) request.getAttribute("productList");
+        List<NewProductDTO> products = (List<NewProductDTO>) request.getAttribute("productList");
         UserDTO userDTO = (UserDTO) request.getSession().getAttribute("user");
         Set<Bag> bags = userDTO.getBags();
         int value = 0;
         ProductDAO productDAO = new ProductDAOImpl();
 
         if (products != null && !products.isEmpty()) {
-            for (ProductDTO productDTO : products) {
+            for (NewProductDTO productDTO : products) {
                 for (Bag b1 : bags) {
                     for (Bag b2 : productDAO.get(productDTO.getId()).getBags()) {
                         if (b1 == b2) {

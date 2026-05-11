@@ -15,7 +15,7 @@ import static org.example.util.NamesUtil.REMOVE_PRODUCT_CATEGORY;
 
 @WebServlet(REMOVE_PRODUCT_CATEGORY)
 public class RemoveProductCategory extends HttpServlet {
-    ProductCategoryService productCategoryService = new ProductCategoryServiceImpl();
+    private ProductCategoryService productCategoryService = new ProductCategoryServiceImpl();
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         productCategoryService.deleteProductCategory(Integer.parseInt(request.getParameter("productCategoryId")));

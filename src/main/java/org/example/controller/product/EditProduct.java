@@ -1,7 +1,7 @@
 package org.example.controller.product;
 
-import org.example.dto.ProductCategoryDTO;
-import org.example.dto.SellerDTO;
+import org.example.dto.NewDTO.ProductCategoryDTO;
+import org.example.dto.NewDTO.SellerDTO;
 import org.example.service.productCategory.ProductCategoryService;
 import org.example.service.productCategory.ProductCategoryServiceImpl;
 import org.example.service.seller.SellerService;

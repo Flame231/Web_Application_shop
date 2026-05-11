@@ -1,9 +1,9 @@
-package org.example.converterDTO;
+package org.example.dto.NewDTO.NewConverterDTO;
 
-import org.example.dto.ProductCategoryDTO;
+import org.example.dto.NewDTO.ProductCategoryDTO;
 import org.example.model.ProductCategory;
 
-public class ProductCategoryConverter implements ConverterDTO<ProductCategory, ProductCategoryDTO> {
+public class ProductCategoryDTOConverter implements ConverterDTO<ProductCategory, ProductCategoryDTO> {
 
     @Override
     public ProductCategoryDTO toDTO(ProductCategory productCategory) {

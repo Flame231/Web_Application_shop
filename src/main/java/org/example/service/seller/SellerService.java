@@ -1,6 +1,6 @@
 package org.example.service.seller;
 
-import org.example.dto.SellerDTO;
+import org.example.dto.NewDTO.SellerDTO;
 
 import java.io.Serializable;
 import java.util.List;

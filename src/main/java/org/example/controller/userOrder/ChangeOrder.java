@@ -17,7 +17,7 @@ import static org.example.util.NamesUtil.SHOW_ORDER_POINT_ORDER_PAGE;
 
 @WebServlet(CHANGE_ORDER)
 public class ChangeOrder extends HttpServlet {
-    UserOrderProductService userOrderProductService = new UserOrderProductServiceImpl();
+    private UserOrderProductService userOrderProductService = new UserOrderProductServiceImpl();
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         ConverterPost converterPost = new ConverterPost(request);

@@ -1,11 +1,11 @@
 <%@ page import="java.util.List" %>
-<%@ page import="org.example.dto.ProductBagDTO" %>
+<%@ page import="org.example.dto.NewDTO.ProductBagDTO" %>
 <%@ page import="java.math.BigDecimal" %>
-<%@ page import="org.example.dto.OrderPointDTO" %>
+<%@ page import="org.example.dto.NewDTO.OrderPointDTO" %>
 <%@ page import="javax.swing.*" %>
 <%@ page import="static org.example.util.NamesUtil.SHOW_CATALOG" %>
 <%@ page import="static org.example.util.NamesUtil.*" %>
-<%@ page import="org.example.dto.BagDTO" %>
+<%@ page import="org.example.dto.NewDTO.BagDTO" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <style>
 

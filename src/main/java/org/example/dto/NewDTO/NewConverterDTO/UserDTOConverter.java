@@ -1,9 +1,9 @@
-package org.example.converterDTO;
+package org.example.dto.NewDTO.NewConverterDTO;
 
 import org.example.dto.UserDTO;
 import org.example.model.user.User;
 
-public class UserConverter implements ConverterDTO<User, UserDTO> {
+public class UserDTOConverter implements ConverterDTO<User, UserDTO> {
     @Override
     public UserDTO toDTO(User user) {
         if (user != null) {

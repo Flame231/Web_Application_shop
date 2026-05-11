@@ -1,16 +1,16 @@
-package org.example.converterDTO;
+package org.example.dto.NewDTO.NewConverterDTO;
 
 
-import org.example.dto.OrderPointDTO;
+import org.example.dto.NewDTO.OrderPointDTO;
 import org.example.model.OrderPoint;
 
-public class OrderPointConverter implements ConverterDTO<OrderPoint, OrderPointDTO> {
+public class OrderPointDTOConverter implements ConverterDTO<OrderPoint, OrderPointDTO> {
     @Override
     public OrderPointDTO toDTO(OrderPoint orderPoint) {
         return OrderPointDTO.builder().id(orderPoint.getId()).
                 orderPointAddress(orderPoint.getOrderPointAddress())
                 .openingTime(orderPoint.getOpeningTime()).closeTime(orderPoint.getCloseTime())
-                .userOrder(orderPoint.getUserOrder()).build();
+                .build();
     }
 
     @Override
@@ -18,7 +18,6 @@ public class OrderPointConverter implements ConverterDTO<OrderPoint, OrderPointD
         return OrderPoint.builder().orderPointAddress(orderPointDTO.getOrderPointAddress())
                 .openingTime(orderPointDTO.getOpeningTime())
                 .closeTime(orderPointDTO.getCloseTime())
-                .userOrder(orderPointDTO.getUserOrder())
                 .id(orderPointDTO.getId())
                 .build();
     }

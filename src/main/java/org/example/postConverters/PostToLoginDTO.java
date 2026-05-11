@@ -1,6 +1,6 @@
 package org.example.postConverters;
 
-import org.example.dto.LoginDTO;
+import org.example.dto.NewDTO.LoginDTO;
 
 import javax.servlet.http.HttpServletRequest;
 

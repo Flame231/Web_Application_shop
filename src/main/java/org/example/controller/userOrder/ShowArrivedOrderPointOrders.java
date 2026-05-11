@@ -1,6 +1,6 @@
 package org.example.controller.userOrder;
 
-import org.example.dto.UserOrderDTO;
+import org.example.dto.NewDTO.NewUserOrderDTO;
 import org.example.postConverters.ConverterPost;
 import org.example.service.userOrder.UserOrderService;
 import org.example.service.userOrder.UserOrderServiceImpl;
@@ -14,7 +14,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-import static org.example.util.NamesUtil.*;
+import static org.example.util.NamesUtil.SHOW_ARRIVED_ORDER_POINT_ORDERS;
+import static org.example.util.NamesUtil.SHOW_ARRIVED_ORDER_POINT_ORDERS_JSP;
 
 @WebServlet(SHOW_ARRIVED_ORDER_POINT_ORDERS)
 public class ShowArrivedOrderPointOrders extends HttpServlet {
@@ -23,7 +24,7 @@ public class ShowArrivedOrderPointOrders extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         ConverterPost converterPost = new ConverterPost(request);
         Integer userId = converterPost.convertSessionAttribute("userId");
-        List<UserOrderDTO> userOrderDTOList = userOrderService.showArrivedUserOrdersByOrderPoint(userId);
+        List<NewUserOrderDTO> userOrderDTOList = userOrderService.showArrivedUserOrdersByOrderPoint(userId);
         request.setAttribute("userOrderDTOList", userOrderDTOList);
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(SHOW_ARRIVED_ORDER_POINT_ORDERS_JSP);
         dispatcher.forward(request, response);

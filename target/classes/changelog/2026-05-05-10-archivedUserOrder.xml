@@ -7,38 +7,20 @@
 
     <changeSet id="11" author="Oleg">
         <createTable tableName="archivedUserOrder">
-            <column name="id" type="INT" autoIncrement="true">
+            <column name="userOrderId" type="INT" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="createDateTime" type="TIMESTAMP" defaultValueComputed="CURRENT_TIMESTAMP"/>
-            <column name="updateDateTime" type="TIMESTAMP"
-                    defaultValueComputed="CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP"/>
 
             <column name="userId" type="INT">
                 <constraints nullable="false"/>
             </column>
 
-            <column name="userOrderId" type="INT">
+            <column name="orderStatus" type="VARCHAR(50)">
                 <constraints nullable="false"/>
             </column>
 
-            <column name="productName" type="varchar(50)">
-                <constraints nullable="false"/>
-            </column>
-
-            <column name="productCount" type="INT">
-                <constraints nullable="false"/>
-            </column>
-
-            <column name="actualProductCount" type="INT">
-                <constraints nullable="false"/>
-            </column>
-
-            <column name="productPrice" type="decimal(10,2)">
-                <constraints nullable="false"/>
-            </column>
-
-            <column name="orderStatus" type="varchar(20)">
+            <column name="orderPoint" type="VARCHAR(50)">
                 <constraints nullable="false"/>
             </column>
 
@@ -50,11 +32,7 @@
                 <constraints nullable="false"/>
             </column>
 
-            <column name="UserOrderCreateDateTime" type="TIMESTAMP" defaultValueComputed="CURRENT_TIMESTAMP">
-                <constraints nullable="false"/>
-            </column>
-
-            <column name="UserOrderCloseDateTime" type="TIMESTAMP">
+            <column name="userOrderCreateDateTime" type="TIMESTAMP" defaultValueComputed="CURRENT_TIMESTAMP">
                 <constraints nullable="false"/>
             </column>
 

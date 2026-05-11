@@ -1,10 +1,10 @@
 package org.example.service.user;
 
-import org.example.converterDTO.ConverterDTO;
-import org.example.converterDTO.UserConverter;
 import org.example.dao.user.UserDAO;
 import org.example.dao.user.UserDAOImpl;
-import org.example.dto.LoginDTO;
+import org.example.dto.NewDTO.LoginDTO;
+import org.example.dto.NewDTO.NewConverterDTO.ConverterDTO;
+import org.example.dto.NewDTO.NewConverterDTO.UserDTOConverter;
 import org.example.dto.UserDTO;
 import org.example.model.user.User;
 
@@ -12,7 +12,7 @@ import java.io.Serializable;
 
 public class UserServiceImpl implements UserService {
     private UserDAO userDAO = new UserDAOImpl();
-    private ConverterDTO<User, UserDTO> converterDTO = new UserConverter();
+    private ConverterDTO<User, UserDTO> converterDTO = new UserDTOConverter();
 
 
     @Override

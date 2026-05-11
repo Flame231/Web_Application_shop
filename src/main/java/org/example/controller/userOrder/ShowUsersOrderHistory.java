@@ -1,6 +1,6 @@
 package org.example.controller.userOrder;
 
-import org.example.dto.ArchivedUserOrderDTO;
+import org.example.dto.NewDTO.ArchivedUserOrderDTO;
 import org.example.postConverters.ConverterPost;
 import org.example.service.archivedUserOrder.ArchivedUserOrderService;
 import org.example.service.archivedUserOrder.ArchivedUserOrderServiceImpl;
@@ -11,11 +11,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import java.io.IOException;
 import java.util.List;
 
-import static org.example.util.NamesUtil.*;
+import static org.example.util.NamesUtil.SHOW_ARCHIVED_ORDERS_JSP;
+import static org.example.util.NamesUtil.SHOW_USERS_ORDER_HISTORY;
 
 @WebServlet(SHOW_USERS_ORDER_HISTORY)
 public class ShowUsersOrderHistory extends HttpServlet {

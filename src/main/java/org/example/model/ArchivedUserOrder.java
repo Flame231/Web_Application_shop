@@ -5,53 +5,50 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
-import org.example.model.additional.DataEntity;
+import org.example.model.UserOrder.OrderStatus;
+import org.hibernate.annotations.CreationTimestamp;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.math.BigDecimal;
 import java.sql.Timestamp;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
-@Table(name = "archivedUserOrder")
+@Table
 @SuperBuilder
 @NoArgsConstructor
 @AllArgsConstructor
 @Setter
 @Getter
-public class ArchivedUserOrder extends DataEntity {
+public class ArchivedUserOrder {
 
-    @Column(updatable = false, nullable = false)
-    private Integer userId;
-
-    @Column(updatable = false, nullable = false)
+    @Id
     private Integer userOrderId;
 
-    @Column(updatable = false, nullable = false)
-    private String productName;
+    @Enumerated(EnumType.STRING)
+    @Column(updatable = false)
+    private OrderStatus orderStatus;
 
-    @Column(updatable = false, nullable = false)
-    private Integer productCount;
+    @Column(updatable = false)
+    private Integer userId;
 
-    @Column(updatable = false, nullable = false)
-    private Integer actualProductCount;
+    @Column(updatable = false)
+    private String OrderPoint;
 
-    @Column(updatable = false, nullable = false)
-    private BigDecimal productPrice;
-
-    @Column(updatable = false, nullable = false)
-    private String orderStatus;
-
-    @Column(updatable = false, nullable = false)
+    @Column(updatable = false)
     private BigDecimal orderSum;
 
-    @Column(updatable = false, nullable = false)
+    @Column(updatable = false)
     private BigDecimal finalOrderSum;
 
     @Column(updatable = false, nullable = false)
     private Timestamp userOrderCreateDateTime;
 
+    @OneToMany(mappedBy = "archivedUserOrder", cascade = CascadeType.PERSIST)
+    private Set<ArchivedUserOrderProduct> archivedUserOrderProducts = new HashSet<>();
+
+    @CreationTimestamp
     @Column(updatable = false, nullable = false)
-    private Timestamp userOrderCloseDateTime;
+    private Timestamp CreateDateTime;
 }
