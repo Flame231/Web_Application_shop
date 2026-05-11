@@ -1,10 +1,14 @@
 <%@ page import="java.util.List" %>
 <%@ page import="org.example.dto.NewDTO.ArchivedUserOrderDTO" %>
 <%@ page import="org.example.dto.NewDTO.ArchivedUserOrderProductDTO" %>
+<%@ page import="static org.example.util.NamesUtil.MAIN_PAGE_CLIENT" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <html>
 <head>
+    <form action="<%=request.getContextPath() + MAIN_PAGE_CLIENT%>" method="post">
+        <input type="submit" value="Вернуться в личный кабинет">
+    </form>
     <title>История заказов</title>
 </head>
 <body>
@@ -12,7 +16,8 @@
 <h1>История заказов</h1>
 <%
     List<ArchivedUserOrderDTO> archivedUserOrderDTOList = (List<ArchivedUserOrderDTO>) request.getAttribute("archivedUserOrderDTOList");
-    for (ArchivedUserOrderDTO archivedUserOrderDTO : archivedUserOrderDTOList) {
+    if (archivedUserOrderDTOList != null && !archivedUserOrderDTOList.isEmpty()) {
+        for (ArchivedUserOrderDTO archivedUserOrderDTO : archivedUserOrderDTOList) {
 %>
 Номер заказа:<%=archivedUserOrderDTO.getUserOrderId()%><br>
 Статус заказа: <%=archivedUserOrderDTO.getOrderStatus().getDescription()%><br>
@@ -47,6 +52,10 @@
 
 </table>
 <br>
+<%
+    }
+} else {%>
+История заказов пуста
 <%
     }
 %>

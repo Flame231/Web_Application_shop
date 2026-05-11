@@ -13,9 +13,7 @@ public class UserDTOConverter implements ConverterDTO<User, UserDTO> {
                     .birthday(user.getBirthday())
                     .paymentMethods(user.getPaymentMethods())
                     .sumOfPurchases(user.getSumOfPurchases())
-                    .userOrders(user.getUserOrders())
                     .discount(user.getDiscount())
-                    .bags(user.getBags())
                     .role(user.getRole())
                     .build();
         } else {
@@ -32,7 +30,6 @@ public class UserDTOConverter implements ConverterDTO<User, UserDTO> {
                 .birthday((userDTO.getBirthday()))
                 .paymentMethods((userDTO.getPaymentMethods()))
                 .sumOfPurchases((userDTO.getSumOfPurchases()))
-                .userOrders((userDTO.getUserOrders()))
                 .discount((userDTO.getDiscount())).build();
     }
 

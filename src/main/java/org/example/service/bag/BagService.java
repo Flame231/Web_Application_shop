@@ -10,6 +10,5 @@ public interface BagService {
 
     List<BagDTO> showAllBags(HttpServletRequest request);
 
-
     public void closeBag();
 }

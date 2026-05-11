@@ -7,6 +7,7 @@
 <%@ page import="org.example.dao.product.ProductDAOImpl" %>
 <%@ page import="org.example.dto.UserDTO" %>
 <%@ page import="org.example.dto.NewDTO.NewProductDTO" %>
+<%@ page import="org.example.dto.NewDTO.BagDTO" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <style>
 
@@ -64,17 +65,18 @@
     <%
 
         List<NewProductDTO> products = (List<NewProductDTO>) request.getAttribute("productList");
-        UserDTO userDTO = (UserDTO) request.getSession().getAttribute("user");
-        Set<Bag> bags = userDTO.getBags();
+        List<BagDTO> bagDTO = (List<BagDTO>) request.getSession().getAttribute("bagDTOList");
         int value = 0;
         ProductDAO productDAO = new ProductDAOImpl();
-
         if (products != null && !products.isEmpty()) {
             for (NewProductDTO productDTO : products) {
-                for (Bag b1 : bags) {
-                    for (Bag b2 : productDAO.get(productDTO.getId()).getBags()) {
-                        if (b1 == b2) {
+                for (BagDTO b1 : bagDTO) {
+                    for (NewProductDTO b2 : products) {
+                        if (b1.getProduct().getProductName().equals(b2.getProductName())) {
                             value = b1.getCount();
+                        }
+                        else{
+                            value = 0;
                         }
                     }
                 }
@@ -108,7 +110,7 @@
             </form>
 
             <%
-                    value = 0;
+
                 }%>
         </td>
 

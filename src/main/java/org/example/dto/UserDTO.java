@@ -35,10 +35,6 @@ public class UserDTO {
 
     private BigDecimal sumOfPurchases;
 
-    private Set<UserOrder> userOrders;
-
-    private Set<Bag> bags;
-
     private Discount discount;
 
     private Role role;

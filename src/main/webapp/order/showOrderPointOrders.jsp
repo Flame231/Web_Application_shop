@@ -6,7 +6,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <form action="<%=request.getContextPath() + MAIN_PAGE_OPERATOR%>" method="post">
+    <form action="<%=request.getContextPath() + "/" + ROLE +"/MainPage"%>" method="post">
         <input type="submit" value="Вернуться в личный кабинет">
     </form>
     <title>Заказы на пункте выдачи</title>
@@ -40,7 +40,8 @@
     </tr>
     <%for (NewUserOrderProductDTO newUserOrderProductDTO : newUserOrderDTO.getUserOrderProducts()) {%>
     <tr>
-        <td><%=newUserOrderProductDTO.getNewProductDTO().getProductName()%>
+        <td>
+            <a href="<%=request.getContextPath() + PRODUCT_PAGE+"?productId="+ newUserOrderProductDTO.getNewProductDTO().getId()%>"><%= newUserOrderProductDTO.getNewProductDTO().getProductName() %><a/>
         </td>
         <td><%=newUserOrderProductDTO.getNewProductDTO().getPrice()%>
         </td>

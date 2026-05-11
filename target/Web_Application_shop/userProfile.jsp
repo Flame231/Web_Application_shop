@@ -41,7 +41,7 @@
 
     <p>
         Способ Оплаты:
-        <input type="text" name="paymentMethods" value="<%= userDTO.getPaymentMethods()%>" required/>
+        <input type="text" name="paymentMethods" <%if(userDTO.getPaymentMethods()!=null){%>value="<%= userDTO.getPaymentMethods()%>"<%}%> required/>
     </p>
     <input type="submit" value="Сохранить">
 </form>

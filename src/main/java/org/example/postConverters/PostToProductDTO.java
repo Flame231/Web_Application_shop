@@ -29,8 +29,7 @@ public class PostToProductDTO {
         ConverterDTO<Seller, SellerDTO> converterDTO1 = new SellerDTOConverter();
 
         String productName = converterPost.convertParameter(PRODUCT_NAME_PARAMETER, String.class);
-        Integer productCategoryId = converterPost.convertParameter("productCategoryId", Integer.class);
-        System.out.println("productCategoryId " + productCategoryId);
+        Integer productCategoryId = converterPost.convertParameter(PRODUCT_CATEGORY_ID_PARAMETER, Integer.class);
         BigDecimal price = converterPost.convertParameter(PRICE_PARAMETER, BigDecimal.class);
         Integer sellerId = converterPost.convertParameter(SELLER_PARAMETER, Integer.class);
 

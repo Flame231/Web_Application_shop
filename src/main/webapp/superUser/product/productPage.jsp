@@ -1,12 +1,11 @@
-<%@ page import="static org.example.util.NamesUtil.MAIN_PAGE_ADMINISTRATOR" %>
-<%@ page import="org.example.dto.ProductDTO" %>
 <%@ page import="static org.example.util.NamesUtil.MAIN_PAGE_CLIENT" %>
 <%@ page import="org.example.dto.NewDTO.NewProductDTO" %>
+<%@ page import="static org.example.util.NamesUtil.ROLE" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
     <title>Страница товара</title>
-    <form action="<%=request.getContextPath() + MAIN_PAGE_CLIENT%>" method="post">
+    <form action="<%=request.getContextPath() + "/" + ROLE + "/MainPage"%>" method="post">
         <input type="submit" value="Вернуться в личный кабинет">
     </form>
     <h1>Страница товара</h1>

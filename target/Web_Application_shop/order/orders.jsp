@@ -103,15 +103,9 @@
 <%
 } else {
 %>
-<table>
-    <tbody>
-    <tr>
-        <td colspan="2" style="text-align: center;">Список заказов пуст.</td>
-    </tr>
+     Список заказов пуст
     <%
         }
     %>
-    </tbody>
-</table>
 </body>
 </html>

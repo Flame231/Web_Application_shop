@@ -13,7 +13,6 @@ public class ProductDTOConverter implements ConverterDTO<Product, NewProductDTO>
 
     @Override
     public Product toEntity(NewProductDTO newProductDTO) {
-        System.out.println("productCategoryDTO " + newProductDTO.getProductCategory());
         return Product.builder()
                 .productName(newProductDTO.getProductName())
                 .productCategory(converter.toEntity(newProductDTO.getProductCategory()))

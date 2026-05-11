@@ -24,7 +24,7 @@ public class NamesUtil {
     public static final String REMOVE_PRODUCT = "/administrator/RemoveProduct";
     public static final String SHOW_CATALOG = "/client/ShowCatalog";
     public static final String UPDATE_PRODUCT = "/administrator/UpdateProduct";
-    public static final String PRODUCT_PAGE = "/client/ProductPage";
+    public static final String PRODUCT_PAGE = "/universal/ProductPage";
     //PRODUCT CATEGORY
     public static final String ADD_PRODUCT_CATEGORY = "/administrator/AddProductCategory";
     public static final String ADD_PRODUCT_CATEGORY_PAGE = "/administrator/AddProductCategoryPage";
@@ -93,7 +93,6 @@ public class NamesUtil {
     public static final String USER_ID_PARAMETER = "userId";
     public static final String PRODUCT_ID_PARAMETER = "productId";
 
-
     public static final String PRODUCT_NAME_PARAMETER = "productName";
     public static final String PRODUCT_CATEGORY_NAME_PARAMETER = "productCategoryName";
     public static final String PRODUCT_CATEGORY_ID_PARAMETER = "productCategoryId";
@@ -101,10 +100,8 @@ public class NamesUtil {
     public static final String PRICE_PARAMETER = "price";
     public static final String SELLER_PARAMETER = "seller";
 
-
     public static final String SELLER_NAME_PARAMETER = "sellerName";
     public static final String SELLER_ADDRESS_PARAMETER = "sellerAddress";
-
     public static final String SELLER_ID_PARAMETER = "sellerId";
 
     //user
@@ -116,6 +113,8 @@ public class NamesUtil {
     public static final String BIRTHDAY_PARAMETER = "birthday";
     public static final String PAYMENT_METHODS_PARAMETER = "paymentMethods";
     public static final String CATALOG_PARAMETER = "catalog";
+
+    public static String ROLE;
 
 
 }

@@ -26,7 +26,6 @@ public class Filter implements javax.servlet.Filter {
         HttpServletRequest httpRequest = (HttpServletRequest) request;
         String path = httpRequest.getServletPath();
         HttpSession session = httpRequest.getSession(false);
-        System.out.println("DEBUG: Request Path = " + path);
 
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
@@ -38,10 +37,14 @@ public class Filter implements javax.servlet.Filter {
                 chain.doFilter(request, response);
             } else if (session != null && session.getAttribute("userId") != null) {
                 Role role = (Role) session.getAttribute("userRole");
-                if (path.startsWith("/client") && role.name().equals("CLIENT") ||
+                if ((path.startsWith("/client") || path.startsWith("/universal")) && role.name().equals("CLIENT") ||
                         path.startsWith("/administrator") && role.name().equals("ADMINISTRATOR") ||
-                        path.startsWith("/operator") && role.name().equals("OPERATOR")) {
+                        (path.startsWith("/operator") || path.startsWith("/universal")) && role.name().equals("OPERATOR")) {
+                    ROLE = role.name().toLowerCase();
                     chain.doFilter(request, response);
+                } else {
+                    HttpServletResponse response1 = (HttpServletResponse) response;
+                    response1.sendRedirect(httpRequest.getContextPath() + LOGIN_JSP);
                 }
             } else {
                 HttpServletResponse response1 = (HttpServletResponse) response;

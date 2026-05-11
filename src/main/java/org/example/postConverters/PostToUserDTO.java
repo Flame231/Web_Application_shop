@@ -30,7 +30,6 @@ public class PostToUserDTO {
                 .newPasswordRepeat(newPasswordRepeat)
                 .birthday(birthday)
                 .paymentMethods(paymentMethods).sumOfPurchases(null)
-                .userOrders(null)
                 .discount(null).build();
     }
 }
