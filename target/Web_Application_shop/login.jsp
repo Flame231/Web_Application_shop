@@ -1,6 +1,5 @@
 <%@ page import="static org.example.util.NamesUtil.REGISTRATION_JSP" %>
 <%@ page import="static org.example.util.NamesUtil.AUTHORIZE_USER" %>
-
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <style>
     fieldset {
