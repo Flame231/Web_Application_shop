@@ -1,6 +1,6 @@
 package org.example.controller.productCategory;
 
-import org.example.dto.NewDTO.ProductCategoryDTO;
+import org.example.dto.dto.ProductCategoryDTO;
 import org.example.service.productCategory.ProductCategoryService;
 import org.example.service.productCategory.ProductCategoryServiceImpl;
 
@@ -18,12 +18,12 @@ import static org.example.util.NamesUtil.GET_ALL_PRODUCT_CATEGORIES;
 public class GetAllProductCategories extends HttpServlet {
     private ProductCategoryService productCategoryService = new ProductCategoryServiceImpl();
 
-    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public void doPost(HttpServletRequest request, HttpServletResponse response) {
         List<ProductCategoryDTO> productCategoriesList = productCategoryService.getProductCategoryDTOList();
         request.setAttribute("productCategoriesList", productCategoriesList);
     }
 
-    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public void doGet(HttpServletRequest request, HttpServletResponse response) {
         doPost(request, response);
     }
 }

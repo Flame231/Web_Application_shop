@@ -1,6 +1,6 @@
 <%@ page import="java.util.List" %>
-<%@ page import="org.example.dto.NewDTO.ProductCategoryDTO" %>
-<%@ page import="org.example.dto.NewDTO.SellerDTO" %>
+<%@ page import="org.example.dto.dto.ProductCategoryDTO" %>
+<%@ page import="org.example.dto.dto.SellerDTO" %>
 <%@ page import="static org.example.util.NamesUtil.ADD_PRODUCT" %>
 <%@ page import="static org.example.util.NamesUtil.MAIN_PAGE_ADMINISTRATOR" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -19,7 +19,6 @@
         <div>
             Категория продукта:
             <select name="productCategoryId">
-                </option>
                 <%
                     List<ProductCategoryDTO> list = (List<ProductCategoryDTO>) request.getAttribute("productCategoryDTOList");
                     for (ProductCategoryDTO productCategoryDTO : list) {

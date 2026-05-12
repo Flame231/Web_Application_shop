@@ -2,7 +2,6 @@ package org.example.dao.orderPoint;
 
 import org.example.dao.DAOImpl;
 import org.example.model.OrderPoint;
-import org.example.model.Product;
 
 import java.util.List;
 

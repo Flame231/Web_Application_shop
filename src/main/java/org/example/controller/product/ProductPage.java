@@ -1,6 +1,6 @@
 package org.example.controller.product;
 
-import org.example.dto.NewDTO.NewProductDTO;
+import org.example.dto.dto.ProductDTO;
 import org.example.postConverters.ConverterPost;
 import org.example.service.product.ProductService;
 import org.example.service.product.ProductServiceImpl;
@@ -23,7 +23,7 @@ public class ProductPage extends HttpServlet {
     @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Integer productId = new ConverterPost(request).convertParameter("productId", Integer.class);
-        NewProductDTO productDTO = productService.findProduct(productId);
+        ProductDTO productDTO = productService.findProduct(productId);
         request.setAttribute("productDTO", productDTO);
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(PRODUCT_PAGE_JSP);
         dispatcher.forward(request, response);

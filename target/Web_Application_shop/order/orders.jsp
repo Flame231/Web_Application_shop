@@ -1,8 +1,8 @@
 <%@ page import="java.util.List" %>
 <%@ page import="javax.swing.*" %>
 <%@ page import="static org.example.util.NamesUtil.*" %>
-<%@ page import="org.example.dto.NewDTO.NewUserOrderDTO" %>
-<%@ page import="org.example.dto.NewDTO.NewUserOrderProductDTO" %>
+<%@ page import="org.example.dto.dto.UserOrderDTO" %>
+<%@ page import="org.example.dto.dto.UserOrderProductDTO" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <style>
 
@@ -46,24 +46,24 @@
     <br>
 </head>
 <body>
-<% List<NewUserOrderDTO> list = (List<NewUserOrderDTO>) request.getAttribute("newUserOrderDTOList");
+<% List<UserOrderDTO> list = (List<UserOrderDTO>) request.getAttribute("userOrderDTOList");
     if (list != null && !list.isEmpty()) {
-        for (NewUserOrderDTO newUserOrderDTO : list) {
+        for (UserOrderDTO userOrderDTO : list) {
 %>
 
-<div>Номер заказа:<%=newUserOrderDTO.getOrderId()%>
+<div>Номер заказа:<%=userOrderDTO.getOrderId()%>
 </div>
 <br>
-<div>Статус заказа: <%=newUserOrderDTO.getOrderStatus().getDescription()%>
+<div>Статус заказа: <%=userOrderDTO.getOrderStatus().getDescription()%>
 </div>
 <br>
-<div>Пункт выдачи: <%=newUserOrderDTO.getOrderPoint()%>
+<div>Пункт выдачи: <%=userOrderDTO.getOrderPoint()%>
 </div>
 <br>
-<div>Сумма заказа: <%=newUserOrderDTO.getOrderSum()%>
+<div>Сумма заказа: <%=userOrderDTO.getOrderSum()%>
 </div>
 <br>
-<div>Дата создания: <%=newUserOrderDTO.getOrderCreateDateTime()%>
+<div>Дата создания: <%=userOrderDTO.getOrderCreateDateTime()%>
 </div>
 <br>
 
@@ -77,18 +77,18 @@
     </thead>
     <tbody>
 
-    <%for (NewUserOrderProductDTO newUserOrderProductDTO : newUserOrderDTO.getUserOrderProducts()) {%>
+    <%for (UserOrderProductDTO userOrderProductDTO : userOrderDTO.getUserOrderProducts()) {%>
     <tr>
 
-        <td><%=newUserOrderProductDTO.getNewProductDTO().getProductName()%>
+        <td><%=userOrderProductDTO.getProductDTO().getProductName()%>
         </td>
 
         <td>
-            <%=newUserOrderProductDTO.getNewProductDTO().getPrice()%>
+            <%=userOrderProductDTO.getProductDTO().getPrice()%>
         </td>
 
         <td>
-            <%=newUserOrderProductDTO.getProductCount()%>
+            <%=userOrderProductDTO.getProductCount()%>
         </td>
 
     </tr>

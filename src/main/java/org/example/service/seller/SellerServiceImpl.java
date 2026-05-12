@@ -2,9 +2,9 @@ package org.example.service.seller;
 
 import org.example.dao.seller.SellerDAO;
 import org.example.dao.seller.SellerDAOImpl;
-import org.example.dto.NewDTO.NewConverterDTO.ConverterDTO;
-import org.example.dto.NewDTO.NewConverterDTO.SellerDTOConverter;
-import org.example.dto.NewDTO.SellerDTO;
+import org.example.dto.ConverterDTO.ConverterDTO;
+import org.example.dto.ConverterDTO.SellerDTOConverter;
+import org.example.dto.dto.SellerDTO;
 import org.example.model.Seller;
 
 import java.io.Serializable;

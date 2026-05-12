@@ -2,9 +2,9 @@ package org.example.service.bag;
 
 import org.example.dao.bag.BagDAO;
 import org.example.dao.bag.BagDAOImpl;
-import org.example.dto.NewDTO.BagDTO;
-import org.example.dto.NewDTO.NewConverterDTO.BagDTOConverter;
-import org.example.dto.NewDTO.NewConverterDTO.ConverterDTO;
+import org.example.dto.dto.BagDTO;
+import org.example.dto.ConverterDTO.BagDTOConverter;
+import org.example.dto.ConverterDTO.ConverterDTO;
 import org.example.model.Bag;
 import org.example.model.additional.primaryKeys.PrimaryKeyBag;
 import org.example.model.additional.primaryKeys.PrimaryKeyUtil;

@@ -1,6 +1,6 @@
 package org.example.controller.bag;
 
-import org.example.dto.NewDTO.NewOrderDTO;
+import org.example.dto.dto.OrderDTO;
 import org.example.postConverters.PostToNewOrderDTO;
 import org.example.service.userOrder.UserOrderService;
 import org.example.service.userOrder.UserOrderServiceImpl;
@@ -20,7 +20,7 @@ public class ConfirmOrder extends HttpServlet {
     private UserOrderService userOrderService = new UserOrderServiceImpl();
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        List<NewOrderDTO> list = PostToNewOrderDTO.toNewOrderDTO(request);
+        List<OrderDTO> list = PostToNewOrderDTO.toNewOrderDTO(request);
         userOrderService.confirmOrder(list);
         response.sendRedirect(request.getContextPath() + SHOW_USER_ORDERS);
     }

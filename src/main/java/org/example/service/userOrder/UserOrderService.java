@@ -1,21 +1,21 @@
 package org.example.service.userOrder;
 
-import org.example.dto.NewDTO.NewOrderDTO;
-import org.example.dto.NewDTO.NewUserOrderDTO;
+import org.example.dto.dto.OrderDTO;
+import org.example.dto.dto.UserOrderDTO;
 
 import java.io.Serializable;
 import java.util.List;
 
 public interface UserOrderService {
 
-    void confirmOrder(List<NewOrderDTO> list);
+    void confirmOrder(List<OrderDTO> list);
 
-    List<org.example.dto.NewDTO.NewUserOrderDTO> showAllUserOrders();
+    List<UserOrderDTO> showAllUserOrders();
 
-    List<org.example.dto.NewDTO.NewUserOrderDTO> showUserOrdersByOrderPoint(Serializable userId);
+    List<UserOrderDTO> showUserOrdersByOrderPoint(Serializable userId);
 
-    List<NewUserOrderDTO> showArrivedUserOrdersByOrderPoint(Serializable userId);
+    List<UserOrderDTO> showArrivedUserOrdersByOrderPoint(Serializable userId);
 
-    NewUserOrderDTO getUserOrderDTO(Serializable id);
+    UserOrderDTO getUserOrderDTO(Serializable id);
 
 }

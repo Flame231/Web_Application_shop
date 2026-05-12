@@ -1,6 +1,6 @@
 package org.example.controller.userOrder;
 
-import org.example.dto.NewDTO.NewUserOrderDTO;
+import org.example.dto.dto.UserOrderDTO;
 import org.example.postConverters.ConverterPost;
 import org.example.service.userOrder.UserOrderService;
 import org.example.service.userOrder.UserOrderServiceImpl;
@@ -24,7 +24,7 @@ public class ShowOrderPointOrders extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         ConverterPost converterPost = new ConverterPost(request);
         Integer userId = converterPost.convertSessionAttribute("userId");
-        List<NewUserOrderDTO> userOrderDTOList = userOrderService.showUserOrdersByOrderPoint(userId);
+        List<UserOrderDTO> userOrderDTOList = userOrderService.showUserOrdersByOrderPoint(userId);
         request.setAttribute("userOrderDTOList", userOrderDTOList);
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(SHOW_ORDER_POINT_ORDERS_JSP);
         dispatcher.forward(request, response);

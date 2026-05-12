@@ -1,7 +1,7 @@
 package org.example.controller.user;
 
-import org.example.dto.NewDTO.LoginDTO;
-import org.example.dto.UserDTO;
+import org.example.dto.dto.LoginDTO;
+import org.example.dto.dto.UserDTO;
 import org.example.model.user.Role;
 import org.example.postConverters.PostToLoginDTO;
 import org.example.service.user.UserService;

@@ -1,6 +1,6 @@
 package org.example.controller.seller;
 
-import org.example.dto.NewDTO.SellerDTO;
+import org.example.dto.dto.SellerDTO;
 import org.example.postConverters.PostToSellerDTO;
 import org.example.service.seller.SellerService;
 import org.example.service.seller.SellerServiceImpl;
@@ -20,14 +20,13 @@ import static org.example.util.NamesUtil.EDIT_SELLERS;
 public class AddSeller extends HttpServlet {
     private SellerService sellerService = new SellerServiceImpl();
 
-    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         SellerDTO sellerDTO = PostToSellerDTO.toSellerDTO(request);
         sellerService.addSeller(sellerDTO);
         response.sendRedirect(request.getContextPath() + EDIT_SELLERS);
     }
 
-
-    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         doPost(request, response);
     }
 }

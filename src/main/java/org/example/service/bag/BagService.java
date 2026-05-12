@@ -1,6 +1,6 @@
 package org.example.service.bag;
 
-import org.example.dto.NewDTO.BagDTO;
+import org.example.dto.dto.BagDTO;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
@@ -10,5 +10,4 @@ public interface BagService {
 
     List<BagDTO> showAllBags(HttpServletRequest request);
 
-    public void closeBag();
 }

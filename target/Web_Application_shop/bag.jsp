@@ -1,11 +1,10 @@
 <%@ page import="java.util.List" %>
-<%@ page import="org.example.dto.NewDTO.ProductBagDTO" %>
 <%@ page import="java.math.BigDecimal" %>
-<%@ page import="org.example.dto.NewDTO.OrderPointDTO" %>
+<%@ page import="org.example.dto.dto.OrderPointDTO" %>
 <%@ page import="javax.swing.*" %>
 <%@ page import="static org.example.util.NamesUtil.SHOW_CATALOG" %>
 <%@ page import="static org.example.util.NamesUtil.*" %>
-<%@ page import="org.example.dto.NewDTO.BagDTO" %>
+<%@ page import="org.example.dto.dto.BagDTO" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <style>
 
@@ -41,8 +40,11 @@
     <form action="<%=request.getContextPath() + MAIN_PAGE_CLIENT%>" method="post">
         <input type="submit" value="Вернуться в личный кабинет">
     </form>
+    <% int currentPage = Integer.parseInt(request.getParameter("currentPage"));
+    %>
     <form action="<%=request.getContextPath() + SHOW_CATALOG%>" method="post">
-        <input type="submit" value="Вернуться назад">
+        <input type="hidden" name="currentPage" value="<%=currentPage%>">
+        <input type="submit" value="Назад">
     </form>
     <h1>Каталог товаров</h1>
     <title>Каталог товаров</title>
@@ -86,7 +88,7 @@
     %>
     <tr>
         <td>
-            <a href="<%=request.getContextPath() + PRODUCT_PAGE+"?productId="+ bagDTO.getProduct().getId()%>"><%= bagDTO.getProduct().getProductName() %>
+            <a href="<%=request.getContextPath() + PRODUCT_PAGE+"?productId="+ bagDTO.getProduct().getId() + "&currentPage="+currentPage%>"><%= bagDTO.getProduct().getProductName() %>
                 <input type="hidden" name="productId" form="orderForm" value="<%= bagDTO.getProduct().getId() %>">
 
         </td>

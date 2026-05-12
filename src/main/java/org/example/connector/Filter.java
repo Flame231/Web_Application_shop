@@ -31,7 +31,7 @@ public class Filter implements javax.servlet.Filter {
         request.setCharacterEncoding("UTF-8");
 
         try {
-            if (path.equals(LOGIN_JSP) || path.equals(REGISTRATION_JSP) ||
+            if (path.equals(LOGIN_JSP) || path.equals("/" + REGISTRATION_JSP) ||
                     (path.equals("/" + AUTHORIZE_USER)) || path.endsWith(REGISTER_USER)
                     || path.endsWith(LOGOUT_USER)) {
                 chain.doFilter(request, response);
@@ -40,7 +40,6 @@ public class Filter implements javax.servlet.Filter {
                 if ((path.startsWith("/client") || path.startsWith("/universal")) && role.name().equals("CLIENT") ||
                         path.startsWith("/administrator") && role.name().equals("ADMINISTRATOR") ||
                         (path.startsWith("/operator") || path.startsWith("/universal")) && role.name().equals("OPERATOR")) {
-                    ROLE = role.name().toLowerCase();
                     chain.doFilter(request, response);
                 } else {
                     HttpServletResponse response1 = (HttpServletResponse) response;

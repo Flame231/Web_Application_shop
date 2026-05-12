@@ -1,7 +1,5 @@
-<%@ page import="static org.example.util.NamesUtil.SHOW_CATALOG" %>
 <%@ page import="static org.example.util.NamesUtil.EDIT_CATALOG" %>
 <%@ page import="static org.example.util.NamesUtil.*" %>
-<%@ page import="static org.example.util.NamesUtil.SHOW_USER_PROFILE" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>

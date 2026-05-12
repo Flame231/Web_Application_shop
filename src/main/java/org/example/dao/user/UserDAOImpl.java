@@ -30,18 +30,14 @@ public class UserDAOImpl extends DAOImpl<User> implements UserDAO {
     }
 
     @Override
-    public User findUser(String login, String password) {
+    public User findUser(String login) {
         getEm().clear();
+        User user = null;
         try {
-            User user = getEm().createQuery("from User user where user.login =: login", User.class)
+            user = getEm().createQuery("from User user where user.login =: login", User.class)
                     .setParameter("login", login).getSingleResult();
-            if (user.getPassword().equals(password)) {
-                return user;
-            } else {
-                return null;
-            }
         } catch (NoResultException e) {
-            return null;
         }
+        return user;
     }
 }

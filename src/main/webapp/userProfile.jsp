@@ -1,4 +1,4 @@
-<%@ page import="org.example.dto.UserDTO" %>
+<%@ page import="org.example.dto.dto.UserDTO" %>
 <%@ page import="static org.example.util.NamesUtil.ACCOUNT_CLIENT_JSP" %>
 <%@ page import="static org.example.util.NamesUtil.REGISTER_USER" %>
 <%@ page import="static org.example.util.NamesUtil.*" %>

@@ -56,7 +56,6 @@ public class NamesUtil {
     public static final String SHOW_ORDER_POINT_ORDER_PAGE = "/operator/ShowUserOrderPage";
     public static final String CHANGE_USER_ORDER_STATUS = "/operator/ChangeUserOrderStatus";
     public static final String SHOW_USERS_ORDER_HISTORY = "/client/ShowUsersOrderHistory";
-
     //НАЗВАНИЯ JSP
     //папка webapp
     public static final String ACCOUNT_CLIENT_JSP = "/account/accountClient.jsp";
@@ -65,7 +64,7 @@ public class NamesUtil {
     public static final String BAG_JSP = "/bag.jsp";
     public static final String CATALOG_JSP = "/catalog.jsp";
     public static final String LOGIN_JSP = "/login.jsp";
-    public static final String REGISTRATION_JSP = "/registration.jsp";
+    public static final String REGISTRATION_JSP = "registration.jsp";
     public static final String USER_PROFILE_JSP = "/userProfile.jsp";
     //order
     public static final String ORDERS_JSP = "/order/orders.jsp";
@@ -114,9 +113,8 @@ public class NamesUtil {
     public static final String PAYMENT_METHODS_PARAMETER = "paymentMethods";
     public static final String CATALOG_PARAMETER = "catalog";
 
-    public static String ROLE;
 
-    public static final int PRODUCT_PER_PAGE = 4;
+    public static final int PRODUCT_PER_PAGE = 6;
 
 
 }

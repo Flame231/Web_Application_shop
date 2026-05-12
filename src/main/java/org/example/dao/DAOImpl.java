@@ -3,8 +3,8 @@ package org.example.dao;
 
 import lombok.Getter;
 import org.example.util.HibernateUtil;
-
 import javax.persistence.EntityManager;
+import javax.persistence.PersistenceException;
 import java.io.Serializable;
 
 @Getter
@@ -21,7 +21,7 @@ public class DAOImpl<T> implements DAO<T> {
     }
 
     @Override
-    public void save(T t) {
+    public void save(T t) throws PersistenceException {
         begin();
         getEm().persist(t);
         commit();

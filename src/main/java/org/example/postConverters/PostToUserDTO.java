@@ -1,6 +1,7 @@
 package org.example.postConverters;
 
-import org.example.dto.UserDTO;
+import org.example.dto.dto.UserDTO;
+import org.example.model.user.Role;
 
 import javax.servlet.http.HttpServletRequest;
 import java.time.LocalDate;
@@ -30,6 +31,7 @@ public class PostToUserDTO {
                 .newPasswordRepeat(newPasswordRepeat)
                 .birthday(birthday)
                 .paymentMethods(paymentMethods).sumOfPurchases(null)
+                .role(Role.CLIENT)
                 .discount(null).build();
     }
 }

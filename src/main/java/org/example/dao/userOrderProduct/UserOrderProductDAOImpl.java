@@ -26,8 +26,4 @@ public class UserOrderProductDAOImpl extends DAOImpl<UserOrderProduct> implement
         commit();
     }
 
-    @Override
-    public void ChangeBag(Integer value) {
-
-    }
 }

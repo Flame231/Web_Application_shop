@@ -1,6 +1,6 @@
 package org.example.postConverters;
 
-import org.example.dto.NewDTO.NewOrderDTO;
+import org.example.dto.dto.OrderDTO;
 
 import javax.servlet.http.HttpServletRequest;
 import java.math.BigDecimal;
@@ -10,7 +10,7 @@ import java.util.List;
 
 public class PostToNewOrderDTO {
 
-    public static List<NewOrderDTO> toNewOrderDTO(HttpServletRequest request) {
+    public static List<OrderDTO> toNewOrderDTO(HttpServletRequest request) {
         Integer userId = (Integer) (request.getSession().getAttribute("userId"));
         Integer orderPointId = Integer.parseInt(request.getParameter("orderPointId"));
         String[] productId = request.getParameterValues("productId");
@@ -24,15 +24,15 @@ public class PostToNewOrderDTO {
         List<BigDecimal> productPriceList = Arrays.stream(productPrice)
                 .map(BigDecimal::new).toList();
 
-        List<NewOrderDTO> list = new ArrayList<>();
+        List<OrderDTO> list = new ArrayList<>();
 
         for (int i = 0; i < productIdList.size(); i++) {
-            NewOrderDTO newOrderDTO = NewOrderDTO.builder()
+            OrderDTO orderDTO = OrderDTO.builder()
                     .userId(userId).orderPointId(orderPointId)
                     .productId(productIdList.get(i)).Count(countList.get(i))
                     .productPrice(productPriceList.get(i))
                     .build();
-            list.add(newOrderDTO);
+            list.add(orderDTO);
         }
         return list;
     }

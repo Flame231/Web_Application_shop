@@ -2,12 +2,14 @@ package org.example.service.user;
 
 import org.example.dao.user.UserDAO;
 import org.example.dao.user.UserDAOImpl;
-import org.example.dto.NewDTO.LoginDTO;
-import org.example.dto.NewDTO.NewConverterDTO.ConverterDTO;
-import org.example.dto.NewDTO.NewConverterDTO.UserDTOConverter;
-import org.example.dto.UserDTO;
+import org.example.dto.dto.LoginDTO;
+import org.example.dto.ConverterDTO.ConverterDTO;
+import org.example.dto.ConverterDTO.UserDTOConverter;
+import org.example.dto.dto.UserDTO;
 import org.example.model.user.User;
+import org.example.service.exceptions.*;
 
+import javax.persistence.PersistenceException;
 import java.io.Serializable;
 
 public class UserServiceImpl implements UserService {
@@ -18,13 +20,22 @@ public class UserServiceImpl implements UserService {
     @Override
     public void registerUser(UserDTO userDTO) {
         if (passwordValidation(userDTO)) {
-            userDAO.save(converterDTO.toEntity(userDTO));
+            try {
+                userDAO.save(converterDTO.toEntity(userDTO));
+            } catch (PersistenceException e) {
+                throw new UserAlreadyExists("Пользователь с таким именем уже зарегистрирован!", e);
+            }
         }
     }
 
     @Override
     public UserDTO authorizeUser(LoginDTO loginDTO) {
-        return converterDTO.toDTO(userDAO.findUser(loginDTO.getLogin(), loginDTO.getPassword()));
+        User user = null;
+        user = userDAO.findUser(loginDTO.getLogin());
+        if (user == null || !user.getPassword().equals(loginDTO.getPassword())) {
+            throw new WrongLoginOrPassword("Неверный логин или пароль!");
+        }
+        return converterDTO.toDTO(user);
     }
 
     public UserDTO getUserDTO(Serializable id) {
@@ -51,12 +62,21 @@ public class UserServiceImpl implements UserService {
         if (userDTO.getId() != null) {
             User user = userDAO.get(userDTO.getId());
             if (user.getPassword().equals(userDTO.getOldPassword())) {
-                if (userDTO.getNewPassword().equals(userDTO.getNewPasswordRepeat())) {
+                if (!userDTO.getNewPassword().equals(userDTO.getNewPasswordRepeat())) {
+                    throw new DifferentPasswordsUpdate("Введенные пароли не совпадают!");
+                } else {
                     return true;
                 }
+            } else {
+                throw new WrongPassword("Неверный пароль!");
             }
-        } else return userDTO.getNewPassword().equals(userDTO.getNewPasswordRepeat());
-        return false;
+        } else {
+            if (!userDTO.getNewPassword().equals(userDTO.getNewPasswordRepeat())) {
+                throw new DifferentPasswordsRegistration("Введенные пароли не совпадают!");
+            } else {
+                return true;
+            }
+        }
     }
 
     @Override

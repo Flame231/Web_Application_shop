@@ -2,9 +2,9 @@ package org.example.service.productCategory;
 
 import org.example.dao.productCategory.ProductCategoryDAO;
 import org.example.dao.productCategory.ProductCategoryDAOImpl;
-import org.example.dto.NewDTO.NewConverterDTO.ConverterDTO;
-import org.example.dto.NewDTO.NewConverterDTO.ProductCategoryDTOConverter;
-import org.example.dto.NewDTO.ProductCategoryDTO;
+import org.example.dto.ConverterDTO.ConverterDTO;
+import org.example.dto.ConverterDTO.ProductCategoryDTOConverter;
+import org.example.dto.dto.ProductCategoryDTO;
 import org.example.model.ProductCategory;
 
 import java.io.Serializable;

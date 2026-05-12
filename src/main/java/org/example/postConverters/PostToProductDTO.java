@@ -4,12 +4,12 @@ import org.example.dao.productCategory.ProductCategoryDAO;
 import org.example.dao.productCategory.ProductCategoryDAOImpl;
 import org.example.dao.seller.SellerDAO;
 import org.example.dao.seller.SellerDAOImpl;
-import org.example.dto.NewDTO.NewConverterDTO.ConverterDTO;
-import org.example.dto.NewDTO.NewConverterDTO.ProductCategoryDTOConverter;
-import org.example.dto.NewDTO.NewConverterDTO.SellerDTOConverter;
-import org.example.dto.NewDTO.NewProductDTO;
-import org.example.dto.NewDTO.ProductCategoryDTO;
-import org.example.dto.NewDTO.SellerDTO;
+import org.example.dto.ConverterDTO.ConverterDTO;
+import org.example.dto.ConverterDTO.ProductCategoryDTOConverter;
+import org.example.dto.ConverterDTO.SellerDTOConverter;
+import org.example.dto.dto.ProductDTO;
+import org.example.dto.dto.ProductCategoryDTO;
+import org.example.dto.dto.SellerDTO;
 import org.example.model.ProductCategory;
 import org.example.model.Seller;
 import org.example.service.productCategory.ProductCategoryService;
@@ -23,7 +23,7 @@ import static org.example.util.NamesUtil.*;
 
 public class PostToProductDTO {
 
-    public static NewProductDTO toProductDTO(HttpServletRequest request) {
+    public static ProductDTO toProductDTO(HttpServletRequest request) {
         ConverterPost converterPost = new ConverterPost(request);
         ConverterDTO<ProductCategory, ProductCategoryDTO> converterDTO = new ProductCategoryDTOConverter();
         ConverterDTO<Seller, SellerDTO> converterDTO1 = new SellerDTOConverter();
@@ -41,13 +41,13 @@ public class PostToProductDTO {
 
         if (request.getParameter(PRODUCT_ID_PARAMETER) != null) {
             Integer productId = converterPost.convertParameter(PRODUCT_ID_PARAMETER, Integer.class);
-            return NewProductDTO.builder().id(productId)
+            return ProductDTO.builder().id(productId)
                     .productName(productName)
                     .productCategory(converterDTO.toDTO(productCategoryDAO.get(productCategoryId)))
                     .price(price).seller(converterDTO1.toDTO(sellerDAO.get(sellerId)))
                     .build();
         }
-        return NewProductDTO.builder()
+        return ProductDTO.builder()
                 .productName(productName)
                 .productCategory(converterDTO.toDTO(productCategoryDAO.get(productCategoryId)))
                 .price(price)

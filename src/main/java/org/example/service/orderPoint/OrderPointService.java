@@ -1,6 +1,6 @@
 package org.example.service.orderPoint;
 
-import org.example.dto.NewDTO.OrderPointDTO;
+import org.example.dto.dto.OrderPointDTO;
 
 import java.util.List;
 

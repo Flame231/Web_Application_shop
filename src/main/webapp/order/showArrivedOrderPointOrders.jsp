@@ -1,8 +1,10 @@
 <%@ page import="java.util.List" %>
 <%@ page import="static org.example.util.NamesUtil.SHOW_ORDER_POINT_ORDER_PAGE" %>
 <%@ page import="static org.example.util.NamesUtil.*" %>
-<%@ page import="org.example.dto.NewDTO.NewUserOrderDTO" %>
-<%@ page import="org.example.dto.NewDTO.NewUserOrderProductDTO" %>
+<%@ page import="org.example.dto.dto.UserOrderDTO" %>
+<%@ page import="org.example.dto.dto.UserOrderProductDTO" %>
+<%@ page import="org.example.dto.dto.UserOrderProductDTO" %>
+<%@ page import="org.example.dto.dto.UserOrderDTO" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -16,17 +18,17 @@
 <h1>Готовые заказы на пункте выдачи</h1>
 
 <%
-    List<NewUserOrderDTO> newUserOrderDTOList = (List<NewUserOrderDTO>) request.getAttribute("userOrderDTOList");
-    if (newUserOrderDTOList != null && !newUserOrderDTOList.isEmpty()) {
+    List<UserOrderDTO> userOrderDTOList = (List<UserOrderDTO>) request.getAttribute("userOrderDTOList");
+    if (userOrderDTOList != null && !userOrderDTOList.isEmpty()) {
 %>
 
-<div>Ваш пункт выдачи: <%=newUserOrderDTOList.get(0).getOrderPoint()%>
+<div>Ваш пункт выдачи: <%=userOrderDTOList.get(0).getOrderPoint()%>
 </div>
-<%for (NewUserOrderDTO newUserOrderDTO : newUserOrderDTOList) {%>
+<%for (UserOrderDTO userOrderDTO : userOrderDTOList) {%>
 <br>
 <div>
-    <a href="<%=request.getContextPath() + SHOW_ORDER_POINT_ORDER_PAGE%>?userOrderId=<%=newUserOrderDTO.getOrderId()%>">Номер
-        заказа: <%=newUserOrderDTO.getOrderId()%>
+    <a href="<%=request.getContextPath() + SHOW_ORDER_POINT_ORDER_PAGE%>?userOrderId=<%=userOrderDTO.getOrderId()%>">Номер
+        заказа: <%=userOrderDTO.getOrderId()%>
     </a>
 </div>
 <br>
@@ -36,18 +38,18 @@
         <th>Цена товара</th>
         <th>Количество товара</th>
     </tr>
-    <%for (NewUserOrderProductDTO newUserOrderProductDTO : newUserOrderDTO.getUserOrderProducts()) {%>
+    <%for (UserOrderProductDTO userOrderProductDTO : userOrderDTO.getUserOrderProducts()) {%>
     <tr>
-        <td> <a href="<%=request.getContextPath() + PRODUCT_PAGE+"?productId="+ newUserOrderProductDTO.getNewProductDTO().getId()%>"><%= newUserOrderProductDTO.getNewProductDTO().getProductName() %><a/>
+        <td> <a href="<%=request.getContextPath() + PRODUCT_PAGE+"?productId="+ userOrderProductDTO.getProductDTO().getId()%>"><%= userOrderProductDTO.getProductDTO().getProductName() %><a/>
         </td>
-        <td><%=newUserOrderProductDTO.getNewProductDTO().getPrice()%>
+        <td><%=userOrderProductDTO.getProductDTO().getPrice()%>
         </td>
-        <td><%=newUserOrderProductDTO.getProductCount()%>
+        <td><%=userOrderProductDTO.getProductCount()%>
         </td>
         <%}%>
     </tr>
 </table>
-<div>Сумма заказа: <%=newUserOrderDTO.getOrderSum()%>
+<div>Сумма заказа: <%=userOrderDTO.getOrderSum()%>
 </div>
 <%
     }

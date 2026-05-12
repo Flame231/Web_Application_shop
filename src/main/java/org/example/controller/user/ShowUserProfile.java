@@ -1,6 +1,6 @@
 package org.example.controller.user;
 
-import org.example.dto.UserDTO;
+import org.example.dto.dto.UserDTO;
 import org.example.service.user.UserService;
 import org.example.service.user.UserServiceImpl;
 

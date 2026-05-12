@@ -11,5 +11,5 @@ public interface UserDAO extends DAO<User> {
 
     void addDiscount(User user, Discount discount);
 
-    User findUser(String login, String password);
+    User findUser(String login);
 }

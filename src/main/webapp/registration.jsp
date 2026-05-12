@@ -38,7 +38,7 @@
 
 <h1>Регистрация нового пользователя</h1>
 <a href="<%=request.getContextPath() + LOGIN_JSP%>"> На главную</a>
-<form action="<%=REGISTER_USER%>" method="post">
+<form action="<%=request.getContextPath() + REGISTER_USER%>" method="post">
     <div class="form-container">
 
         <div class="form-row">
@@ -70,7 +70,7 @@
             <input name="paymentMethods" type="text"/>
         </div>
 
-        <input type="submit" value="Сохранить" formaction="<%=REGISTER_USER%>"/>
+        <input type="submit" value="Сохранить"/>
     </div>
 </form>
 

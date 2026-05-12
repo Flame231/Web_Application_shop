@@ -16,11 +16,11 @@ import static org.example.util.NamesUtil.GET_ALL_SELLERS;
 public class GetAllSellers extends HttpServlet {
     private SellerService sellerService = new SellerServiceImpl();
 
-    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public void doPost(HttpServletRequest request, HttpServletResponse response) {
         request.setAttribute("sellerList", sellerService.getSellerDTOList());
     }
 
-    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public void doGet(HttpServletRequest request, HttpServletResponse response) {
         doPost(request, response);
     }
 

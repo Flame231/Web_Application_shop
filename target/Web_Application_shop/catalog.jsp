@@ -1,8 +1,9 @@
 <%@ page import="java.util.List" %>
 <%@ page import="static org.example.util.NamesUtil.SHOW_BAG" %>
 <%@ page import="static org.example.util.NamesUtil.*" %>
-<%@ page import="org.example.dto.NewDTO.NewProductDTO" %>
-<%@ page import="org.example.dto.NewDTO.BagDTO" %>
+<%@ page import="org.example.dto.dto.ProductDTO" %>
+<%@ page import="org.example.dto.dto.BagDTO" %>
+<%@ page import="org.example.model.user.Role" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <style>
 
@@ -35,13 +36,18 @@
 </style>
 <html>
 <head>
-    <form action="<%=request.getContextPath()+ "/"+ ROLE + "/MainPage"%>" method="post">
+    <%
+        int currentPage = (int) request.getAttribute("currentPage");
+        Role role = (Role) request.getSession().getAttribute("userRole");
+    %>
+    <form action="<%=request.getContextPath()+ "/"+ role.name().toLowerCase() + "/MainPage"%>" method="post">
         <input type="submit" value="Вернуться в личный кабинет">
     </form>
     <title>Каталог товаров</title>
     <h1>Каталог товаров</h1>
     <form action="<%=request.getContextPath() + SHOW_BAG%>" method="post">
         <input type="submit" value="Корзина">
+        <input type="hidden" name="currentPage" value="<%=currentPage%>">
         <input name="page" type="hidden" value="bag">
     </form>
 
@@ -62,11 +68,11 @@
     <tbody>
     <%
 
-        List<NewProductDTO> products = (List<NewProductDTO>) request.getAttribute("productList");
+        List<ProductDTO> products = (List<ProductDTO>) request.getAttribute("productList");
         List<BagDTO> bagDTO = (List<BagDTO>) request.getSession().getAttribute("bagDTOList");
         int value = 0;
         if (products != null && !products.isEmpty()) {
-            for (NewProductDTO productDTO : products) {
+            for (ProductDTO productDTO : products) {
                 for (BagDTO b1 : bagDTO) {
                     if (b1.getProduct().getId().equals(productDTO.getId())) {
                         value = b1.getCount();
@@ -77,7 +83,7 @@
         <td><%= productDTO.getId() %>
         </td>
         <td>
-            <a href="<%=request.getContextPath() + PRODUCT_PAGE+"?productId="+ productDTO.getId()%>"><%= productDTO.getProductName() %>
+            <a href="<%=request.getContextPath() + PRODUCT_PAGE+"?productId="+ productDTO.getId() + "&currentPage=" + currentPage%>"><%= productDTO.getProductName() %>
             </a>
         </td>
         <td><%= productDTO.getProductCategory().getCategory() %>
@@ -121,7 +127,7 @@
     </tbody>
 </table>
 
-<% int currentPage = (int) request.getAttribute("currentPage");
+<%
     int productCountResult = (int) request.getAttribute("productCountResult");
     int lastPage = productCountResult / PRODUCT_PER_PAGE;
     int minPage = currentPage - 3;

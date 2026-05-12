@@ -1,6 +1,6 @@
 package org.example.controller.userOrder;
 
-import org.example.dto.NewDTO.ArchivedUserOrderDTO;
+import org.example.dto.dto.ArchivedUserOrderDTO;
 import org.example.postConverters.ConverterPost;
 import org.example.service.archivedUserOrder.ArchivedUserOrderService;
 import org.example.service.archivedUserOrder.ArchivedUserOrderServiceImpl;

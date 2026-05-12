@@ -10,6 +10,4 @@ public interface UserOrderProductDAO extends DAO<UserOrderProduct> {
     void addUserOrder(UserOrderProduct userOrderProduct, UserOrder userOrder);
 
     void addProduct(UserOrderProduct userOrderProduct, Product product);
-
-    void ChangeBag(Integer value);
 }

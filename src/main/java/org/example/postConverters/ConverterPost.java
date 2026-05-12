@@ -40,13 +40,11 @@ public class ConverterPost {
     }
 
     public <V> V convertSessionAttribute(String parameterName) {
-        V v = (V) request.getSession().getAttribute(parameterName);
-        return v;
+        return (V) request.getSession().getAttribute(parameterName);
     }
 
     public <V> V convertRequestAttribute(String parameterName) {
-        V v = (V) request.getAttribute(parameterName);
-        return v;
+        return (V) request.getAttribute(parameterName);
     }
 
 

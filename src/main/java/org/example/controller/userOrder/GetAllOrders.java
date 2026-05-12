@@ -1,6 +1,6 @@
 package org.example.controller.userOrder;
 
-import org.example.dto.NewDTO.NewUserOrderDTO;
+import org.example.dto.dto.UserOrderDTO;
 import org.example.service.userOrder.UserOrderService;
 import org.example.service.userOrder.UserOrderServiceImpl;
 
@@ -17,8 +17,8 @@ public class GetAllOrders extends HttpServlet {
     private UserOrderService userOrderService = new UserOrderServiceImpl();
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) {
-        List<NewUserOrderDTO> list = userOrderService.showAllUserOrders();
-        request.setAttribute("newUserOrderDTOList", list);
+        List<UserOrderDTO> list = userOrderService.showAllUserOrders();
+        request.setAttribute("userOrderDTOList", list);
     }
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) {

@@ -17,12 +17,12 @@ import static org.example.util.NamesUtil.REMOVE_PRODUCT_CATEGORY;
 public class RemoveProductCategory extends HttpServlet {
     private ProductCategoryService productCategoryService = new ProductCategoryServiceImpl();
 
-    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         productCategoryService.deleteProductCategory(Integer.parseInt(request.getParameter("productCategoryId")));
         response.sendRedirect(request.getContextPath() + EDIT_PRODUCT_CATEGORIES);
     }
 
-    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         doPost(request, response);
     }
 }

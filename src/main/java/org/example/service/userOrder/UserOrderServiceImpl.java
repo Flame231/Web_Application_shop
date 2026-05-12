@@ -12,10 +12,10 @@ import org.example.dao.userOrder.UserOrderDAO;
 import org.example.dao.userOrder.UserOrderDAOImpl;
 import org.example.dao.userOrderProduct.UserOrderProductDAO;
 import org.example.dao.userOrderProduct.UserOrderProductDAOImpl;
-import org.example.dto.NewDTO.NewConverterDTO.ConverterDTO;
-import org.example.dto.NewDTO.NewConverterDTO.UserOrderDTOConverter;
-import org.example.dto.NewDTO.NewOrderDTO;
-import org.example.dto.NewDTO.NewUserOrderDTO;
+import org.example.dto.ConverterDTO.ConverterDTO;
+import org.example.dto.ConverterDTO.UserOrderDTOConverter;
+import org.example.dto.dto.OrderDTO;
+import org.example.dto.dto.UserOrderDTO;
 import org.example.model.UserOrder.OrderStatus;
 import org.example.model.UserOrder.UserOrder;
 import org.example.model.UserOrder.UserOrderProduct;
@@ -29,12 +29,10 @@ import java.util.List;
 public class UserOrderServiceImpl implements UserOrderService {
     private UserOrderDAO userOrderDAO = new UserOrderDAOImpl();
     private UserDAO userDAO = new UserDAOImpl();
-    private ConverterDTO<UserOrder, NewUserOrderDTO> converterDTO = new UserOrderDTOConverter();
-    private org.example.dto.NewDTO.NewConverterDTO.ConverterDTO<UserOrder, NewUserOrderDTO> converterDTO1 = new UserOrderDTOConverter();
-    private org.example.dto.NewDTO.NewConverterDTO.ConverterDTO<UserOrder, org.example.dto.NewDTO.NewUserOrderDTO> newConverterDTO = new UserOrderDTOConverter();
+    private ConverterDTO<UserOrder, UserOrderDTO> converterDTO = new UserOrderDTOConverter();
 
     @Override
-    public void confirmOrder(List<NewOrderDTO> list) {
+    public void confirmOrder(List<OrderDTO> list) {
 
         OrderPointDAO orderPointDAO = new OrderPointDAOIml();
         ProductDAO productDAO = new ProductDAOImpl();
@@ -65,32 +63,32 @@ public class UserOrderServiceImpl implements UserOrderService {
     }
 
     @Override
-    public List<org.example.dto.NewDTO.NewUserOrderDTO> showAllUserOrders() {
-        org.example.dto.NewDTO.NewConverterDTO.ConverterDTO<UserOrder, org.example.dto.NewDTO.NewUserOrderDTO> converterDTO = new UserOrderDTOConverter();
+    public List<UserOrderDTO> showAllUserOrders() {
+        ConverterDTO<UserOrder, UserOrderDTO> converterDTO = new UserOrderDTOConverter();
         return userOrderDAO.getUserOrderList().stream().map(converterDTO::toDTO)
                 .toList();
     }
 
     @Override
-    public List<org.example.dto.NewDTO.NewUserOrderDTO> showUserOrdersByOrderPoint(Serializable userId) {
+    public List<UserOrderDTO> showUserOrdersByOrderPoint(Serializable userId) {
         User user = userDAO.get(userId);
         Integer orderPointId = user.getOrderPoint().getId();
         List<UserOrder> userOrderList = userOrderDAO.getUserOrderByOrderPoint(orderPointId);
-        return userOrderList.stream().map(newConverterDTO::toDTO).toList();
+        return userOrderList.stream().map(converterDTO::toDTO).toList();
     }
 
     @Override
-    public List<NewUserOrderDTO> showArrivedUserOrdersByOrderPoint(Serializable userId) {
+    public List<UserOrderDTO> showArrivedUserOrdersByOrderPoint(Serializable userId) {
         User user = userDAO.get(userId);
         Integer orderPointId = user.getOrderPoint().getId();
         List<UserOrder> userOrderList = userOrderDAO.getArrivedUserOrderByOrderPoint(orderPointId);
-        return userOrderList.stream().map(newConverterDTO::toDTO).toList();
+        return userOrderList.stream().map(converterDTO::toDTO).toList();
     }
 
     @Override
-    public NewUserOrderDTO getUserOrderDTO(Serializable id) {
+    public UserOrderDTO getUserOrderDTO(Serializable id) {
         UserOrder userOrder = userOrderDAO.get(id);
-        return converterDTO1.toDTO(userOrder);
+        return converterDTO.toDTO(userOrder);
     }
 
 }

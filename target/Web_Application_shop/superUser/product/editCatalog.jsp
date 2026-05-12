@@ -1,7 +1,8 @@
 <%@ page import="java.util.List" %>
 <%@ page import="static org.example.util.NamesUtil.EDIT_PRODUCT" %>
 <%@ page import="static org.example.util.NamesUtil.*" %>
-<%@ page import="org.example.dto.NewDTO.NewProductDTO" %>
+<%@ page import="org.example.dto.dto.ProductDTO" %>
+<%@ page import="org.example.dto.dto.ProductDTO" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <style>
 
@@ -44,6 +45,11 @@
 <form action="<%=request.getContextPath() + ADD_PRODUCT_PAGE%>" method="post">
     <input type="submit" value="Добавить товар в каталог">
 </form>
+<%
+    List<ProductDTO> products = (List<ProductDTO>) request.getAttribute("productList");
+    int currentPage = (int) request.getAttribute("currentPage");
+    if (products != null && !products.isEmpty()) {
+%>
 <table>
     <thead>
     <tr>
@@ -56,42 +62,66 @@
     </tr>
     </thead>
     <tbody>
-    <%
-        List<NewProductDTO> products = (List<NewProductDTO>) request.getAttribute("productList");
-        if (products != null && !products.isEmpty()) {
-            for (NewProductDTO newProductDTO : products) {
-    %>
+    <%for (ProductDTO productDTO : products) {%>
     <tr>
-        <td><%= newProductDTO.getId() %>
+        <td><%= productDTO.getId() %>
         </td>
-        <td><%= newProductDTO.getProductName() %>
+        <td><%= productDTO.getProductName() %>
         </td>
-        <td><%= newProductDTO.getProductCategory().getCategory() %>
+        <td><%= productDTO.getProductCategory().getCategory() %>
         </td>
-        <td><%= newProductDTO.getPrice() %>
+        <td><%= productDTO.getPrice() %>
         </td>
-        <td><%= newProductDTO.getSeller().getSellerName() %>
+        <td><%= productDTO.getSeller().getSellerName() %>
         </td>
         <td>
             <form method="post">
-                <input type="hidden" name="productId" value="<%=newProductDTO.getId()%>">
+                <input type="hidden" name="productId" value="<%=productDTO.getId()%>">
                 <input type="hidden" name="func" value="catalog">
+                <input type="hidden" name="currentPage" value="<%=currentPage%>">
                 <input type="submit" value="Редактировать" formaction="<%=request.getContextPath() + EDIT_PRODUCT%>"/>
                 <input type="submit" value="Удалить" formaction="<%=request.getContextPath() + REMOVE_PRODUCT%>"/>
             </form>
         </td>
     </tr>
-    <%
-        }
-    } else {
-    %>
-    <tr>
-        <td colspan="2" style="text-align: center;">База товаров пуста".</td>
-    </tr>
-    <%
-        }
-    %>
+    <%}%>
     </tbody>
 </table>
+<% int productCountResult = (int) request.getAttribute("productCountResult");
+    int lastPage = productCountResult / PRODUCT_PER_PAGE;
+    int minPage = currentPage - 3;
+    int maxPage = currentPage + 3;
+    if (minPage < 1) {
+        minPage = 1;
+    }
+
+    if (productCountResult % PRODUCT_PER_PAGE != 0) {
+        lastPage = lastPage + 1;
+    }
+    if (maxPage > lastPage) {
+        maxPage = lastPage;
+    }%>
+
+<a href="<%=request.getContextPath() + EDIT_CATALOG+"?currentPage=1"%>">Первая
+</a>
+<% for (int i = minPage; i < maxPage + 1; i++) {
+    if (i == currentPage) {%>
+<a href="<%=request.getContextPath() + EDIT_CATALOG + "?currentPage=" + i%>"><span style="font-size: 25px;"><%=i%>
+</span>&nbsp;
+</a>
+<%} else {%><a href="<%=request.getContextPath() + EDIT_CATALOG + "?currentPage=" + i%>"><span
+        style="font-size: 20px;"><%=i%>
+</span>&nbsp;
+</a>
+<%
+        }
+    }
+%>
+<a href="<%=request.getContextPath() + SHOW_CATALOG+"?currentPage=" + lastPage%>">Последняя
+</a>
+<% } else {
+%>
+Список товаров пуст
+<%}%>
 </body>
 </html>

@@ -1,34 +1,42 @@
-<%@ page import="static org.example.util.NamesUtil.MAIN_PAGE_CLIENT" %>
-<%@ page import="org.example.dto.NewDTO.NewProductDTO" %>
-<%@ page import="static org.example.util.NamesUtil.ROLE" %>
+<%@ page import="org.example.dto.dto.ProductDTO" %>
+<%@ page import="static org.example.util.NamesUtil.*" %>
+<%@ page import="org.example.model.user.Role" %>
+<%@ page import="org.example.dto.dto.ProductDTO" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
     <title>Страница товара</title>
-    <form action="<%=request.getContextPath() + "/" + ROLE + "/MainPage"%>" method="post">
+    <%Role role = (Role)request.getSession().getAttribute("userRole");%>
+    <form action="<%=request.getContextPath() + "/" + role.name().toLowerCase()+ "/MainPage"%>" method="post">
         <input type="submit" value="Вернуться в личный кабинет">
     </form>
+    <%  int currentPage = Integer.parseInt(request.getParameter("currentPage"));%>
+    <form action="<%=request.getContextPath() + SHOW_CATALOG%>" method="post">
+        <input type="hidden" name="currentPage" value="<%=currentPage%>">
+        <input type="submit" value="Назад">
+    </form>
+
     <h1>Страница товара</h1>
 </head>
 <body>
 <%
-    NewProductDTO newProductDTO = (NewProductDTO) request.getAttribute("productDTO");%>
-<div>Номер товара: <%=newProductDTO.getId()%>
+    ProductDTO productDTO = (ProductDTO) request.getAttribute("productDTO");%>
+<div>Номер товара: <%=productDTO.getId()%>
 </div>
 <br>
-<div>Название товара: <%=newProductDTO.getProductName()%>
+<div>Название товара: <%=productDTO.getProductName()%>
 </div>
 <br>
-<div>Категория: <%=newProductDTO.getProductCategory().getCategory()%>
+<div>Категория: <%=productDTO.getProductCategory().getCategory()%>
 </div>
 <br>
-<div>Цена: <%=newProductDTO.getPrice()%>
+<div>Цена: <%=productDTO.getPrice()%>
 </div>
 <br>
-<div>Продавец: <%=newProductDTO.getSeller().getSellerName()%>, <%=newProductDTO.getSeller().getSellerAddress()%>
+<div>Продавец: <%=productDTO.getSeller().getSellerName()%>, <%=productDTO.getSeller().getSellerAddress()%>
 </div>
 <br>
-<div>Обновлено: <%=newProductDTO.getUpdateDateTime()%>
+<div>Обновлено: <%=productDTO.getUpdateDateTime()%>
 </div>
 <br>
 </body>

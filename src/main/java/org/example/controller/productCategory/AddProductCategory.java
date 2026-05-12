@@ -1,6 +1,6 @@
 package org.example.controller.productCategory;
 
-import org.example.dto.NewDTO.ProductCategoryDTO;
+import org.example.dto.dto.ProductCategoryDTO;
 import org.example.postConverters.PostToProductCategoryDTO;
 import org.example.service.productCategory.ProductCategoryService;
 import org.example.service.productCategory.ProductCategoryServiceImpl;
@@ -20,13 +20,13 @@ import static org.example.util.NamesUtil.EDIT_PRODUCT_CATEGORIES;
 public class AddProductCategory extends HttpServlet {
     private ProductCategoryService productCategoryService = new ProductCategoryServiceImpl();
 
-    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         ProductCategoryDTO productCategoryDTO = PostToProductCategoryDTO.toProductCategoryDTO(request);
         productCategoryService.addProductCategory(productCategoryDTO);
         response.sendRedirect(request.getContextPath() + EDIT_PRODUCT_CATEGORIES);
     }
 
-    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         doPost(request, response);
     }
 }

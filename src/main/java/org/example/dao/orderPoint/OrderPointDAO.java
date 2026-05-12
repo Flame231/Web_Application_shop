@@ -7,5 +7,5 @@ import java.util.List;
 
 public interface OrderPointDAO extends DAO<OrderPoint> {
 
-    public List<OrderPoint> getOrderPointList();
+    List<OrderPoint> getOrderPointList();
 }

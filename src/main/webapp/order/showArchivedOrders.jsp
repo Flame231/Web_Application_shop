@@ -1,6 +1,6 @@
 <%@ page import="java.util.List" %>
-<%@ page import="org.example.dto.NewDTO.ArchivedUserOrderDTO" %>
-<%@ page import="org.example.dto.NewDTO.ArchivedUserOrderProductDTO" %>
+<%@ page import="org.example.dto.dto.ArchivedUserOrderDTO" %>
+<%@ page import="org.example.dto.dto.ArchivedUserOrderProductDTO" %>
 <%@ page import="static org.example.util.NamesUtil.MAIN_PAGE_CLIENT" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 

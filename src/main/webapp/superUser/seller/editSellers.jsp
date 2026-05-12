@@ -1,5 +1,5 @@
 <%@ page import="java.util.List" %>
-<%@ page import="org.example.dto.NewDTO.SellerDTO" %>
+<%@ page import="org.example.dto.dto.SellerDTO" %>
 <%@ page import="org.example.model.*" %>
 <%@ page import="static org.example.util.NamesUtil.ACCOUNT_CLIENT_JSP" %>
 <%@ page import="static org.example.util.NamesUtil.ADD_SELLER_PAGE" %>

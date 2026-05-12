@@ -1,21 +1,23 @@
 package org.example.service.product;
 
-import org.example.dto.NewDTO.NewProductDTO;
+import org.example.dto.dto.ProductDTO;
 
 import java.io.Serializable;
 import java.util.List;
 
 public interface ProductService {
 
-    List<NewProductDTO> getAllProducts(int currentPage);
+    List<ProductDTO> getAllProducts(int currentPage);
 
-    NewProductDTO findProduct(Serializable id);
+    ProductDTO findProduct(Serializable id);
 
-    void addProduct(NewProductDTO productDTO);
+    void addProduct(ProductDTO productDTO);
 
-    void updateProduct(NewProductDTO productDTO);
+    void updateProduct(ProductDTO productDTO);
 
     void removeProduct(Serializable id);
 
     Integer getProductCountResult();
+
+    ProductPagesDivide getProductsAndList(Integer currentPage);
 }

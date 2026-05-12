@@ -1,6 +1,6 @@
 package org.example.service.archivedUserOrder;
 
-import org.example.dto.NewDTO.ArchivedUserOrderDTO;
+import org.example.dto.dto.ArchivedUserOrderDTO;
 
 import java.util.List;
 

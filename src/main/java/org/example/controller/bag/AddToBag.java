@@ -1,11 +1,10 @@
 package org.example.controller.bag;
 
-import org.example.dto.NewDTO.BagDTO;
+import org.example.dto.dto.BagDTO;
 import org.example.postConverters.PostToBagDTO;
 import org.example.service.bag.BagService;
 import org.example.service.bag.BagServiceImpl;
 
-import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -19,7 +18,7 @@ public class AddToBag extends HttpServlet {
     private BagService bagService = new BagServiceImpl();
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         BagDTO bagDTO = PostToBagDTO.toBagDTO(request);
         bagService.addProductToBag(bagDTO);
         if ("catalog".equals(request.getParameter("func"))) {
