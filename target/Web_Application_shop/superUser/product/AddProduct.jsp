@@ -19,7 +19,6 @@
         <div>
             Категория продукта:
             <select name="productCategoryId">
-                </option>
                 <%
                     List<ProductCategoryDTO> list = (List<ProductCategoryDTO>) request.getAttribute("productCategoryDTOList");
                     for (ProductCategoryDTO productCategoryDTO : list) {
