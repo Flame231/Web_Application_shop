@@ -42,4 +42,10 @@ public class SellerServiceImpl implements SellerService {
     public void removeSeller(Serializable id) {
         sellerDAO.delete(id);
     }
+
+    @Override
+    public SellerDTO getSeller(Serializable id) {
+        Seller seller  = sellerDAO.get(id);
+        return converterDTO.toDTO(seller);
+    }
 }

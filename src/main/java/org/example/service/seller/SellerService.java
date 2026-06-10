@@ -14,4 +14,6 @@ public interface SellerService {
     void addSeller(SellerDTO sellerDTO);
 
     void removeSeller(Serializable id);
+
+    SellerDTO getSeller(Serializable id);
 }

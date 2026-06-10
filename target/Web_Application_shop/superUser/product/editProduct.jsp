@@ -1,7 +1,5 @@
 <%@ page import="java.util.List" %>
 <%@ page import="org.example.dto.dto.ProductCategoryDTO" %>
-<%@ page import="org.example.service.product.ProductService" %>
-<%@ page import="org.example.service.product.ProductServiceImpl" %>
 <%@ page import="org.example.dto.dto.SellerDTO" %>
 <%@ page import="static org.example.util.NamesUtil.PRODUCT_CATEGORY_ID_PARAMETER" %>
 <%@ page import="static org.example.util.NamesUtil.MAIN_PAGE_ADMINISTRATOR" %>
@@ -12,9 +10,9 @@
 <html>
 <head>
     <%
-        Integer productId = Integer.parseInt(request.getParameter("productId"));
-        ProductService productService = new ProductServiceImpl();
-        ProductDTO productDTO = productService.findProduct(productId);
+
+        ProductDTO productDTO = (ProductDTO) request.getAttribute("productDTO");
+
         int currentPage = Integer.parseInt(request.getParameter("currentPage"));
     %>
     <form action="<%=request.getContextPath() + MAIN_PAGE_ADMINISTRATOR%>" method="post">

@@ -5,12 +5,10 @@ import org.example.service.product.ProductPagesDivide;
 import org.example.service.product.ProductService;
 import org.example.service.product.ProductServiceImpl;
 
-import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
 
 import static org.example.util.NamesUtil.GET_ALL_PRODUCTS;
 
@@ -25,7 +23,6 @@ public class GetAllProducts extends HttpServlet {
         request.setAttribute("productCountResult", pagesDivide.productCountResult());
         request.setAttribute("productList", pagesDivide.productDTOList());
     }
-
     public void doGet(HttpServletRequest request, HttpServletResponse response) {
         doPost(request, response);
     }

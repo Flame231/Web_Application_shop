@@ -33,7 +33,7 @@ public class User extends DataEntity {
     private String login;
 
     @Column
-    private String password;
+    private String passwordHash;
 
     @Column(nullable = false)
     private LocalDate birthday;

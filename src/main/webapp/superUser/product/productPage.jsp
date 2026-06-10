@@ -6,13 +6,17 @@
 <html>
 <head>
     <title>Страница товара</title>
-    <%Role role = (Role)request.getSession().getAttribute("userRole");%>
+    <%Role role = (Role) request.getSession().getAttribute("userRole");%>
     <form action="<%=request.getContextPath() + "/" + role.name().toLowerCase()+ "/MainPage"%>" method="post">
         <input type="submit" value="Вернуться в личный кабинет">
     </form>
-    <%  int currentPage = Integer.parseInt(request.getParameter("currentPage"));%>
+
+
     <form action="<%=request.getContextPath() + SHOW_CATALOG%>" method="post">
+        <% if (request.getParameter("currentPage") != null) {
+            int currentPage = Integer.parseInt(request.getParameter("currentPage"));%>
         <input type="hidden" name="currentPage" value="<%=currentPage%>">
+        <%}%>
         <input type="submit" value="Назад">
     </form>
 

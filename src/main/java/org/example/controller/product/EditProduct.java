@@ -1,7 +1,12 @@
 package org.example.controller.product;
 
 import org.example.dto.dto.ProductCategoryDTO;
+import org.example.dto.dto.ProductDTO;
 import org.example.dto.dto.SellerDTO;
+import org.example.model.Product;
+import org.example.postConverters.ConverterPost;
+import org.example.service.product.ProductService;
+import org.example.service.product.ProductServiceImpl;
 import org.example.service.productCategory.ProductCategoryService;
 import org.example.service.productCategory.ProductCategoryServiceImpl;
 import org.example.service.seller.SellerService;
@@ -21,9 +26,14 @@ import static org.example.util.NamesUtil.*;
 @WebServlet(EDIT_PRODUCT)
 public class EditProduct extends HttpServlet {
     private ProductCategoryService productCategoryService = new ProductCategoryServiceImpl();
+    private ProductService productService = new ProductServiceImpl();
     private SellerService sellerService = new SellerServiceImpl();
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        ConverterPost converterPost = new ConverterPost(request);
+        Integer productId = converterPost.convertParameter("productId", Integer.class);
+        ProductDTO productDTO = productService.findProduct(productId);
+        request.setAttribute("productDTO", productDTO);
         List<ProductCategoryDTO> list = productCategoryService.getProductCategoryDTOList();
         List<SellerDTO> listSeller = sellerService.getSellerDTOList();
         request.setAttribute("productCategoryDTOList", list);

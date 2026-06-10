@@ -19,13 +19,11 @@ import static org.example.util.NamesUtil.EDIT_PRODUCT_CATEGORIES;
 @WebServlet(ADD_PRODUCT_CATEGORY)
 public class AddProductCategory extends HttpServlet {
     private ProductCategoryService productCategoryService = new ProductCategoryServiceImpl();
-
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         ProductCategoryDTO productCategoryDTO = PostToProductCategoryDTO.toProductCategoryDTO(request);
         productCategoryService.addProductCategory(productCategoryDTO);
         response.sendRedirect(request.getContextPath() + EDIT_PRODUCT_CATEGORIES);
     }
-
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         doPost(request, response);
     }

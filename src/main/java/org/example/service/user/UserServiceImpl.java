@@ -7,6 +7,7 @@ import org.example.dto.ConverterDTO.ConverterDTO;
 import org.example.dto.ConverterDTO.UserDTOConverter;
 import org.example.dto.dto.UserDTO;
 import org.example.model.user.User;
+import org.example.service.BcryptUtil;
 import org.example.service.exceptions.*;
 
 import javax.persistence.PersistenceException;
@@ -32,7 +33,7 @@ public class UserServiceImpl implements UserService {
     public UserDTO authorizeUser(LoginDTO loginDTO) {
         User user = null;
         user = userDAO.findUser(loginDTO.getLogin());
-        if (user == null || !user.getPassword().equals(loginDTO.getPassword())) {
+        if (user == null || !BcryptUtil.checkPassword(loginDTO.getPassword(), user.getPasswordHash())) {
             throw new WrongLoginOrPassword("Неверный логин или пароль!");
         }
         return converterDTO.toDTO(user);
@@ -49,7 +50,7 @@ public class UserServiceImpl implements UserService {
             User user = userDAO.get(userDTO.getId());
             user.setName(userDTO.getName());
             user.setLogin(userDTO.getLogin());
-            user.setPassword(userDTO.getNewPassword());
+            user.setPasswordHash(BcryptUtil.hashPassword(userDTO.getNewPassword()));
             user.setBirthday(userDTO.getBirthday());
             user.setPaymentMethods(userDTO.getPaymentMethods());
             userDAO.commit();
@@ -61,7 +62,8 @@ public class UserServiceImpl implements UserService {
     public boolean passwordValidation(UserDTO userDTO) {
         if (userDTO.getId() != null) {
             User user = userDAO.get(userDTO.getId());
-            if (user.getPassword().equals(userDTO.getOldPassword())) {
+            if (BcryptUtil.checkPassword(userDTO.getOldPassword(),user.getPasswordHash()) )
+            {
                 if (!userDTO.getNewPassword().equals(userDTO.getNewPasswordRepeat())) {
                     throw new DifferentPasswordsUpdate("Введенные пароли не совпадают!");
                 } else {

@@ -18,7 +18,6 @@ import static org.example.util.NamesUtil.*;
 @WebFilter("/*")
 public class Filter implements javax.servlet.Filter {
 
-
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
             throws IOException, ServletException {

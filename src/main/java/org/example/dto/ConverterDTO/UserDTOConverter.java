@@ -2,6 +2,7 @@ package org.example.dto.ConverterDTO;
 
 import org.example.dto.dto.UserDTO;
 import org.example.model.user.User;
+import org.example.service.BcryptUtil;
 
 public class UserDTOConverter implements ConverterDTO<User, UserDTO> {
     @Override
@@ -26,13 +27,11 @@ public class UserDTOConverter implements ConverterDTO<User, UserDTO> {
         return User.builder().name(userDTO.getName())
                 .id(userDTO.getId())
                 .login((userDTO.getLogin()))
-                .password((userDTO.getNewPassword()))
+                .passwordHash((BcryptUtil.hashPassword(userDTO.getNewPassword())))
                 .birthday((userDTO.getBirthday()))
                 .paymentMethods((userDTO.getPaymentMethods()))
                 .sumOfPurchases((userDTO.getSumOfPurchases()))
                 .role(userDTO.getRole())
                 .discount((userDTO.getDiscount())).build();
     }
-
-
 }
