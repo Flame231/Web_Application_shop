@@ -9,5 +9,4 @@ public interface ArchivedUserOrderDAO extends DAO <ArchivedUserOrder>{
 
     List<ArchivedUserOrder> getArchivedUserOrders(Integer userId);
 
-    List<ArchivedUserOrder> getAllArchivedUserOrders();
 }

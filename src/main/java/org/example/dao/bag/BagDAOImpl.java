@@ -15,7 +15,8 @@ public class BagDAOImpl extends DAOImpl<Bag> implements BagDAO {
     public List<Bag> getBagList(Integer userId) {
         getEm().clear();
         return getEm()
-                .createQuery("from Bag bag where bag.user.id = :userId", Bag.class)
+                .createQuery("select distinct bag from Bag bag left join fetch bag.product p left join fetch p.productCategory " +
+                        "left join fetch p.seller where bag.user.id = :userId", Bag.class)
                 .setParameter("userId", userId)
                 .getResultList();
     }

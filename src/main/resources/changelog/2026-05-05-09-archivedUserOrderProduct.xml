@@ -14,7 +14,7 @@
                 <constraints nullable="false"/>
             </column>
 
-            <column name="productName" type="VARCHAR(25)"/>
+            <column name="productName" type="VARCHAR(50)"/>
             <column name="productCount" type="INT"/>
             <column name="finalProductCount" type="INT"/>
             <column name="price" type="decimal(10,2)"/>

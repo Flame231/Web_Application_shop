@@ -20,12 +20,11 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void registerUser(UserDTO userDTO) {
-        if (passwordValidation(userDTO)) {
-            try {
-                userDAO.save(converterDTO.toEntity(userDTO));
-            } catch (PersistenceException e) {
-                throw new UserAlreadyExists("Пользователь с таким именем уже зарегистрирован!", e);
-            }
+        passwordValidation(userDTO);
+        try {
+            userDAO.save(converterDTO.toEntity(userDTO));
+        } catch (PersistenceException e) {
+            throw new UserAlreadyExists("Пользователь с таким именем уже зарегистрирован!", e);
         }
     }
 
@@ -45,7 +44,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void updateUser(UserDTO userDTO) {
-        if (passwordValidation(userDTO)) {
+        passwordValidation(userDTO);
             userDAO.begin();
             User user = userDAO.get(userDTO.getId());
             user.setName(userDTO.getName());
@@ -55,19 +54,15 @@ public class UserServiceImpl implements UserService {
             user.setPaymentMethods(userDTO.getPaymentMethods());
             userDAO.commit();
 
-        }
     }
 
     @Override
-    public boolean passwordValidation(UserDTO userDTO) {
+    public void passwordValidation(UserDTO userDTO) {
         if (userDTO.getId() != null) {
             User user = userDAO.get(userDTO.getId());
-            if (BcryptUtil.checkPassword(userDTO.getOldPassword(),user.getPasswordHash()) )
-            {
+            if (BcryptUtil.checkPassword(userDTO.getOldPassword(), user.getPasswordHash())) {
                 if (!userDTO.getNewPassword().equals(userDTO.getNewPasswordRepeat())) {
                     throw new DifferentPasswordsUpdate("Введенные пароли не совпадают!");
-                } else {
-                    return true;
                 }
             } else {
                 throw new WrongPassword("Неверный пароль!");
@@ -75,8 +70,6 @@ public class UserServiceImpl implements UserService {
         } else {
             if (!userDTO.getNewPassword().equals(userDTO.getNewPasswordRepeat())) {
                 throw new DifferentPasswordsRegistration("Введенные пароли не совпадают!");
-            } else {
-                return true;
             }
         }
     }

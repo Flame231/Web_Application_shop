@@ -99,12 +99,14 @@
                 <input type="hidden" name="count" value="1">
                 <input type="submit" name="plusProduct" value="+">
                 <input type="hidden" name="func" value="catalog">
+                <input type="hidden" name="currentPage" value="<%=currentPage%>">
             </form>
             <form action="<%=request.getContextPath() + ADD_TO_BAG%>" method="post">
                 <input type="hidden" name="productId" value="<%= productDTO.getId()%>"/>
                 <input type="hidden" name="count" value="-1">
                 <input type="submit" name="minusProduct" value="-">
                 <input type="hidden" name="func" value="catalog">
+                <input type="hidden" name="currentPage" value="<%=currentPage%>">
             </form>
 
             <%

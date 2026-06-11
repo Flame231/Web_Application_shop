@@ -16,7 +16,7 @@ public interface UserService {
 
     void updateUser(UserDTO userDTO);
 
-    boolean passwordValidation(UserDTO userDTO);
+    void passwordValidation(UserDTO userDTO);
 
     User getUser(Serializable id);
 

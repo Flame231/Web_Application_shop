@@ -9,8 +9,6 @@ public class BcryptUtil {
     }
 
     public static boolean checkPassword(String enteredPassword, String hash) {
-        System.out.println("ИДЁТ ПРОВЕРКА BCRYPT");
         return BCrypt.checkpw(enteredPassword, hash);
-
     }
 }

@@ -33,7 +33,8 @@ public class ProductDAOImpl extends DAOImpl<Product> implements ProductDAO {
     @Override
     public List<Product> getProductList(int currentPage) {
         getEm().clear();
-        return getEm().createQuery("from Product product", Product.class)
+        return getEm().createQuery("select distinct p from Product p left join fetch p.productCategory" +
+                        " left join fetch  p.seller", Product.class)
                 .setFirstResult((currentPage - 1) * PRODUCT_PER_PAGE).setMaxResults(PRODUCT_PER_PAGE).getResultList();
     }
 

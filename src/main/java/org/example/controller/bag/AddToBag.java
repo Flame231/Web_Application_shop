@@ -5,6 +5,8 @@ import org.example.postConverters.PostToBagDTO;
 import org.example.service.bag.BagService;
 import org.example.service.bag.BagServiceImpl;
 
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -18,13 +20,17 @@ public class AddToBag extends HttpServlet {
     private BagService bagService = new BagServiceImpl();
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         BagDTO bagDTO = PostToBagDTO.toBagDTO(request);
         bagService.addProductToBag(bagDTO);
+
         if ("catalog".equals(request.getParameter("func"))) {
-            response.sendRedirect(request.getContextPath() + SHOW_CATALOG);
+            RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher(SHOW_CATALOG);
+           requestDispatcher.forward(request,response);
         } else if ("bag".equals(request.getParameter("func"))) {
-            response.sendRedirect(request.getContextPath() + SHOW_BAG);
+
+            RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher(SHOW_BAG);
+            requestDispatcher.forward(request,response);
         }
     }
 }

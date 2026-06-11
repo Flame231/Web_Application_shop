@@ -40,7 +40,10 @@
     <form action="<%=request.getContextPath() + MAIN_PAGE_CLIENT%>" method="post">
         <input type="submit" value="Вернуться в личный кабинет">
     </form>
-    <% int currentPage = Integer.parseInt(request.getParameter("currentPage"));
+    <%  int currentPage = 1;
+        if(request.getParameter("currentPage")!=null){
+            currentPage = Integer.parseInt(request.getParameter("currentPage"));
+        }
     %>
     <form action="<%=request.getContextPath() + SHOW_CATALOG%>" method="post">
         <input type="hidden" name="currentPage" value="<%=currentPage%>">
