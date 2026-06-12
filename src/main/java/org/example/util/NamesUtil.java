@@ -45,7 +45,7 @@ public class NamesUtil {
     //USER
     public static final String AUTHORIZE_USER = "AuthorizeUser";
     public static final String LOGOUT_USER = "/LogoutUser";
-    public static final String REGISTER_USER = "/RegisterUser";
+    public static final String SAVE_OR_UPDATE_USER = "/SaveOrUpdateUser";
     public static final String SHOW_USER_PROFILE = "/client/ShowUserProfile";
 
     //USER_ORDER
@@ -104,6 +104,7 @@ public class NamesUtil {
     public static final String SELLER_ID_PARAMETER = "sellerId";
 
     //user
+    public static final String NAME_PARAMETER = "name";
     public static final String LOGIN_PARAMETER = "login";
     public static final String PASSWORD_PARAMETER = "password";
     public static final String OLD_PASSWORD_PARAMETER = "oldPassword";

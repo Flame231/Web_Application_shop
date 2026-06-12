@@ -3,6 +3,8 @@ package org.example.dao;
 
 import lombok.Getter;
 import org.example.util.HibernateUtil;
+import org.hibernate.exception.ConstraintViolationException;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceException;
 import java.io.Serializable;

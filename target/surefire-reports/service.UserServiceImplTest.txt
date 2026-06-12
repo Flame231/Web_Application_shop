@@ -1,0 +1,24 @@
+-------------------------------------------------------------------------------
+Test set: service.UserServiceImplTest
+-------------------------------------------------------------------------------
+Tests run: 3, Failures: 0, Errors: 2, Skipped: 0, Time elapsed: 2.106 s <<< FAILURE! -- in service.UserServiceImplTest
+service.UserServiceImplTest.shouldNotRegisterExistingUser -- Time elapsed: 1.748 s <<< ERROR!
+org.mockito.exceptions.misusing.UnnecessaryStubbingException: 
+
+Unnecessary stubbings detected.
+Clean & maintainable test code requires zero unnecessary code.
+Following stubbings are unnecessary (click to navigate to relevant line of code):
+  1. -> at service.UserServiceImplTest.shouldNotRegisterExistingUser(UserServiceImplTest.java:62)
+Please remove unnecessary stubbings or use 'lenient' strictness. More info: javadoc for UnnecessaryStubbingException class.
+	at org.mockito.junit.jupiter.MockitoExtension.afterEach(MockitoExtension.java:197)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+
+service.UserServiceImplTest.shouldRegisterUser -- Time elapsed: 0.007 s <<< ERROR!
+org.example.service.exceptions.UserRegistrationException: Ошибка регистрации пользователя: пароль не может быть пустым!
+	at org.example.service.user.UserServiceImpl.registerUser(UserServiceImpl.java:34)
+	at service.UserServiceImplTest.shouldRegisterUser(UserServiceImplTest.java:48)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+

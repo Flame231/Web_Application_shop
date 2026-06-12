@@ -1,5 +1,7 @@
 package org.example.service.userOrder;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.example.dao.bag.BagDAO;
 import org.example.dao.bag.BagDAOImpl;
 import org.example.dao.orderPoint.OrderPointDAO;
@@ -26,7 +28,11 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.List;
 
+
 public class UserOrderServiceImpl implements UserOrderService {
+
+    private static final Logger logger = LogManager.getLogger(UserOrderService.class);
+
     private UserOrderDAO userOrderDAO = new UserOrderDAOImpl();
     private UserDAO userDAO = new UserDAOImpl();
     private ConverterDTO<UserOrder, UserOrderDTO> converterDTO = new UserOrderDTOConverter();

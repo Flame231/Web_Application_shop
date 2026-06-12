@@ -1,4 +1,4 @@
-<%@ page import="static org.example.util.NamesUtil.REGISTER_USER" %>
+<%@ page import="static org.example.util.NamesUtil.SAVE_OR_UPDATE_USER" %>
 <%@ page import="static org.example.util.NamesUtil.LOGIN_JSP" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
@@ -38,7 +38,7 @@
 
 <h1>Регистрация нового пользователя</h1>
 <a href="<%=request.getContextPath() + LOGIN_JSP%>"> На главную</a>
-<form action="<%=request.getContextPath() + REGISTER_USER%>" method="post">
+<form action="<%=request.getContextPath() + SAVE_OR_UPDATE_USER%>" method="post">
     <div class="form-container">
 
         <div class="form-row">
@@ -50,7 +50,7 @@
             <label>Логин:</label>
             <input name="login" type="text"/>
         </div>
-
+        <input type="hidden" name="oldPassword" value="0">
         <div class="form-row">
             <label>Пароль:</label>
             <input name="newPassword" type="password"/>

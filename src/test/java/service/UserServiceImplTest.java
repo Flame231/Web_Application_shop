@@ -1,12 +1,11 @@
 package service;
 
-import com.mysql.cj.log.Log;
 import org.example.dao.user.UserDAO;
 import org.example.dto.dto.LoginDTO;
 import org.example.dto.dto.UserDTO;
 import org.example.model.user.Role;
 import org.example.model.user.User;
-import org.example.service.exceptions.UserAlreadyExists;
+import org.example.service.exceptions.UserRegistrationException;
 import org.example.service.user.UserServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -45,8 +44,8 @@ public class UserServiceImplTest {
     }
 
     @Test
-    void shouldRegisterUser() {
-        userService.registerUser(userDTO);
+    void shouldSaveOrUpdateUser() {
+        userService.saveOrUpdateUser(userDTO);
         verify(userDAOmock, times(1)).save(any(User.class));
     }
 
@@ -62,8 +61,8 @@ public class UserServiceImplTest {
                 .build();
         doThrow(new PersistenceException()).when(userDAOmock).save(any(User.class));
 
-        assertThrows(UserAlreadyExists.class, () -> {
-            userService.registerUser(userDTO);
+        assertThrows(UserRegistrationException.class, () -> {
+            userService.saveOrUpdateUser(userDTO);
         });
     }
 

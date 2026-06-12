@@ -17,7 +17,7 @@
         <location>/exceptions/wrongPassword.jsp</location>
     </error-page>
     <error-page>
-        <exception-type>org.example.service.exceptions.UserAlreadyExists</exception-type>
+        <exception-type>org.example.service.exceptions.UserRegistrationException</exception-type>
         <location>/exceptions/userAlreadyExists.jsp</location>
     </error-page>
     <error-page>

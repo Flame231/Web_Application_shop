@@ -12,19 +12,14 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 import static org.example.util.NamesUtil.MAIN_PAGE_CLIENT;
-import static org.example.util.NamesUtil.REGISTER_USER;
+import static org.example.util.NamesUtil.SAVE_OR_UPDATE_USER;
 
-@WebServlet(REGISTER_USER)
-public class RegisterUser extends HttpServlet {
+@WebServlet(SAVE_OR_UPDATE_USER)
+public class SaveOrUpdateUser extends HttpServlet {
     private UserService userService = new UserServiceImpl();
-
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         UserDTO userDTO = PostToUserDTO.toUserDTO(request);
-        if (userDTO.getId() == null) {
-            userService.registerUser(userDTO);
-        } else {
-            userService.updateUser(userDTO);
-        }
+        userService.saveOrUpdateUser(userDTO);
         response.sendRedirect(request.getContextPath() + MAIN_PAGE_CLIENT);
     }
 }

@@ -8,7 +8,7 @@ import java.io.Serializable;
 
 public interface UserService {
 
-    void registerUser(UserDTO userDTO);
+    void saveOrUpdateUser(UserDTO userDTO);
 
     UserDTO authorizeUser(LoginDTO loginDTO);
 

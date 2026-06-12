@@ -1,6 +1,6 @@
 <%@ page import="org.example.dto.dto.UserDTO" %>
 <%@ page import="static org.example.util.NamesUtil.ACCOUNT_CLIENT_JSP" %>
-<%@ page import="static org.example.util.NamesUtil.REGISTER_USER" %>
+<%@ page import="static org.example.util.NamesUtil.SAVE_OR_UPDATE_USER" %>
 <%@ page import="static org.example.util.NamesUtil.*" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
@@ -11,7 +11,7 @@
     <input type="submit" value="Вернуться в личный кабинет">
 </form>
 <h1>Профиль пользователя</h1>
-<form action="<%=request.getContextPath() + REGISTER_USER%>" method="post">
+<form action="<%=request.getContextPath() + SAVE_OR_UPDATE_USER%>" method="post">
     <p>
         Имя:
         <input type="text" name="name" value="<%= userDTO.getName()%>" required/>

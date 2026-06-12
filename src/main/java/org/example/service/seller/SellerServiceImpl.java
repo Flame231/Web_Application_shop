@@ -22,10 +22,6 @@ public class SellerServiceImpl implements SellerService {
                 .toList();
     }
 
-    public Seller findSeller(Serializable id) {
-        return sellerDAO.get(id);
-    }
-
     @Override
     public void updateSeller(SellerDTO sellerDTO) {
         Seller seller = converterDTO.toEntity(sellerDTO);

@@ -1,7 +1,10 @@
 package org.example.service.user;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.example.dao.user.UserDAO;
 import org.example.dao.user.UserDAOImpl;
+import org.example.dto.ConverterDTO.ValidatorDTO;
 import org.example.dto.dto.LoginDTO;
 import org.example.dto.ConverterDTO.ConverterDTO;
 import org.example.dto.ConverterDTO.UserDTOConverter;
@@ -10,31 +13,51 @@ import org.example.model.user.User;
 import org.example.service.BcryptUtil;
 import org.example.service.exceptions.*;
 
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceException;
 import java.io.Serializable;
 
 public class UserServiceImpl implements UserService {
+
+    private static final Logger logger = LogManager.getLogger(UserService.class);
+
     private UserDAO userDAO = new UserDAOImpl();
     private ConverterDTO<User, UserDTO> converterDTO = new UserDTOConverter();
 
 
     @Override
-    public void registerUser(UserDTO userDTO) {
-        passwordValidation(userDTO);
-        try {
-            userDAO.save(converterDTO.toEntity(userDTO));
-        } catch (PersistenceException e) {
-            throw new UserAlreadyExists("Пользователь с таким именем уже зарегистрирован!", e);
-        }
+    public void saveOrUpdateUser(UserDTO userDTO) {
+        if (userDTO.getId() == null) {
+            try {
+                ValidatorDTO.validate(userDTO);
+                passwordValidation(userDTO);
+                userDAO.save(converterDTO.toEntity(userDTO));
+                logger.info("Пользователь {} успешно зарегистрирован!", userDTO.getLogin());
+            } catch (PersistenceException e) {
+                logger.error("Ошибка регистрации пользователя {}", userDTO.getLogin(), e);
+                throw new UserRegistrationException("Ошибка регистрации пользователя: пользователь с таким логином уже зарегистрирован");
+            } catch (Exception e) {
+                logger.error("Ошибка регистрации пользователя", e);
+                throw new UserRegistrationException("Ошибка регистрации пользователя: " + e.getMessage());
+            }
+        } else updateUser(userDTO);
     }
 
     @Override
     public UserDTO authorizeUser(LoginDTO loginDTO) {
         User user = null;
-        user = userDAO.findUser(loginDTO.getLogin());
-        if (user == null || !BcryptUtil.checkPassword(loginDTO.getPassword(), user.getPasswordHash())) {
+        try{
+            user = userDAO.findUser(loginDTO.getLogin());
+        }catch (NoResultException e){
+            logger.info("Ошибка авторизации пользователя: логин не найден", e);
             throw new WrongLoginOrPassword("Неверный логин или пароль!");
         }
+        if (!BcryptUtil.checkPassword(loginDTO.getPassword(), user.getPasswordHash())) {
+            String userName = user.getName();
+            logger.info("Ошибка авторизации пользователя {}: введён неверный логин или пароль", userName);
+            throw new WrongLoginOrPassword("Неверный логин или пароль!");
+        }
+        logger.info("Успешная авторизация пользователя {}", loginDTO.getLogin());
         return converterDTO.toDTO(user);
     }
 
@@ -45,14 +68,14 @@ public class UserServiceImpl implements UserService {
     @Override
     public void updateUser(UserDTO userDTO) {
         passwordValidation(userDTO);
-            userDAO.begin();
-            User user = userDAO.get(userDTO.getId());
-            user.setName(userDTO.getName());
-            user.setLogin(userDTO.getLogin());
-            user.setPasswordHash(BcryptUtil.hashPassword(userDTO.getNewPassword()));
-            user.setBirthday(userDTO.getBirthday());
-            user.setPaymentMethods(userDTO.getPaymentMethods());
-            userDAO.commit();
+        userDAO.begin();
+        User user = userDAO.get(userDTO.getId());
+        user.setName(userDTO.getName());
+        user.setLogin(userDTO.getLogin());
+        user.setPasswordHash(BcryptUtil.hashPassword(userDTO.getNewPassword()));
+        user.setBirthday(userDTO.getBirthday());
+        user.setPaymentMethods(userDTO.getPaymentMethods());
+        userDAO.commit();
 
     }
 

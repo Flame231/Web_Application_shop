@@ -17,7 +17,7 @@ public class PostToUserDTO {
             userId = converterPost.convertParameter(USER_ID_PARAMETER, Integer.class);
         }
 
-        String name = converterPost.convertParameter(LOGIN_PARAMETER, String.class);
+        String name = converterPost.convertParameter(NAME_PARAMETER, String.class);
         String login = converterPost.convertParameter(LOGIN_PARAMETER, String.class);
         String oldPassword = converterPost.convertParameter(OLD_PASSWORD_PARAMETER, String.class);
         String newPassword = converterPost.convertParameter(NEW_PASSWORD_PARAMETER, String.class);

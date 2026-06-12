@@ -31,7 +31,7 @@ public class Filter implements javax.servlet.Filter {
 
         try {
             if (path.equals(LOGIN_JSP) || path.equals("/" + REGISTRATION_JSP) ||
-                    (path.equals("/" + AUTHORIZE_USER)) || path.endsWith(REGISTER_USER)
+                    (path.equals("/" + AUTHORIZE_USER)) || path.endsWith(SAVE_OR_UPDATE_USER)
                     || path.endsWith(LOGOUT_USER)) {
                 chain.doFilter(request, response);
             } else if (session != null && session.getAttribute("userId") != null) {
